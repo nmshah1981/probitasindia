@@ -39,21 +39,21 @@ export function AboutView({
             <span className="text-steel">consultancy, in context.</span>
           </>
         }
-        description="[ABOUT INTRODUCTION — OWNER TO PROVIDE: A short introduction to the firm, its scope and its engineering culture.]"
+        description="Probitas is a passionate team of highly skilled structural engineers delivering innovative and value-led solutions — bridging the gap between the evolving needs of the construction industry and current consultancy services."
         image="/images/about-image.png"
-        imageAlt="[ABOUT IMAGE ALT — OWNER TO PROVIDE]"
+        imageAlt="Quiet modern engineering studio interior"
         tags={["Story", "Philosophy", "Mission", "Values"]}
         meta={[
-          { label: "Founded", value: "[FOUNDED — OWNER TO PROVIDE]" },
-          { label: "Practice", value: "[PRACTICE — OWNER TO PROVIDE]" },
-          { label: "Location", value: "[LOCATION — OWNER TO PROVIDE]" },
+          { label: "Practice", value: "Structural Engineering" },
+          { label: "Team", value: "10 engineers — and growing" },
+          { label: "Location", value: "Vapi, India" },
         ]}
       />
 
       <ContentBlock
         index="01"
         eyebrow="Company Story"
-        title={about.story}
+        title="Bridging the gap in structural consultancy."
         sidebar={
           <div className="space-y-4">
             <DrawingTag code="ABT-01" title="Story" />
@@ -63,43 +63,35 @@ export function AboutView({
           </div>
         }
       >
-        <p>
-          [COMPANY STORY — OWNER TO PROVIDE: The firm&apos;s origin and
-          evolution — what it was established to do, how it has grown, and what
-          it does today.]
-        </p>
-        <p>
-          [FOUNDING STORY — OWNER TO PROVIDE: An optional paragraph describing
-          the founding moment or motivation behind the practice.]
-        </p>
+        <p>{about.story}</p>
+        <p>{about.founding}</p>
       </ContentBlock>
 
       <ContentBlock
         index="02"
         eyebrow="Leadership Message"
-        title={about.leadership}
+        title="A highly skilled team, growing steadily."
       >
-        <p>
-          [LEADERSHIP MESSAGE — OWNER TO PROVIDE: A short message from the
-          leadership on the firm&apos;s engineering outlook and the way it works
-          with clients.]
-        </p>
+        <p>{about.leadership}</p>
       </ContentBlock>
 
       <ContentBlock
         index="03"
         eyebrow="Engineering Philosophy"
-        title={about.philosophy}
+        title="Integrity builds trust and shapes excellence."
         sidebar={
           <div className="space-y-4">
             <DrawingTag code="ABT-02" title="Philosophy" />
           </div>
         }
       >
+        <p>{about.philosophy}</p>
         <p>
-          [ENGINEERING PHILOSOPHY — OWNER TO PROVIDE: How the firm thinks about
-          engineering — its principles, its priorities and its engineering
-          judgement.]
+          Employees are the valuable asset of an organization and key to
+          success. We reinforce our commitment through investment in our people,
+          systems, equipment and capabilities — providing opportunities and
+          career paths for our staff, and developing our leadership as we grow
+          and evolve in the building industry.
         </p>
       </ContentBlock>
 
@@ -114,8 +106,9 @@ export function AboutView({
                   {about.mission}
                 </h3>
                 <p className="mt-4 text-pretty text-base leading-relaxed text-steel">
-                  [MISSION — OWNER TO PROVIDE: A short statement of the firm&apos;s
-                  mission.]
+                  We provide a professional service of world-class quality
+                  through an innovative and responsible approach to engineering
+                  problems.
                 </p>
               </div>
             </Reveal>
@@ -126,8 +119,9 @@ export function AboutView({
                   {about.values}
                 </h3>
                 <p className="mt-4 text-pretty text-base leading-relaxed text-steel">
-                  [VALUES — OWNER TO PROVIDE: A short description of the values
-                  that guide the firm&apos;s engineering work.]
+                  We maintain a culture of quality based on transparency, trust,
+                  diversity, collaboration and mutual respect — a culture that
+                  continually learns and improves.
                 </p>
               </div>
             </Reveal>
@@ -135,7 +129,7 @@ export function AboutView({
         </Container>
       </section>
 
-      {/* Qualifications / credibility (empty placeholders only) */}
+      {/* Qualifications / credibility */}
       <section className="border-b border-border bg-background">
         <Container className="py-20 md:py-28">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
@@ -150,26 +144,25 @@ export function AboutView({
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-steel md:text-lg">
-                  [QUALIFICATIONS — OWNER TO PROVIDE: Display only the
-                  registrations, certifications, memberships and accreditations
-                  the firm actually holds. Never invent credentials or client
-                  logos.]
+                  {about.qualifications}
                 </p>
               </Reveal>
               <div className="mt-10">
                 <SpecTable
                   rows={[
+                    { label: "Founder Experience", value: "20 years — Nirav Shah" },
+                    { label: "Partner Experience", value: "Nearly 15 years — Pankaj Shah" },
+                    { label: "Team Size", value: "10 engineers — and growing steadily" },
+                    { label: "Prior Firms (Leadership)", value: "Larsen & Toubro, Godrej Properties, Mott MacDonald, Buro Happold, CBM Engineers, Gokani Consultant, Optimal Consultancy" },
+                    { label: "Strategy Advisory", value: "BAIN (advisor), BCG (technical consultant) — Nirav Shah" },
                     { label: "Registrations", value: "[REGISTRATIONS — OWNER TO PROVIDE]" },
                     { label: "Certifications", value: "[CERTIFICATIONS — OWNER TO PROVIDE]" },
                     { label: "Memberships", value: "[MEMBERSHIPS — OWNER TO PROVIDE]" },
-                    { label: "Accreditations", value: "[ACCREDITATIONS — OWNER TO PROVIDE]" },
-                    { label: "Awards", value: "[AWARDS — OWNER TO PROVIDE]" },
                   ]}
                 />
               </div>
               <div className="mt-8 flex flex-wrap gap-2">
-                <PlaceholderPill>Owner-controlled — no fake credentials</PlaceholderPill>
-                <TechnicalTag>[CLIENT LOGOS — OWNER TO PROVIDE / OPTIONAL]</TechnicalTag>
+                <PlaceholderPill>Owner-controlled — add real credentials as confirmed</PlaceholderPill>
               </div>
             </div>
           </div>
@@ -179,7 +172,7 @@ export function AboutView({
       <CtaBand
         onNavigate={onNavigate}
         title="Want to work with us?"
-        body="[CTA BODY — OWNER TO PROVIDE]"
+        body="Start a conversation about an upcoming structural design or independent peer review commission."
         ctaLabel="Contact Our Team"
         view="contact"
       />

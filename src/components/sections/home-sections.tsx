@@ -17,7 +17,6 @@ import {
   StaggerItem,
   ImageOrPlaceholder,
   TechnicalTag,
-  PlaceholderPill,
 } from "@/components/site/primitives";
 import {
   AnimatedElevation,
@@ -46,20 +45,18 @@ export function IntroductionSection() {
               </DisplayHeading>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="mt-8 grid grid-cols-1 gap-6 text-pretty text-base leading-relaxed text-steel md:grid-cols-2 md:text-lg">
+              <div className="mt-8 max-w-3xl text-pretty text-base leading-relaxed text-steel md:text-lg">
                 <p>{company.introductionBody}</p>
-                <p className="text-foreground/80">
-                  {[company.introductionBody, company.introductionBody].join(" ")}
-                </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.2}>
               <div className="mt-12 flex flex-wrap items-center gap-3">
-                <TechnicalTag>[SECTORS — OWNER TO PROVIDE]</TechnicalTag>
-                <TechnicalTag>[CODES — OWNER TO PROVIDE]</TechnicalTag>
-                <TechnicalTag>[SOFTWARE — OWNER TO PROVIDE]</TechnicalTag>
-                <PlaceholderPill>Editable in /lib/site-content.ts</PlaceholderPill>
+                <TechnicalTag>RCC &amp; Steel</TechnicalTag>
+                <TechnicalTag>High-Rise up to G+72</TechnicalTag>
+                <TechnicalTag>Airports &amp; Hangars</TechnicalTag>
+                <TechnicalTag>Transit-Oriented Development</TechnicalTag>
+                <TechnicalTag>Design + Peer Review</TechnicalTag>
               </div>
             </Reveal>
           </div>
@@ -172,7 +169,7 @@ export function StructuralFeatureSection({
               <div className="relative">
                 <ImageOrPlaceholder
                   src={svc.heroImage}
-                  alt="[STRUCTURAL ENGINEERING IMAGE ALT — OWNER TO PROVIDE]"
+                  alt="Exposed structural concrete and steel — close architectural detail"
                   ratio="4/3"
                   label="[STRUCTURAL ENGINEERING IMAGE — OWNER TO PROVIDE]"
                   className="border border-border"
@@ -205,10 +202,10 @@ export function StructuralFeatureSection({
 
             <Reveal delay={0.2}>
               <div className="mt-8 space-y-3">
-                <FieldRow label="Overview" value="[STRUCTURAL ENGINEERING OVERVIEW — OWNER TO PROVIDE]" />
-                <FieldRow label="Systems" value="[STRUCTURAL SYSTEMS — OWNER TO PROVIDE]" />
-                <FieldRow label="Materials" value="[MATERIALS — OWNER TO PROVIDE]" />
-                <FieldRow label="Deliverables" value="[DELIVERABLES — OWNER TO PROVIDE]" />
+                <FieldRow label="Materials" value="RCC &amp; Structural Steel" />
+                <FieldRow label="Typology" value="Airports, Hangars, High-Rise, TOD, Temples" />
+                <FieldRow label="Height Range" value="Up to G+72 floors / 187 m" />
+                <FieldRow label="Geography" value="Across India + UAE" />
               </div>
             </Reveal>
 
@@ -367,7 +364,7 @@ function FieldRow({ label, value }: { label: string; value: string }) {
 export function CtaBand({
   onNavigate,
   title = "Have a project in mind?",
-  body = "[CTA BODY — OWNER TO PROVIDE]",
+  body = "Start a conversation about an upcoming structural design, peer review or value engineering commission.",
   ctaLabel = "Discuss a Project",
   view = "contact",
 }: {

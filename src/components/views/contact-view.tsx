@@ -41,7 +41,7 @@ export function ContactView({
             <span className="text-steel">conversation.</span>
           </>
         }
-        description="[CONTACT INTRODUCTION — OWNER TO PROVIDE: A short note on what to include in an enquiry and how the firm responds.]"
+        description="Tell us about your project — include the location, scope, services required and any key milestones. We respond to every enquiry and will route your brief to the right team."
         tags={["Enquiry", "Consultation", "Peer Review"]}
         meta={[
           { label: "Email", value: company.email },

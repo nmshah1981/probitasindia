@@ -54,12 +54,12 @@ export function StructuralEngineeringView({
         }
         description={svc.longDescription}
         image={svc.heroImage}
-        imageAlt="[STRUCTURAL ENGINEERING HERO IMAGE — OWNER TO PROVIDE]"
+        imageAlt="Exposed structural concrete and steel — architectural detail"
         tags={[design.title, peerReview.title]}
         meta={[
           { label: "Division", value: svc.title },
           { label: "Services", value: "02" },
-          { label: "Materials", value: "[MATERIALS — OWNER TO PROVIDE]" },
+          { label: "Materials", value: "RCC & Structural Steel" },
           { label: "Codes", value: "[CODES — OWNER TO PROVIDE]" },
           { label: "Software", value: "[SOFTWARE — OWNER TO PROVIDE]" },
         ]}
@@ -69,7 +69,7 @@ export function StructuralEngineeringView({
       <ContentBlock
         index="01"
         eyebrow="Division Overview"
-        title="[STRUCTURAL ENGINEERING OVERVIEW — OWNER TO PROVIDE]"
+        title="RCC and steel structural engineering, end to end."
         sidebar={
           <div className="space-y-4">
             <DrawingTag code="STR-01" title="Overview" />
@@ -80,16 +80,19 @@ export function StructuralEngineeringView({
         }
       >
         <p>
-          [STRUCTURAL ENGINEERING OVERVIEW — OWNER TO PROVIDE: A clear
-          description of the firm&apos;s structural engineering division — its
-          philosophy, material fluency, structural systems expertise, and how it
-          approaches both design commissions and independent peer review.]
+          Probitas brings deep expertise in RCC and steel structural design
+          across highly complex large-scale projects — airports, hangars,
+          aircraft engine test cells, transit-oriented developments — as well as
+          high-rise residential and commercial buildings up to G+72. Our team
+          has delivered projects across most geographies in India, with a track
+          record in design, peer review, value engineering and constructability
+          solutions.
         </p>
         <p>
-          [ADDITIONAL OVERVIEW — OWNER TO PROVIDE: Optional second paragraph
-          describing the relationship between architectural intent and
-          structural performance, or how sustainability informs structural
-          decisions.]
+          We balance architectural intent, structural performance, economy and
+          constructability across every commission — coordinating with
+          architecture, MEP and construction teams from concept through
+          completion.
         </p>
       </ContentBlock>
 
@@ -152,12 +155,15 @@ export function StructuralEngineeringView({
                 <div className="mt-10">
                   <SpecTable
                     rows={[
-                      { label: "Structural Systems", value: "[STRUCTURAL SYSTEMS — OWNER TO PROVIDE]" },
-                      { label: "Materials", value: "[MATERIALS — OWNER TO PROVIDE]" },
+                      { label: "Structural Systems", value: "RCC frames, Steel frames, Composite, Shear walls, Cores, Long-span steel" },
+                      { label: "Materials", value: "RCC, Structural Steel, Composite" },
+                      { label: "Typology", value: "Airports, Hangars, Test Cells, High-Rise, TOD, Temples, Mass Housing" },
+                      { label: "Height Range", value: "Up to G+72 floors / 187 m" },
+                      { label: "Geography", value: "Mumbai, Delhi NCR, Bangalore, Kolkata, Chennai, Hyderabad, Pune, Nagpur, Ahmedabad, Surat, Valsad + UAE" },
                       { label: "Analysis Methods", value: "[ANALYSIS METHODS — OWNER TO PROVIDE]" },
                       { label: "Design Codes", value: "[DESIGN CODES — OWNER TO PROVIDE]" },
                       { label: "Software", value: "[SOFTWARE — OWNER TO PROVIDE]" },
-                      { label: "Deliverables", value: "[DELIVERABLES — OWNER TO PROVIDE]" },
+                      { label: "Deliverables", value: "Structural drawings, specifications, schedules, design basis reports" },
                     ]}
                   />
                 </div>

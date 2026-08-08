@@ -23,21 +23,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "[BUSINESS NAME] — Structural Engineering · MEP Engineering · Independent Peer Review",
+  title: "Probitas — Structural Engineering Consultancy | Where Excellence Meets Integrity",
   description:
-    "[SHORT COMPANY DESCRIPTION — OWNER TO PROVIDE] Premium engineering consultancy delivering structural engineering, MEP engineering and independent peer review across both disciplines.",
+    "Probitas is a structural engineering consultancy delivering innovative, value-led design and independent peer review across RCC and steel — for projects from airports and hangars to high-rise towers across India.",
   keywords: [
     "structural engineering consultancy",
-    "MEP design consultancy",
+    "structural design India",
     "structural peer review",
-    "MEP peer review",
-    "engineering consultancy",
+    "RCC design",
+    "steel structure design",
+    "high-rise structural design",
+    "Probitas",
   ],
-  authors: [{ name: "[BUSINESS NAME — OWNER TO PROVIDE]" }],
+  authors: [{ name: "Probitas" }],
+  icons: {
+    icon: "/images/probitas-logo.png",
+  },
   openGraph: {
-    title: "[BUSINESS NAME] — Engineering Consultancy",
+    title: "Probitas — Where Excellence Meets Integrity",
     description:
-      "[SHORT COMPANY DESCRIPTION — OWNER TO PROVIDE]",
+      "A passionate team of highly skilled structural engineers delivering innovative and value-led solutions across India.",
     type: "website",
   },
   robots: { index: true, follow: true },

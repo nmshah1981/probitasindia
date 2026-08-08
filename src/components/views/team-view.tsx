@@ -33,17 +33,17 @@ export function TeamView({
         eyebrow="Team"
         title={
           <>
-            Engineers,
+            Leadership &amp;
             <br />
-            <span className="text-steel">documented properly.</span>
+            <span className="text-steel">engineering team.</span>
           </>
         }
-        description="[TEAM INTRODUCTION — OWNER TO PROVIDE: A short description of the firm's engineering team and structure. No invented names or bios.]"
+        description="Guided by strong leadership, Probitas has established a highly skilled team of 10 talented engineers — and the team is growing steadily. Meet the leadership below."
         tags={["Leadership", "Engineering", "Specialisms"]}
         meta={[
-          { label: "Team", value: String(team.length).padStart(2, "0") },
-          { label: "Disciplines", value: "04" },
-          { label: "Locations", value: "[LOCATIONS — OWNER TO PROVIDE]" },
+          { label: "Team", value: "10 engineers" },
+          { label: "Disciplines", value: "02" },
+          { label: "Locations", value: "Across India" },
         ]}
       />
 

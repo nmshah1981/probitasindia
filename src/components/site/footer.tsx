@@ -19,19 +19,11 @@ export function SiteFooter({
           {/* Brand block */}
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
-              <svg
-                viewBox="0 0 32 32"
-                className="h-8 w-8"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                aria-hidden
-              >
-                <rect x="3" y="3" width="26" height="26" />
-                <line x1="3" y1="16" x2="29" y2="16" />
-                <line x1="16" y1="3" x2="16" y2="29" />
-                <rect x="3" y="3" width="13" height="13" fill="currentColor" stroke="none" />
-              </svg>
+              <img
+                src="/images/probitas-logo.png"
+                alt="Probitas logo"
+                className="h-8 object-contain"
+              />
               <span className="font-display text-lg font-semibold tracking-tight">
                 {company.name}
               </span>

@@ -26,7 +26,7 @@ export function HomeView({
       <CtaBand
         onNavigate={onNavigate}
         title="Have a project in mind?"
-        body="[CTA BODY — OWNER TO PROVIDE: A short invitation to start a conversation about an upcoming structural or MEP commission — design or independent peer review.]"
+        body="Tell us about your project — location, scope, services required and any key milestones. We respond to every enquiry and route your brief to the right team."
         ctaLabel="Discuss a Project"
         view="contact"
       />

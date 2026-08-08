@@ -65,10 +65,13 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
             className="group flex items-center gap-3"
             aria-label="Go to homepage"
           >
-            <Logo
+            {/* Probitas logo mark */}
+            <img
+              src="/images/probitas-logo.png"
+              alt="Probitas logo"
               className={cn(
-                "transition-all duration-300",
-                scrolled ? "h-7 w-7" : "h-9 w-9",
+                "object-contain transition-all duration-300",
+                scrolled ? "h-7" : "h-9",
               )}
             />
             <span
@@ -240,24 +243,5 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
         )}
       </AnimatePresence>
     </>
-  );
-}
-
-/* Logo — geometric engineering mark, intentionally abstract */
-function Logo({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 32 32"
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      aria-hidden
-    >
-      <rect x="3" y="3" width="26" height="26" />
-      <line x1="3" y1="16" x2="29" y2="16" />
-      <line x1="16" y1="3" x2="16" y2="29" />
-      <rect x="3" y="3" width="13" height="13" fill="currentColor" stroke="none" />
-    </svg>
   );
 }
