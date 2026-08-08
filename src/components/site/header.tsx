@@ -1,0 +1,265 @@
+"use client";
+
+import * as React from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { company, navItems, services, type ViewId } from "@/lib/site-content";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Container } from "./primitives";
+
+type NavProps = {
+  current: ViewId;
+  onNavigate: (id: ViewId) => void;
+};
+
+export function SiteHeader({ current, onNavigate }: NavProps) {
+  const [scrolled, setScrolled] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [servicesOpen, setServicesOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu open
+  React.useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  const handleNav = (id: ViewId) => {
+    onNavigate(id);
+    setMobileOpen(false);
+    setServicesOpen(false);
+  };
+
+  return (
+    <>
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+          scrolled
+            ? "border-b border-border bg-background/85 backdrop-blur-md"
+            : "border-b border-transparent bg-transparent",
+        )}
+      >
+        <Container
+          className={cn(
+            "flex items-center justify-between transition-all duration-300",
+            scrolled ? "h-14" : "h-20",
+          )}
+        >
+          {/* Logo */}
+          <button
+            onClick={() => handleNav("home")}
+            className="group flex items-center gap-3"
+            aria-label="Go to homepage"
+          >
+            <Logo
+              className={cn(
+                "transition-all duration-300",
+                scrolled ? "h-7 w-7" : "h-9 w-9",
+              )}
+            />
+            <span
+              className={cn(
+                "font-display font-semibold tracking-tight transition-all duration-300",
+                scrolled ? "text-sm" : "text-base",
+              )}
+            >
+              {company.name}
+            </span>
+          </button>
+
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-1 lg:flex">
+            {navItems.map((item) => {
+              const active = current === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNav(item.id)}
+                  className={cn(
+                    "relative px-4 py-2 font-mono-tight text-[11px] uppercase tracking-[0.18em] transition-colors",
+                    active
+                      ? "text-foreground"
+                      : "text-steel hover:text-foreground",
+                  )}
+                >
+                  {item.label}
+                  {active && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-x-3 -bottom-px h-px bg-foreground"
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Desktop CTA + mobile trigger */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => handleNav("contact")}
+              className="group hidden items-center gap-2 bg-foreground px-5 py-2.5 text-bone transition-colors hover:bg-accent-brand lg:inline-flex"
+            >
+              <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
+                {company.primaryCta}
+              </span>
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="inline-flex h-10 w-10 items-center justify-center border border-border bg-bone/60 lg:hidden"
+              aria-label="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
+        </Container>
+
+        {/* Services sub-strip — only on services-related views for context */}
+        {(current === "services" ||
+          current === "structural-design" ||
+          current === "mep-design" ||
+          current === "structural-peer-review" ||
+          current === "mep-peer-review") && (
+          <div className="hidden border-t border-border bg-bone/40 lg:block">
+            <Container className="flex items-center gap-8 py-2.5">
+              <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
+                Disciplines
+              </span>
+              {services.map((s) => {
+                const active = current === s.slug;
+                return (
+                  <button
+                    key={s.slug}
+                    onClick={() => handleNav(s.slug)}
+                    className={cn(
+                      "flex items-center gap-2 font-mono-tight text-[11px] uppercase tracking-[0.18em] transition-colors",
+                      active ? "text-foreground" : "text-steel hover:text-foreground",
+                    )}
+                  >
+                    <span className="number-tabular opacity-70">{s.index}</span>
+                    {s.title}
+                  </button>
+                );
+              })}
+            </Container>
+          </div>
+        )}
+      </header>
+
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[60] bg-background lg:hidden"
+          >
+            <Container className="flex h-20 items-center justify-between">
+              <span className="font-display font-semibold tracking-tight">
+                {company.name}
+              </span>
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex h-10 w-10 items-center justify-center border border-border bg-bone/60"
+                aria-label="Close menu"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </Container>
+            <Container className="mt-6 flex flex-col gap-1">
+              <div className="mb-4 font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
+                Navigation
+              </div>
+              {navItems.map((item, i) => (
+                <motion.button
+                  key={item.id}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + i * 0.04 }}
+                  onClick={() => handleNav(item.id)}
+                  className="flex items-baseline justify-between border-b border-border py-4 text-left"
+                >
+                  <span className="font-display text-2xl font-medium tracking-tight">
+                    {item.label}
+                  </span>
+                  <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em] text-steel">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </motion.button>
+              ))}
+            </Container>
+            <Container className="mt-8">
+              <div className="mb-4 font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
+                Disciplines
+              </div>
+              <div className="grid grid-cols-1 gap-1">
+                {services.map((s) => (
+                  <button
+                    key={s.slug}
+                    onClick={() => handleNav(s.slug)}
+                    className="flex items-baseline gap-3 border-b border-border py-3 text-left"
+                  >
+                    <span className="font-mono-tight text-[11px] text-steel">
+                      {s.index}
+                    </span>
+                    <span className="font-display text-lg font-medium">
+                      {s.title}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </Container>
+            <Container className="mt-10">
+              <button
+                onClick={() => handleNav("contact")}
+                className="flex w-full items-center justify-between bg-foreground px-5 py-4 text-bone"
+              >
+                <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
+                  {company.primaryCta}
+                </span>
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
+/* Logo — geometric engineering mark, intentionally abstract */
+function Logo({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 32 32"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      aria-hidden
+    >
+      <rect x="3" y="3" width="26" height="26" />
+      <line x1="3" y1="16" x2="29" y2="16" />
+      <line x1="16" y1="3" x2="16" y2="29" />
+      <rect x="3" y="3" width="13" height="13" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}

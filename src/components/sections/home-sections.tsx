@@ -1,0 +1,498 @@
+"use client";
+
+import * as React from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import {
+  company,
+  services,
+  peerReview,
+  type ViewId,
+  type ServiceSlug,
+} from "@/lib/site-content";
+import {
+  Container,
+  DisplayHeading,
+  Eyebrow,
+  Hairline,
+  Reveal,
+  StaggerGroup,
+  StaggerItem,
+  ImageOrPlaceholder,
+  TechnicalTag,
+  PlaceholderPill,
+} from "@/components/site/primitives";
+import {
+  AnimatedElevation,
+  MepSchematic,
+  DrawingTag,
+  PortalFrame,
+} from "@/components/engineering/technical-graphics";
+
+/* ============================================================ */
+/* SECTION 02 — INTRODUCTION                                    */
+/* ============================================================ */
+export function IntroductionSection() {
+  return (
+    <section className="relative border-b border-border bg-background">
+      <Container className="py-24 md:py-36">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <Eyebrow index="01">Introduction</Eyebrow>
+            <div className="mt-8">
+              <DrawingTag code="SEC-01" title="Firm Introduction" />
+            </div>
+          </div>
+          <div className="md:col-span-8">
+            <Reveal>
+              <DisplayHeading as="h2" className="text-foreground">
+                {company.introductionHeading}
+              </DisplayHeading>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="mt-8 grid grid-cols-1 gap-6 text-pretty text-base leading-relaxed text-steel md:grid-cols-2 md:text-lg">
+                <p>{company.introductionBody}</p>
+                <p className="text-foreground/80">
+                  {[company.introductionBody, company.introductionBody].join(" ")}
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="mt-12 flex flex-wrap items-center gap-3">
+                <TechnicalTag>[SECTORS — OWNER TO PROVIDE]</TechnicalTag>
+                <TechnicalTag>[CODES — OWNER TO PROVIDE]</TechnicalTag>
+                <TechnicalTag>[SOFTWARE — OWNER TO PROVIDE]</TechnicalTag>
+                <PlaceholderPill>Editable in /lib/site-content.ts</PlaceholderPill>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ============================================================ */
+/* SECTION 03 — CORE SERVICES                                    */
+/* ============================================================ */
+export function CoreServicesSection({
+  onNavigate,
+}: {
+  onNavigate: (id: ViewId) => void;
+}) {
+  return (
+    <section className="relative border-b border-border bg-background">
+      <Container className="py-24 md:py-36">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <Eyebrow index="02">Core Services</Eyebrow>
+            <Reveal>
+              <DisplayHeading as="h2" className="mt-8">
+                Four disciplines, one engineering standard.
+              </DisplayHeading>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-6 max-w-sm text-pretty text-sm leading-relaxed text-steel">
+                Each service is structured, documented and delivered to the same
+                technical standard. Select a discipline to see scope, deliverables
+                and approach.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="md:col-span-8">
+            <StaggerGroup className="flex flex-col">
+              {services.map((s) => (
+                <StaggerItem key={s.slug}>
+                  <ServiceRow
+                    service={s}
+                    onClick={() => onNavigate(s.slug)}
+                  />
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function ServiceRow({
+  service,
+  onClick,
+}: {
+  service: (typeof services)[number];
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="group block w-full border-t border-border py-8 text-left transition-colors first:border-t-0 hover:bg-concrete/30 md:py-10"
+    >
+      <div className="grid grid-cols-12 items-center gap-4">
+        <div className="col-span-2 md:col-span-1">
+          <span className="font-mono-tight text-xs uppercase tracking-[0.18em] text-steel number-tabular md:text-sm">
+            {service.index}
+          </span>
+        </div>
+        <div className="col-span-10 md:col-span-6">
+          <h3 className="font-display text-2xl font-medium tracking-tight text-foreground transition-colors group-hover:text-accent-brand md:text-3xl lg:text-4xl">
+            {service.title}
+          </h3>
+        </div>
+        <div className="col-span-12 md:col-span-4">
+          <p className="text-pretty text-sm leading-relaxed text-steel">
+            {service.shortDescription}
+          </p>
+        </div>
+        <div className="col-span-12 flex justify-end md:col-span-1">
+          <span className="inline-flex h-10 w-10 items-center justify-center border border-border bg-bone transition-colors group-hover:border-accent-brand group-hover:bg-accent-brand group-hover:text-bone">
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </span>
+        </div>
+      </div>
+    </button>
+  );
+}
+
+/* ============================================================ */
+/* SECTION 04 — STRUCTURAL DESIGN FEATURE                       */
+/* ============================================================ */
+export function StructuralFeatureSection({
+  onNavigate,
+}: {
+  onNavigate: (id: ViewId) => void;
+}) {
+  const reduce = useReducedMotion();
+  const svc = services.find((s) => s.slug === "structural-design")!;
+  return (
+    <section className="relative border-b border-border bg-bone">
+      <Container className="py-24 md:py-36">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+          <div className="md:col-span-7">
+            <Reveal>
+              <div className="relative">
+                <ImageOrPlaceholder
+                  src={svc.heroImage}
+                  alt="[STRUCTURAL DESIGN IMAGE ALT — OWNER TO PROVIDE]"
+                  ratio="4/3"
+                  label="[STRUCTURAL DESIGN IMAGE — OWNER TO PROVIDE]"
+                  className="border border-border"
+                />
+                {/* Technical overlay: animated elevation drawing */}
+                <div className="pointer-events-none absolute inset-0 flex items-end justify-start p-4 text-foreground/70">
+                  <div className="h-1/2 w-1/2 opacity-70">
+                    {!reduce && <AnimatedElevation />}
+                  </div>
+                </div>
+                <div className="absolute right-4 top-4">
+                  <DrawingTag code="STR-01" title="Structural Elevation" />
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="md:col-span-5 md:pl-6">
+            <Eyebrow index={svc.index}>{svc.title}</Eyebrow>
+            <Reveal>
+              <DisplayHeading as="h2" className="mt-6">
+                Engineering structures with precision and intent.
+              </DisplayHeading>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-6 text-pretty text-base leading-relaxed text-steel md:text-lg">
+                {svc.longDescription}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="mt-8 space-y-3">
+                <FieldRow label="Overview" value="[STRUCTURAL DESIGN OVERVIEW — OWNER TO PROVIDE]" />
+                <FieldRow label="Systems" value="[STRUCTURAL SYSTEMS — OWNER TO PROVIDE]" />
+                <FieldRow label="Materials" value="[MATERIALS — OWNER TO PROVIDE]" />
+                <FieldRow label="Deliverables" value="[DELIVERABLES — OWNER TO PROVIDE]" />
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <button
+                onClick={() => onNavigate("structural-design")}
+                className="group mt-10 inline-flex items-center gap-3 bg-foreground px-6 py-3.5 text-bone transition-colors hover:bg-accent-brand"
+              >
+                <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
+                  Explore Structural Design
+                </span>
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ============================================================ */
+/* SECTION 05 — MEP DESIGN FEATURE                              */
+/* ============================================================ */
+export function MepFeatureSection({
+  onNavigate,
+}: {
+  onNavigate: (id: ViewId) => void;
+}) {
+  const svc = services.find((s) => s.slug === "mep-design")!;
+  return (
+    <section className="relative border-b border-border bg-background">
+      <Container className="py-24 md:py-36">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+          <div className="order-2 md:order-1 md:col-span-5 md:pr-6">
+            <Eyebrow index={svc.index}>{svc.title}</Eyebrow>
+            <Reveal>
+              <DisplayHeading as="h2" className="mt-6">
+                Coordinated building services, engineered as a system.
+              </DisplayHeading>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-6 text-pretty text-base leading-relaxed text-steel md:text-lg">
+                {svc.longDescription}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="mt-8 space-y-3">
+                <FieldRow label="Mechanical" value="[MECHANICAL SERVICES — OWNER TO PROVIDE]" />
+                <FieldRow label="Electrical" value="[ELECTRICAL SERVICES — OWNER TO PROVIDE]" />
+                <FieldRow label="Plumbing" value="[PLUMBING SERVICES — OWNER TO PROVIDE]" />
+                <FieldRow label="Specialist" value="[SPECIALIST SYSTEMS — OWNER TO PROVIDE]" />
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.3}>
+              <button
+                onClick={() => onNavigate("mep-design")}
+                className="group mt-10 inline-flex items-center gap-3 bg-foreground px-6 py-3.5 text-bone transition-colors hover:bg-accent-brand"
+              >
+                <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
+                  Explore MEP Design
+                </span>
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+            </Reveal>
+          </div>
+
+          <div className="order-1 md:order-2 md:col-span-7">
+            <Reveal>
+              <div className="relative">
+                <ImageOrPlaceholder
+                  src={svc.heroImage}
+                  alt="[MEP DESIGN IMAGE ALT — OWNER TO PROVIDE]"
+                  ratio="4/3"
+                  label="[MEP DESIGN IMAGE — OWNER TO PROVIDE]"
+                  className="border border-border"
+                />
+                <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-4 text-foreground/70">
+                  <div className="h-1/2 w-1/2 opacity-70">
+                    <MepSchematic />
+                  </div>
+                </div>
+                <div className="absolute left-4 top-4">
+                  <DrawingTag code="MEP-01" title="Services Coordination" />
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+/* ============================================================ */
+/* SECTION 06 — PEER REVIEW                                     */
+/* ============================================================ */
+export function PeerReviewSection({
+  onNavigate,
+}: {
+  onNavigate: (id: ViewId) => void;
+}) {
+  return (
+    <section className="relative border-b border-border bg-ink text-bone">
+      {/* Background grid */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+      </div>
+
+      <Container className="relative py-24 md:py-36">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Eyebrow index="03" className="text-bone/70">
+              Independent Peer Review
+            </Eyebrow>
+            <Reveal>
+              <DisplayHeading as="h2" className="mt-6 text-bone">
+                {peerReview.headline}
+              </DisplayHeading>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-bone/70 md:text-lg">
+                {peerReview.description}
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <div className="mt-10 h-32 w-full max-w-sm text-bone/40">
+                <PortalFrame />
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="md:col-span-7">
+            <StaggerGroup className="grid grid-cols-1 gap-px md:grid-cols-2">
+              <StaggerItem>
+                <PeerReviewCard
+                  index="03"
+                  title={peerReview.structural.title}
+                  body={peerReview.structural.body}
+                  onClick={() => onNavigate("structural-peer-review")}
+                />
+              </StaggerItem>
+              <StaggerItem>
+                <PeerReviewCard
+                  index="04"
+                  title={peerReview.mep.title}
+                  body={peerReview.mep.body}
+                  onClick={() => onNavigate("mep-peer-review")}
+                />
+              </StaggerItem>
+            </StaggerGroup>
+
+            <Reveal delay={0.2}>
+              <div className="mt-10 flex flex-wrap items-center gap-3">
+                <TechnicalTag className="border-bone/20 bg-transparent text-bone/70">
+                  [REVIEW PROCESS — OWNER TO PROVIDE]
+                </TechnicalTag>
+                <TechnicalTag className="border-bone/20 bg-transparent text-bone/70">
+                  [DELIVERABLES — OWNER TO PROVIDE]
+                </TechnicalTag>
+                <TechnicalTag className="border-bone/20 bg-transparent text-bone/70">
+                  [SAMPLE SCOPE — OWNER TO PROVIDE]
+                </TechnicalTag>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function PeerReviewCard({
+  index,
+  title,
+  body,
+  onClick,
+}: {
+  index: string;
+  title: string;
+  body: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="group flex h-full flex-col justify-between border border-bone/15 bg-bone/[0.02] p-8 text-left transition-colors hover:bg-bone/[0.06] md:p-10"
+    >
+      <div>
+        <div className="flex items-center gap-3">
+          <span className="font-mono-tight text-[11px] uppercase tracking-[0.22em] text-bone/50 number-tabular">
+            {index}
+          </span>
+          <span className="h-px w-8 bg-bone/30" />
+        </div>
+        <h3 className="mt-6 font-display text-2xl font-medium tracking-tight text-bone md:text-3xl">
+          {title}
+        </h3>
+        <p className="mt-4 text-pretty text-sm leading-relaxed text-bone/70">
+          {body}
+        </p>
+      </div>
+      <div className="mt-8 flex items-center gap-2 text-bone/70 transition-colors group-hover:text-bone">
+        <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em]">
+          Read more
+        </span>
+        <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </div>
+    </button>
+  );
+}
+
+/* ============================================================ */
+/* Reusable field row used in feature sections                   */
+/* ============================================================ */
+function FieldRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="grid grid-cols-3 gap-4 border-t border-border pt-3">
+      <span className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
+        {label}
+      </span>
+      <span className="col-span-2 text-sm text-foreground/80">{value}</span>
+    </div>
+  );
+}
+
+/* ============================================================ */
+/* CTA band — used between sections                              */
+/* ============================================================ */
+export function CtaBand({
+  onNavigate,
+  title = "Have a project in mind?",
+  body = "[CTA BODY — OWNER TO PROVIDE]",
+  ctaLabel = "Discuss a Project",
+  view = "contact",
+}: {
+  onNavigate: (id: ViewId) => void;
+  title?: string;
+  body?: string;
+  ctaLabel?: string;
+  view?: ViewId;
+}) {
+  return (
+    <section className="border-b border-border bg-accent-brand text-bone">
+      <Container className="py-16 md:py-24">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <Eyebrow index="→" className="text-bone/70">
+              Next Step
+            </Eyebrow>
+            <h3 className="mt-4 font-display text-3xl font-medium tracking-tight md:text-5xl">
+              {title}
+            </h3>
+            <p className="mt-4 max-w-xl text-pretty text-sm leading-relaxed text-bone/80 md:text-base">
+              {body}
+            </p>
+          </div>
+          <div className="md:col-span-4 md:justify-self-end">
+            <button
+              onClick={() => onNavigate(view)}
+              className="group inline-flex items-center gap-3 bg-bone px-7 py-4 text-ink transition-colors hover:bg-ink hover:text-bone"
+            >
+              <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
+                {ctaLabel}
+              </span>
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
