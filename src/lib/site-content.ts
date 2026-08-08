@@ -112,8 +112,8 @@ export const company = {
 };
 
 export const hero = {
-  image: "/images/hero-structural-frame.png",
-  alt: "Exposed structural steel frame of a modern building at dusk",
+  image: "/images/project-mumbai-airport.jpeg",
+  alt: "Mumbai International Airport — terminal building reconstruction",
 };
 
 export const services: Discipline[] = [

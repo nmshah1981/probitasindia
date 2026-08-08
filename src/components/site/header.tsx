@@ -65,9 +65,13 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
             className="group flex items-center gap-3"
             aria-label="Go to homepage"
           >
-            {/* Probitas logo mark */}
+            {/* Probitas logo mark — light version over hero, dark version when scrolled */}
             <img
-              src="/images/probitas-logo.png"
+              src={
+                scrolled
+                  ? "/images/probitas-logo.png"
+                  : "/images/probitas-logo-light.png"
+              }
               alt="Probitas logo"
               className={cn(
                 "object-contain transition-all duration-300",
@@ -77,7 +81,7 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
             <span
               className={cn(
                 "font-display font-semibold tracking-tight transition-all duration-300",
-                scrolled ? "text-sm" : "text-base",
+                scrolled ? "text-sm text-foreground" : "text-base text-bone",
               )}
             >
               {company.name}
@@ -94,16 +98,23 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
                   onClick={() => handleNav(item.id)}
                   className={cn(
                     "relative px-4 py-2 font-mono-tight text-[11px] uppercase tracking-[0.18em] transition-colors",
-                    active
-                      ? "text-foreground"
-                      : "text-steel hover:text-foreground",
+                    scrolled
+                      ? active
+                        ? "text-foreground"
+                        : "text-steel hover:text-foreground"
+                      : active
+                        ? "text-bone"
+                        : "text-bone/70 hover:text-bone",
                   )}
                 >
                   {item.label}
                   {active && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute inset-x-3 -bottom-px h-px bg-foreground"
+                      className={cn(
+                        "absolute inset-x-3 -bottom-px h-px transition-colors",
+                        scrolled ? "bg-foreground" : "bg-bone",
+                      )}
                       transition={{ duration: 0.3 }}
                     />
                   )}
@@ -116,7 +127,12 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
           <div className="flex items-center gap-3">
             <button
               onClick={() => handleNav("contact")}
-              className="group hidden items-center gap-2 bg-foreground px-5 py-2.5 text-bone transition-colors hover:bg-accent-brand lg:inline-flex"
+              className={cn(
+                "group hidden items-center gap-2 px-5 py-2.5 transition-colors lg:inline-flex",
+                scrolled
+                  ? "bg-foreground text-bone hover:bg-accent-brand"
+                  : "bg-bone text-ink hover:bg-accent-brand hover:text-bone",
+              )}
             >
               <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
                 {company.primaryCta}
@@ -125,7 +141,12 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
             </button>
             <button
               onClick={() => setMobileOpen(true)}
-              className="inline-flex h-10 w-10 items-center justify-center border border-border bg-bone/60 lg:hidden"
+              className={cn(
+                "inline-flex h-10 w-10 items-center justify-center border transition-colors lg:hidden",
+                scrolled
+                  ? "border-border bg-bone/60 text-foreground"
+                  : "border-bone/30 bg-bone/10 text-bone backdrop-blur-sm",
+              )}
               aria-label="Open menu"
             >
               <Menu className="h-5 w-5" />

@@ -52,10 +52,11 @@ export function Hero({
         )}
       </motion.div>
 
-      {/* Dark gradient + neutral overlay */}
+      {/* Dark gradient + neutral overlay — strong at top (for header legibility)
+          and bottom (for hero text), lighter in the middle to let the image breathe */}
       <motion.div
         style={{ opacity: overlayOpacity }}
-        className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30"
+        className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/40 to-ink"
       />
       <div className="absolute inset-0 bg-ink/30" />
 
