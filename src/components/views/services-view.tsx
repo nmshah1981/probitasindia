@@ -44,10 +44,10 @@ export function ServicesView({
             <span className="text-steel">delivered with intent.</span>
           </>
         }
-        description="[SERVICES OVERVIEW — OWNER TO PROVIDE: A short description of how the four disciplines work together across the project lifecycle.]"
-        tags={["Structural Design", "MEP Design", "Structural Peer Review", "MEP Peer Review"]}
+        description="[SERVICES OVERVIEW — OWNER TO PROVIDE: A short description of how the two disciplines — Structural Engineering and MEP Engineering — work together across the project lifecycle. Each discipline includes independent peer review as a capability.]"
+        tags={["Structural Engineering", "MEP Engineering", "Independent Peer Review"]}
         meta={[
-          { label: "Disciplines", value: "04" },
+          { label: "Disciplines", value: "02" },
           { label: "Approach", value: "[APPROACH — OWNER TO PROVIDE]" },
           { label: "Standards", value: "[STANDARDS — OWNER TO PROVIDE]" },
         ]}

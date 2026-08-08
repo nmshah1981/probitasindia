@@ -132,10 +132,8 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
 
         {/* Services sub-strip — only on services-related views for context */}
         {(current === "services" ||
-          current === "structural-design" ||
-          current === "mep-design" ||
-          current === "structural-peer-review" ||
-          current === "mep-peer-review") && (
+          current === "structural-engineering" ||
+          current === "mep-engineering") && (
           <div className="hidden border-t border-border bg-bone/40 lg:block">
             <Container className="flex items-center gap-8 py-2.5">
               <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">

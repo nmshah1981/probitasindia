@@ -6,13 +6,22 @@
  *
  * Rule: never invent facts. If a value is missing, leave the placeholder text
  * "[OWNER TO PROVIDE]" exactly so it remains visually identifiable.
+ *
+ * Discipline model: TWO disciplines — Structural Engineering and MEP
+ * Engineering. Independent peer review is offered as a capability of each
+ * discipline, not as a standalone top-level discipline.
  */
 
 export type ServiceSlug =
-  | "structural-design"
-  | "mep-design"
-  | "structural-peer-review"
-  | "mep-peer-review";
+  | "structural-engineering"
+  | "mep-engineering";
+
+export type PeerReviewBlock = {
+  title: string;
+  shortDescription: string;
+  longDescription: string;
+  heroImage?: string;
+};
 
 export type ServiceSummary = {
   slug: ServiceSlug;
@@ -21,6 +30,7 @@ export type ServiceSummary = {
   shortDescription: string;
   longDescription: string; // owner-provided
   heroImage?: string;
+  peerReview: PeerReviewBlock;
 };
 
 export type ProjectRecord = {
@@ -55,10 +65,8 @@ export type NavItem = {
 export type ViewId =
   | "home"
   | "services"
-  | "structural-design"
-  | "mep-design"
-  | "structural-peer-review"
-  | "mep-peer-review"
+  | "structural-engineering"
+  | "mep-engineering"
   | "projects"
   | "project-detail"
   | "about"
@@ -68,12 +76,9 @@ export type ViewId =
 
 export const company = {
   name: "[BUSINESS NAME]",
-  tagline:
-    "[COMPANY TAGLINE — OWNER TO PROVIDE]",
-  shortDescription:
-    "[SHORT COMPANY DESCRIPTION — OWNER TO PROVIDE]",
-  longDescription:
-    "[COMPANY INTRODUCTION — OWNER TO PROVIDE]",
+  tagline: "[COMPANY TAGLINE — OWNER TO PROVIDE]",
+  shortDescription: "[SHORT COMPANY DESCRIPTION — OWNER TO PROVIDE]",
+  longDescription: "[COMPANY INTRODUCTION — OWNER TO PROVIDE]",
   email: "[EMAIL ADDRESS — OWNER TO PROVIDE]",
   phone: "[PHONE NUMBER — OWNER TO PROVIDE]",
   address: "[OFFICE ADDRESS — OWNER TO PROVIDE]",
@@ -93,61 +98,49 @@ export const hero = {
 
 export const services: ServiceSummary[] = [
   {
-    slug: "structural-design",
+    slug: "structural-engineering",
     index: "01",
-    title: "Structural Design",
+    title: "Structural Engineering",
     shortDescription:
-      "[STRUCTURAL DESIGN SHORT DESCRIPTION — OWNER TO PROVIDE]",
+      "[STRUCTURAL ENGINEERING SHORT DESCRIPTION — OWNER TO PROVIDE]",
     longDescription:
-      "[STRUCTURAL DESIGN DESCRIPTION — OWNER TO PROVIDE]",
+      "[STRUCTURAL ENGINEERING DESCRIPTION — OWNER TO PROVIDE: Cover the full scope of the structural engineering practice — design, documentation, construction support, and independent peer review — without making unsupported claims.]",
     heroImage: "/images/structural-feature.png",
+    peerReview: {
+      title: "Structural Peer Review",
+      shortDescription:
+        "[STRUCTURAL PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
+      longDescription:
+        "[STRUCTURAL PEER REVIEW DETAIL — OWNER TO PROVIDE: Explain the value of independent structural review without making unsupported claims about error rates or guarantees.]",
+      heroImage: "/images/peer-review-detail.png",
+    },
   },
   {
-    slug: "mep-design",
+    slug: "mep-engineering",
     index: "02",
-    title: "MEP Design",
+    title: "MEP Engineering",
     shortDescription:
-      "[MEP DESIGN SHORT DESCRIPTION — OWNER TO PROVIDE]",
+      "[MEP ENGINEERING SHORT DESCRIPTION — OWNER TO PROVIDE]",
     longDescription:
-      "[MEP DESIGN DESCRIPTION — OWNER TO PROVIDE]",
+      "[MEP ENGINEERING DESCRIPTION — OWNER TO PROVIDE: Cover the full scope of the MEP engineering practice — design, documentation, construction support, and independent peer review — without making unsupported claims.]",
     heroImage: "/images/mep-feature.png",
-  },
-  {
-    slug: "structural-peer-review",
-    index: "03",
-    title: "Structural Design Peer Review",
-    shortDescription:
-      "[STRUCTURAL PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
-    longDescription:
-      "[STRUCTURAL PEER REVIEW DESCRIPTION — OWNER TO PROVIDE]",
-    heroImage: "/images/peer-review-detail.png",
-  },
-  {
-    slug: "mep-peer-review",
-    index: "04",
-    title: "MEP Design Peer Review",
-    shortDescription:
-      "[MEP PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
-    longDescription:
-      "[MEP PEER REVIEW DESCRIPTION — OWNER TO PROVIDE]",
-    heroImage: "/images/peer-review-detail.png",
+    peerReview: {
+      title: "MEP Peer Review",
+      shortDescription:
+        "[MEP PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
+      longDescription:
+        "[MEP PEER REVIEW DETAIL — OWNER TO PROVIDE: Explain the value of independent MEP review without making unsupported claims about error rates or guarantees.]",
+      heroImage: "/images/peer-review-detail.png",
+    },
   },
 ];
 
-export const peerReview = {
+// Top-level peer-review homepage feature — kept as a differentiator on the
+// home page; its two cards now link to the corresponding discipline page.
+export const peerReviewFeature = {
   headline: "[PEER REVIEW HEADLINE — OWNER TO PROVIDE]",
   description:
     "[PEER REVIEW DESCRIPTION — OWNER TO PROVIDE: Explain the value of independent technical review without making unsupported claims about error rates or guarantees.]",
-  structural: {
-    title: "Structural Peer Review",
-    body:
-      "[STRUCTURAL PEER REVIEW DETAIL — OWNER TO PROVIDE]",
-  },
-  mep: {
-    title: "MEP Peer Review",
-    body:
-      "[MEP PEER REVIEW DETAIL — OWNER TO PROVIDE]",
-  },
 };
 
 // Projects — empty by default until owner supplies real entries.
@@ -156,20 +149,13 @@ export const projects: ProjectRecord[] = [];
 export const team: TeamMember[] = [];
 
 export const about = {
-  story:
-    "[COMPANY STORY — OWNER TO PROVIDE]",
-  founding:
-    "[FOUNDING STORY — OWNER TO PROVIDE]",
-  leadership:
-    "[LEADERSHIP MESSAGE — OWNER TO PROVIDE]",
-  philosophy:
-    "[ENGINEERING PHILOSOPHY — OWNER TO PROVIDE]",
-  mission:
-    "[MISSION — OWNER TO PROVIDE]",
-  values:
-    "[VALUES — OWNER TO PROVIDE]",
-  qualifications:
-    "[QUALIFICATIONS — OWNER TO PROVIDE]",
+  story: "[COMPANY STORY — OWNER TO PROVIDE]",
+  founding: "[FOUNDING STORY — OWNER TO PROVIDE]",
+  leadership: "[LEADERSHIP MESSAGE — OWNER TO PROVIDE]",
+  philosophy: "[ENGINEERING PHILOSOPHY — OWNER TO PROVIDE]",
+  mission: "[MISSION — OWNER TO PROVIDE]",
+  values: "[VALUES — OWNER TO PROVIDE]",
+  qualifications: "[QUALIFICATIONS — OWNER TO PROVIDE]",
 };
 
 // Editable nav structure — owner can rename labels after final IA is set.
@@ -193,22 +179,13 @@ export const seo: Record<string, { title: string; description: string }> = {
     title: "[SERVICES PAGE TITLE — OWNER TO PROVIDE]",
     description: "[SERVICES META DESCRIPTION — OWNER TO PROVIDE]",
   },
-  "structural-design": {
-    title: "[STRUCTURAL DESIGN PAGE TITLE — OWNER TO PROVIDE]",
-    description: "[STRUCTURAL DESIGN META DESCRIPTION — OWNER TO PROVIDE]",
+  "structural-engineering": {
+    title: "[STRUCTURAL ENGINEERING PAGE TITLE — OWNER TO PROVIDE]",
+    description: "[STRUCTURAL ENGINEERING META DESCRIPTION — OWNER TO PROVIDE]",
   },
-  "mep-design": {
-    title: "[MEP DESIGN PAGE TITLE — OWNER TO PROVIDE]",
-    description: "[MEP DESIGN META DESCRIPTION — OWNER TO PROVIDE]",
-  },
-  "structural-peer-review": {
-    title: "[STRUCTURAL PEER REVIEW PAGE TITLE — OWNER TO PROVIDE]",
-    description:
-      "[STRUCTURAL PEER REVIEW META DESCRIPTION — OWNER TO PROVIDE]",
-  },
-  "mep-peer-review": {
-    title: "[MEP PEER REVIEW PAGE TITLE — OWNER TO PROVIDE]",
-    description: "[MEP PEER REVIEW META DESCRIPTION — OWNER TO PROVIDE]",
+  "mep-engineering": {
+    title: "[MEP ENGINEERING PAGE TITLE — OWNER TO PROVIDE]",
+    description: "[MEP ENGINEERING META DESCRIPTION — OWNER TO PROVIDE]",
   },
   projects: {
     title: "[PROJECTS PAGE TITLE — OWNER TO PROVIDE]",

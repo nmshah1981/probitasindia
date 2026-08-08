@@ -6,12 +6,8 @@ import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 import { HomeView } from "@/components/views/home-view";
 import { ServicesView } from "@/components/views/services-view";
-import { StructuralDesignView } from "@/components/views/structural-design-view";
-import { MepDesignView } from "@/components/views/mep-design-view";
-import {
-  StructuralPeerReviewView,
-  MepPeerReviewView,
-} from "@/components/views/peer-review-views";
+import { StructuralEngineeringView } from "@/components/views/structural-engineering-view";
+import { MepEngineeringView } from "@/components/views/mep-engineering-view";
 import { ProjectsView, ProjectDetailView } from "@/components/views/projects-view";
 import { AboutView } from "@/components/views/about-view";
 import { TeamView } from "@/components/views/team-view";
@@ -63,17 +59,11 @@ export default function Page() {
             {state.view === "services" && (
               <ServicesView onNavigate={handleNavigate} />
             )}
-            {state.view === "structural-design" && (
-              <StructuralDesignView onNavigate={handleNavigate} />
+            {state.view === "structural-engineering" && (
+              <StructuralEngineeringView onNavigate={handleNavigate} />
             )}
-            {state.view === "mep-design" && (
-              <MepDesignView onNavigate={handleNavigate} />
-            )}
-            {state.view === "structural-peer-review" && (
-              <StructuralPeerReviewView onNavigate={handleNavigate} />
-            )}
-            {state.view === "mep-peer-review" && (
-              <MepPeerReviewView onNavigate={handleNavigate} />
+            {state.view === "mep-engineering" && (
+              <MepEngineeringView onNavigate={handleNavigate} />
             )}
             {state.view === "projects" && (
               <ProjectsView

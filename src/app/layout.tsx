@@ -23,9 +23,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "[BUSINESS NAME] — Structural · MEP · Independent Peer Review",
+  title: "[BUSINESS NAME] — Structural Engineering · MEP Engineering · Independent Peer Review",
   description:
-    "[SHORT COMPANY DESCRIPTION — OWNER TO PROVIDE] Premium engineering consultancy delivering structural design, MEP design and independent peer review.",
+    "[SHORT COMPANY DESCRIPTION — OWNER TO PROVIDE] Premium engineering consultancy delivering structural engineering, MEP engineering and independent peer review across both disciplines.",
   keywords: [
     "structural engineering consultancy",
     "MEP design consultancy",

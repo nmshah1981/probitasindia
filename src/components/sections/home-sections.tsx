@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import {
   company,
   services,
-  peerReview,
+  peerReviewFeature,
   type ViewId,
   type ServiceSlug,
 } from "@/lib/site-content";
@@ -89,7 +89,7 @@ export function CoreServicesSection({
             <Eyebrow index="02">Core Services</Eyebrow>
             <Reveal>
               <DisplayHeading as="h2" className="mt-8">
-                Four disciplines, one engineering standard.
+                Two disciplines, one engineering standard.
               </DisplayHeading>
             </Reveal>
             <Reveal delay={0.1}>
@@ -158,7 +158,7 @@ function ServiceRow({
 }
 
 /* ============================================================ */
-/* SECTION 04 — STRUCTURAL DESIGN FEATURE                       */
+/* SECTION 04 — STRUCTURAL ENGINEERING FEATURE                  */
 /* ============================================================ */
 export function StructuralFeatureSection({
   onNavigate,
@@ -166,7 +166,7 @@ export function StructuralFeatureSection({
   onNavigate: (id: ViewId) => void;
 }) {
   const reduce = useReducedMotion();
-  const svc = services.find((s) => s.slug === "structural-design")!;
+  const svc = services.find((s) => s.slug === "structural-engineering")!;
   return (
     <section className="relative border-b border-border bg-bone">
       <Container className="py-24 md:py-36">
@@ -176,9 +176,9 @@ export function StructuralFeatureSection({
               <div className="relative">
                 <ImageOrPlaceholder
                   src={svc.heroImage}
-                  alt="[STRUCTURAL DESIGN IMAGE ALT — OWNER TO PROVIDE]"
+                  alt="[STRUCTURAL ENGINEERING IMAGE ALT — OWNER TO PROVIDE]"
                   ratio="4/3"
-                  label="[STRUCTURAL DESIGN IMAGE — OWNER TO PROVIDE]"
+                  label="[STRUCTURAL ENGINEERING IMAGE — OWNER TO PROVIDE]"
                   className="border border-border"
                 />
                 {/* Technical overlay: animated elevation drawing */}
@@ -209,20 +209,21 @@ export function StructuralFeatureSection({
 
             <Reveal delay={0.2}>
               <div className="mt-8 space-y-3">
-                <FieldRow label="Overview" value="[STRUCTURAL DESIGN OVERVIEW — OWNER TO PROVIDE]" />
+                <FieldRow label="Overview" value="[STRUCTURAL ENGINEERING OVERVIEW — OWNER TO PROVIDE]" />
                 <FieldRow label="Systems" value="[STRUCTURAL SYSTEMS — OWNER TO PROVIDE]" />
                 <FieldRow label="Materials" value="[MATERIALS — OWNER TO PROVIDE]" />
+                <FieldRow label="Peer Review" value="[STRUCTURAL PEER REVIEW — OWNER TO PROVIDE]" />
                 <FieldRow label="Deliverables" value="[DELIVERABLES — OWNER TO PROVIDE]" />
               </div>
             </Reveal>
 
             <Reveal delay={0.3}>
               <button
-                onClick={() => onNavigate("structural-design")}
+                onClick={() => onNavigate("structural-engineering")}
                 className="group mt-10 inline-flex items-center gap-3 bg-foreground px-6 py-3.5 text-bone transition-colors hover:bg-accent-brand"
               >
                 <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                  Explore Structural Design
+                  Explore Structural Engineering
                 </span>
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
@@ -235,14 +236,14 @@ export function StructuralFeatureSection({
 }
 
 /* ============================================================ */
-/* SECTION 05 — MEP DESIGN FEATURE                              */
+/* SECTION 05 — MEP ENGINEERING FEATURE                         */
 /* ============================================================ */
 export function MepFeatureSection({
   onNavigate,
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
-  const svc = services.find((s) => s.slug === "mep-design")!;
+  const svc = services.find((s) => s.slug === "mep-engineering")!;
   return (
     <section className="relative border-b border-border bg-background">
       <Container className="py-24 md:py-36">
@@ -265,17 +266,18 @@ export function MepFeatureSection({
                 <FieldRow label="Mechanical" value="[MECHANICAL SERVICES — OWNER TO PROVIDE]" />
                 <FieldRow label="Electrical" value="[ELECTRICAL SERVICES — OWNER TO PROVIDE]" />
                 <FieldRow label="Plumbing" value="[PLUMBING SERVICES — OWNER TO PROVIDE]" />
+                <FieldRow label="Peer Review" value="[MEP PEER REVIEW — OWNER TO PROVIDE]" />
                 <FieldRow label="Specialist" value="[SPECIALIST SYSTEMS — OWNER TO PROVIDE]" />
               </div>
             </Reveal>
 
             <Reveal delay={0.3}>
               <button
-                onClick={() => onNavigate("mep-design")}
+                onClick={() => onNavigate("mep-engineering")}
                 className="group mt-10 inline-flex items-center gap-3 bg-foreground px-6 py-3.5 text-bone transition-colors hover:bg-accent-brand"
               >
                 <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                  Explore MEP Design
+                  Explore MEP Engineering
                 </span>
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
@@ -287,9 +289,9 @@ export function MepFeatureSection({
               <div className="relative">
                 <ImageOrPlaceholder
                   src={svc.heroImage}
-                  alt="[MEP DESIGN IMAGE ALT — OWNER TO PROVIDE]"
+                  alt="[MEP ENGINEERING IMAGE ALT — OWNER TO PROVIDE]"
                   ratio="4/3"
-                  label="[MEP DESIGN IMAGE — OWNER TO PROVIDE]"
+                  label="[MEP ENGINEERING IMAGE — OWNER TO PROVIDE]"
                   className="border border-border"
                 />
                 <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-4 text-foreground/70">
@@ -317,6 +319,8 @@ export function PeerReviewSection({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const structuralSvc = services.find((s) => s.slug === "structural-engineering")!;
+  const mepSvc = services.find((s) => s.slug === "mep-engineering")!;
   return (
     <section className="relative border-b border-border bg-ink text-bone">
       {/* Background grid */}
@@ -339,12 +343,12 @@ export function PeerReviewSection({
             </Eyebrow>
             <Reveal>
               <DisplayHeading as="h2" className="mt-6 text-bone">
-                {peerReview.headline}
+                {peerReviewFeature.headline}
               </DisplayHeading>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-bone/70 md:text-lg">
-                {peerReview.description}
+                {peerReviewFeature.description}
               </p>
             </Reveal>
 
@@ -359,18 +363,18 @@ export function PeerReviewSection({
             <StaggerGroup className="grid grid-cols-1 gap-px md:grid-cols-2">
               <StaggerItem>
                 <PeerReviewCard
-                  index="03"
-                  title={peerReview.structural.title}
-                  body={peerReview.structural.body}
-                  onClick={() => onNavigate("structural-peer-review")}
+                  index="01"
+                  title={structuralSvc.peerReview.title}
+                  body={structuralSvc.peerReview.shortDescription}
+                  onClick={() => onNavigate("structural-engineering")}
                 />
               </StaggerItem>
               <StaggerItem>
                 <PeerReviewCard
-                  index="04"
-                  title={peerReview.mep.title}
-                  body={peerReview.mep.body}
-                  onClick={() => onNavigate("mep-peer-review")}
+                  index="02"
+                  title={mepSvc.peerReview.title}
+                  body={mepSvc.peerReview.shortDescription}
+                  onClick={() => onNavigate("mep-engineering")}
                 />
               </StaggerItem>
             </StaggerGroup>

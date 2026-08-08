@@ -98,10 +98,8 @@ export function ContactView({
                       name="projectType"
                       options={[
                         "[PROJECT TYPE — OWNER TO PROVIDE]",
-                        "Structural Design",
-                        "MEP Design",
-                        "Structural Peer Review",
-                        "MEP Peer Review",
+                        "Structural Engineering",
+                        "MEP Engineering",
                         "Other",
                       ]}
                     />
@@ -110,8 +108,8 @@ export function ContactView({
                       name="services"
                       options={[
                         "[SERVICES — OWNER TO PROVIDE]",
-                        "Structural Design",
-                        "MEP Design",
+                        "Structural Engineering",
+                        "MEP Engineering",
                         "Structural Peer Review",
                         "MEP Peer Review",
                       ]}

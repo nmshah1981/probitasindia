@@ -140,7 +140,7 @@ export function Hero({
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7 }}
-          className="mt-16 grid grid-cols-2 gap-px border-t border-bone/15 pt-6 md:grid-cols-4"
+          className="mt-16 grid grid-cols-1 gap-px border-t border-bone/15 pt-6 sm:grid-cols-2 md:grid-cols-2"
         >
           {services.map((s) => (
             <button
