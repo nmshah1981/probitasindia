@@ -2,11 +2,9 @@
 
 import * as React from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
-import { company, hero, services, type ViewId } from "@/lib/site-content";
-import { Container, Eyebrow } from "@/components/site/primitives";
-import { DrawingTag } from "@/components/engineering/technical-graphics";
-import { CoordinateCross } from "@/components/engineering/technical-graphics";
+import { ArrowDown } from "lucide-react";
+import { company, hero, type ViewId } from "@/lib/site-content";
+import { Container } from "@/components/site/primitives";
 
 export function Hero({
   onNavigate,
@@ -60,7 +58,7 @@ export function Hero({
       />
       <div className="absolute inset-0 bg-ink/30" />
 
-      {/* Top technical border with tick marks */}
+      {/* Top technical border with tick marks — drawing number removed */}
       <div className="absolute inset-x-0 top-20 z-10 hidden md:block">
         <Container>
           <div className="flex items-center justify-between border-t border-bone/20 pt-3 text-bone/60">
@@ -70,100 +68,65 @@ export function Hero({
             <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em]">
               Structural · MEP · Peer Review
             </div>
-            <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em]">
-              Drawing No. 00 / 00
-            </div>
           </div>
         </Container>
       </div>
 
-      {/* Main hero content */}
-      <Container className="relative z-10 flex min-h-[100svh] flex-col justify-end pb-16 pt-32 md:pb-24">
-        <motion.div style={{ y: contentY, opacity: contentOpacity }}>
-          <Eyebrow
-            index="00"
-            className="text-bone/70"
+      {/* Main hero content — logo centered, headline below */}
+      <Container className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center pb-24 pt-32 text-center">
+        <motion.div style={{ y: contentY, opacity: contentOpacity }} className="flex flex-col items-center">
+          {/* Centered Probitas logo — original colour format, increased size */}
+          <motion.div
+            initial={reduce ? false : { opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-[3px] bg-bone/90 px-6 py-3 shadow-lg backdrop-blur-sm"
           >
-            Engineering Consultancy
-          </Eyebrow>
+            <img
+              src="/images/probitas-logo.png"
+              alt="Probitas logo"
+              className="h-20 object-contain md:h-24"
+            />
+          </motion.div>
 
+          {/* Headline — font size matched to the logo's wordmark */}
           <motion.h1
-            initial={reduce ? false : { opacity: 0, y: 24 }}
+            initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="mt-6 max-w-5xl font-display text-4xl font-medium leading-[0.95] tracking-[-0.025em] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem]"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            className="mt-8 font-display text-3xl font-medium leading-[1.1] tracking-[-0.01em] text-bone sm:text-4xl md:text-5xl"
           >
             {company.heroHeadline}
           </motion.h1>
 
-          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-12">
-            <motion.p
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="md:col-span-6 md:col-start-1 text-pretty text-base leading-relaxed text-bone/80 md:text-lg"
-            >
-              {company.heroSupporting}
-            </motion.p>
+          {/* Supporting statement */}
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-8 max-w-2xl text-pretty text-sm leading-relaxed text-bone/75 md:text-base"
+          >
+            {company.heroSupporting}
+          </motion.p>
 
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.55 }}
-              className="md:col-span-4 md:col-start-9 md:justify-self-end"
-            >
-              <div className="flex flex-col gap-3 md:items-end">
-                <button
-                  onClick={() => onNavigate("contact")}
-                  className="group inline-flex items-center gap-3 bg-bone px-6 py-3.5 text-ink transition-colors hover:bg-accent-brand hover:text-bone"
-                >
-                  <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                    {company.primaryCta}
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-                <button
-                  onClick={() => onNavigate("services")}
-                  className="group inline-flex items-center gap-3 border border-bone/30 px-6 py-3.5 text-bone transition-colors hover:border-bone hover:bg-bone/5"
-                >
-                  <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                    {company.secondaryCta}
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Service ticker / bottom strip */}
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="mt-16 grid grid-cols-1 gap-px border-t border-bone/15 pt-6 sm:grid-cols-2 md:grid-cols-2"
-        >
-          {services.map((s) => (
+          {/* Secondary CTA only — primary "Discuss a Project" removed per owner request */}
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55 }}
+            className="mt-10"
+          >
             <button
-              key={s.slug}
-              onClick={() => onNavigate(s.slug)}
-              className="group flex flex-col gap-1 py-2 text-left transition-colors hover:text-accent-brand"
+              onClick={() => onNavigate("services")}
+              className="group inline-flex items-center gap-3 border border-bone/30 px-6 py-3.5 text-bone transition-colors hover:border-bone hover:bg-bone/5"
             >
-              <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-bone/60 number-tabular">
-                {s.index} — Discipline
-              </span>
-              <span className="font-display text-sm font-medium tracking-tight md:text-base">
-                {s.title}
+              <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
+                {company.secondaryCta}
               </span>
             </button>
-          ))}
+          </motion.div>
         </motion.div>
       </Container>
-
-      {/* Floating drawing tag — bottom right */}
-      <div className="pointer-events-none absolute bottom-6 right-6 z-10 hidden md:block">
-        <DrawingTag code="DRG-00" title="Hero / Index" />
-      </div>
 
       {/* Scroll indicator */}
       <motion.button
@@ -171,7 +134,7 @@ export function Hero({
           window.scrollTo({ top: window.innerHeight - 80, behavior: "smooth" })
         }
         style={{ opacity: contentOpacity }}
-        className="absolute bottom-6 left-6 z-10 hidden items-center gap-2 text-bone/60 transition-colors hover:text-bone md:flex"
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 items-center gap-2 text-bone/60 transition-colors hover:text-bone md:flex"
         aria-label="Scroll down"
       >
         <ArrowDown className="h-4 w-4 animate-bounce" />
@@ -179,11 +142,6 @@ export function Hero({
           Scroll
         </span>
       </motion.button>
-
-      {/* Coordinate cross decoration */}
-      <div className="pointer-events-none absolute right-6 top-32 z-10 hidden h-16 w-16 text-bone/30 md:block">
-        <CoordinateCross />
-      </div>
     </section>
   );
 }
