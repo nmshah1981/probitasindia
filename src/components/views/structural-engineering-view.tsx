@@ -34,6 +34,8 @@ export function StructuralEngineeringView({
   onNavigate: (id: ViewId) => void;
 }) {
   const svc = services.find((s) => s.slug === "structural-engineering")!;
+  const design = svc.services[0];
+  const peerReview = svc.services[1];
   const related = services
     .filter((s) => s.slug !== "structural-engineering")
     .map((s) => ({ slug: s.slug, index: s.index, title: s.title }));
@@ -53,19 +55,20 @@ export function StructuralEngineeringView({
         description={svc.longDescription}
         image={svc.heroImage}
         imageAlt="[STRUCTURAL ENGINEERING HERO IMAGE — OWNER TO PROVIDE]"
-        tags={["Concept", "Detailed Design", "Documentation", "Independent Peer Review"]}
+        tags={[design.title, peerReview.title]}
         meta={[
-          { label: "Discipline", value: "Structural" },
+          { label: "Division", value: svc.title },
+          { label: "Services", value: "02" },
           { label: "Materials", value: "[MATERIALS — OWNER TO PROVIDE]" },
           { label: "Codes", value: "[CODES — OWNER TO PROVIDE]" },
           { label: "Software", value: "[SOFTWARE — OWNER TO PROVIDE]" },
         ]}
       />
 
-      {/* Overview */}
+      {/* Division overview */}
       <ContentBlock
         index="01"
-        eyebrow="Overview"
+        eyebrow="Division Overview"
         title="[STRUCTURAL ENGINEERING OVERVIEW — OWNER TO PROVIDE]"
         sidebar={
           <div className="space-y-4">
@@ -78,10 +81,9 @@ export function StructuralEngineeringView({
       >
         <p>
           [STRUCTURAL ENGINEERING OVERVIEW — OWNER TO PROVIDE: A clear
-          description of the firm&apos;s structural engineering practice — its
-          philosophy, material fluency, structural systems expertise, how it
-          approaches design problems, and how independent peer review is
-          embedded in the discipline.]
+          description of the firm&apos;s structural engineering division — its
+          philosophy, material fluency, structural systems expertise, and how it
+          approaches both design commissions and independent peer review.]
         </p>
         <p>
           [ADDITIONAL OVERVIEW — OWNER TO PROVIDE: Optional second paragraph
@@ -91,121 +93,123 @@ export function StructuralEngineeringView({
         </p>
       </ContentBlock>
 
-      {/* Capabilities */}
+      {/* The two services offered by this division */}
       <section className="border-b border-border bg-bone">
         <Container className="py-20 md:py-28">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
             <div className="md:col-span-3">
-              <Eyebrow index="02">Capabilities</Eyebrow>
+              <Eyebrow index="02">Services</Eyebrow>
+              <p className="mt-6 max-w-xs text-pretty text-sm leading-relaxed text-steel">
+                The Structural Engineering division delivers two distinct
+                services, each with its own scope, deliverables and process.
+              </p>
             </div>
             <div className="md:col-span-9">
-              <Reveal>
-                <DisplayHeading as="h2">
-                  Structural systems &amp; materials.
-                </DisplayHeading>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-steel md:text-lg">
-                  [STRUCTURAL CAPABILITIES — OWNER TO PROVIDE: A short
-                  description of the firm&apos;s structural systems expertise
-                  and material fluency. The categories below are placeholders —
-                  display only those confirmed by the owner.]
-                </p>
-              </Reveal>
-              <div className="mt-10">
-                <SpecTable
-                  rows={[
-                    { label: "Structural Systems", value: "[STRUCTURAL SYSTEMS — OWNER TO PROVIDE]" },
-                    { label: "Materials", value: "[MATERIALS — OWNER TO PROVIDE]" },
-                    { label: "Analysis Methods", value: "[ANALYSIS METHODS — OWNER TO PROVIDE]" },
-                    { label: "Design Codes", value: "[DESIGN CODES — OWNER TO PROVIDE]" },
-                    { label: "Software", value: "[SOFTWARE — OWNER TO PROVIDE]" },
-                    { label: "Deliverables", value: "[DELIVERABLES — OWNER TO PROVIDE]" },
-                  ]}
-                />
-              </div>
+              <StaggerGroup className="grid grid-cols-1 gap-px bg-border md:grid-cols-2">
+                <StaggerItem className="bg-bone">
+                  <ServiceSummaryCard
+                    index={design.index}
+                    title={design.title}
+                    description={design.shortDescription}
+                  />
+                </StaggerItem>
+                <StaggerItem className="bg-bone">
+                  <ServiceSummaryCard
+                    index={peerReview.index}
+                    title={peerReview.title}
+                    description={peerReview.shortDescription}
+                  />
+                </StaggerItem>
+              </StaggerGroup>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Design approach */}
-      <ContentBlock
-        index="03"
-        eyebrow="Design Approach"
-        title="[DESIGN APPROACH — OWNER TO PROVIDE]"
-        sidebar={
-          <div className="space-y-4">
-            <DrawingTag code="STR-02" title="Approach" />
-            <div className="h-40 w-full text-steel/70">
-              <AnimatedElevation />
-            </div>
-          </div>
-        }
-      >
-        <p>
-          [DESIGN APPROACH — OWNER TO PROVIDE: Describe the firm&apos;s approach
-          to structural design — how concepts are developed, how analysis
-          informs decisions, and how structural performance is balanced against
-          architectural, economic and environmental requirements.]
-        </p>
-        <p>
-          [DIGITAL TOOLS — OWNER TO PROVIDE: Optional paragraph describing the
-          role of BIM, parametric design, analysis software and digital
-          workflows — only mention tools the firm actually uses.]
-        </p>
-      </ContentBlock>
-
-      {/* Engineering process */}
-      <section className="border-b border-border bg-background">
+      {/* ====================== Service 01 — Design ====================== */}
+      <section id="design" className="scroll-mt-32 border-b border-border bg-background">
         <Container className="py-20 md:py-28">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
             <div className="md:col-span-3">
-              <Eyebrow index="04">Process</Eyebrow>
+              <Eyebrow index={`${svc.index}.${design.index}`}>
+                Service — {design.title}
+              </Eyebrow>
+              <div className="mt-8 h-32 w-full text-steel/60">
+                <AnimatedElevation />
+              </div>
             </div>
             <div className="md:col-span-9">
               <Reveal>
-                <DisplayHeading as="h2">
-                  From brief to construction.
-                </DisplayHeading>
+                <DisplayHeading as="h2">{design.title}</DisplayHeading>
               </Reveal>
-              <div className="mt-10">
-                <ProcessTimeline
-                  steps={[
-                    {
-                      title: "Brief &amp; Site",
-                      body: "[STEP 01 — OWNER TO PROVIDE: Brief development, site appraisal, structural concept exploration.]",
-                    },
-                    {
-                      title: "Concept Design",
-                      body: "[STEP 02 — OWNER TO PROVIDE: Structural concept design, load path strategy, preliminary sizing.]",
-                    },
-                    {
-                      title: "Detailed Design",
-                      body: "[STEP 03 — OWNER TO PROVIDE: Analysis, member design, coordination with disciplines.]",
-                    },
-                    {
-                      title: "Documentation",
-                      body: "[STEP 04 — OWNER TO PROVIDE: Structural drawings, specifications, schedules.]",
-                    },
-                    {
-                      title: "Construction Support",
-                      body: "[STEP 05 — OWNER TO PROVIDE: RFI responses, site visits, structural observations.]",
-                    },
-                    {
-                      title: "Post-Completion",
-                      body: "[STEP 06 — OWNER TO PROVIDE: As-built records, performance review, lessons learned.]",
-                    },
-                  ]}
-                />
-              </div>
+              <Reveal delay={0.1}>
+                <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-steel md:text-lg">
+                  {design.longDescription}
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.2}>
+                <div className="mt-10">
+                  <SpecTable
+                    rows={[
+                      { label: "Structural Systems", value: "[STRUCTURAL SYSTEMS — OWNER TO PROVIDE]" },
+                      { label: "Materials", value: "[MATERIALS — OWNER TO PROVIDE]" },
+                      { label: "Analysis Methods", value: "[ANALYSIS METHODS — OWNER TO PROVIDE]" },
+                      { label: "Design Codes", value: "[DESIGN CODES — OWNER TO PROVIDE]" },
+                      { label: "Software", value: "[SOFTWARE — OWNER TO PROVIDE]" },
+                      { label: "Deliverables", value: "[DELIVERABLES — OWNER TO PROVIDE]" },
+                    ]}
+                  />
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.3}>
+                <div className="mt-12">
+                  <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
+                    Design Process
+                  </div>
+                  <div className="mt-6">
+                    <ProcessTimeline
+                      steps={[
+                        {
+                          title: "Brief &amp; Site",
+                          body: "[STEP 01 — OWNER TO PROVIDE: Brief development, site appraisal, structural concept exploration.]",
+                        },
+                        {
+                          title: "Concept Design",
+                          body: "[STEP 02 — OWNER TO PROVIDE: Structural concept design, load path strategy, preliminary sizing.]",
+                        },
+                        {
+                          title: "Detailed Design",
+                          body: "[STEP 03 — OWNER TO PROVIDE: Analysis, member design, coordination with disciplines.]",
+                        },
+                        {
+                          title: "Documentation",
+                          body: "[STEP 04 — OWNER TO PROVIDE: Structural drawings, specifications, schedules.]",
+                        },
+                        {
+                          title: "Construction Support",
+                          body: "[STEP 05 — OWNER TO PROVIDE: RFI responses, site visits, structural observations.]",
+                        },
+                        {
+                          title: "Post-Completion",
+                          body: "[STEP 06 — OWNER TO PROVIDE: As-built records, performance review, lessons learned.]",
+                        },
+                      ]}
+                    />
+                  </div>
+                </div>
+              </Reveal>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Independent Peer Review — embedded capability */}
-      <section className="relative border-b border-border bg-ink text-bone">
+      {/* =================== Service 02 — Peer Review =================== */}
+      <section
+        id="peer-review"
+        className="relative scroll-mt-32 border-b border-border bg-ink text-bone"
+      >
         <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
           <div
             className="h-full w-full"
@@ -219,8 +223,8 @@ export function StructuralEngineeringView({
         <Container className="relative py-20 md:py-28">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
             <div className="md:col-span-3">
-              <Eyebrow index="05" className="text-bone/70">
-                Independent Peer Review
+              <Eyebrow index={`${svc.index}.${peerReview.index}`} className="text-bone/70">
+                Service — {peerReview.title}
               </Eyebrow>
               <div className="mt-8 h-28 w-full text-bone/40">
                 <PortalFrame />
@@ -229,37 +233,82 @@ export function StructuralEngineeringView({
             <div className="md:col-span-9">
               <Reveal>
                 <DisplayHeading as="h2" className="text-bone">
-                  {svc.peerReview.title}
+                  {peerReview.title}
                 </DisplayHeading>
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-bone/70 md:text-lg">
-                  {svc.peerReview.longDescription}
+                  {peerReview.longDescription}
                 </p>
               </Reveal>
 
               <Reveal delay={0.2}>
                 <div className="mt-10">
-                  <SpecTable
-                    rows={[
-                      { label: "Design Basis", value: "[DESIGN BASIS REVIEW — OWNER TO PROVIDE]" },
-                      { label: "Load Assumptions", value: "[LOAD ASSUMPTIONS REVIEW — OWNER TO PROVIDE]" },
-                      { label: "Structural System", value: "[STRUCTURAL SYSTEM REVIEW — OWNER TO PROVIDE]" },
-                      { label: "Analysis Model", value: "[ANALYSIS MODEL REVIEW — OWNER TO PROVIDE]" },
-                      { label: "Member Design", value: "[MEMBER DESIGN REVIEW — OWNER TO PROVIDE]" },
-                      { label: "Detailing", value: "[DETAILING REVIEW — OWNER TO PROVIDE]" },
-                      { label: "Drawings", value: "[DRAWINGS REVIEW — OWNER TO PROVIDE]" },
-                      { label: "Code Compliance", value: "[CODE COMPLIANCE REVIEW — OWNER TO PROVIDE]" },
-                    ]}
-                  />
+                  <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-bone/60">
+                    Typical Review Scope
+                  </div>
+                  <div className="mt-4">
+                    <SpecTable
+                      rows={[
+                        { label: "Design Basis", value: "[DESIGN BASIS REVIEW — OWNER TO PROVIDE]" },
+                        { label: "Load Assumptions", value: "[LOAD ASSUMPTIONS REVIEW — OWNER TO PROVIDE]" },
+                        { label: "Structural System", value: "[STRUCTURAL SYSTEM REVIEW — OWNER TO PROVIDE]" },
+                        { label: "Analysis Model", value: "[ANALYSIS MODEL REVIEW — OWNER TO PROVIDE]" },
+                        { label: "Member Design", value: "[MEMBER DESIGN REVIEW — OWNER TO PROVIDE]" },
+                        { label: "Detailing", value: "[DETAILING REVIEW — OWNER TO PROVIDE]" },
+                        { label: "Drawings", value: "[DRAWINGS REVIEW — OWNER TO PROVIDE]" },
+                        { label: "Code Compliance", value: "[CODE COMPLIANCE REVIEW — OWNER TO PROVIDE]" },
+                      ]}
+                    />
+                  </div>
                 </div>
               </Reveal>
 
               <Reveal delay={0.3}>
+                <div className="mt-12">
+                  <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-bone/60">
+                    Review Process
+                  </div>
+                  <div className="mt-6">
+                    <ProcessTimeline
+                      steps={[
+                        {
+                          title: "Engagement",
+                          body: "[STEP 01 — OWNER TO PROVIDE: Confirm scope, deliverables, independence and timeline.]",
+                        },
+                        {
+                          title: "Document Review",
+                          body: "[STEP 02 — OWNER TO PROVIDE: Review of structural design basis, analysis, drawings and specifications.]",
+                        },
+                        {
+                          title: "Technical Analysis",
+                          body: "[STEP 03 — OWNER TO PROVIDE: Independent verification of critical load paths, analysis assumptions and member design.]",
+                        },
+                        {
+                          title: "Mark-ups &amp; Comments",
+                          body: "[STEP 04 — OWNER TO PROVIDE: Annotated drawings and structured comment log.]",
+                        },
+                        {
+                          title: "Review Report",
+                          body: "[STEP 05 — OWNER TO PROVIDE: Consolidated peer review report with findings and recommendations.]",
+                        },
+                        {
+                          title: "Close-out",
+                          body: "[STEP 06 — OWNER TO PROVIDE: Review of designer responses and confirmation of close-out.]",
+                        },
+                      ]}
+                    />
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.4}>
                 <div className="mt-8 flex flex-wrap gap-2">
-                  <PlaceholderPill>Owner-controlled — no fake claims about error rates or guarantees</PlaceholderPill>
+                  <PlaceholderPill>
+                    Owner-controlled — no fake claims about error rates or guarantees
+                  </PlaceholderPill>
                   <TechnicalTag className="border-bone/20 bg-transparent text-bone/70">
-                    [REVIEW PROCESS — OWNER TO PROVIDE]
+                    [INDEPENDENCE — OWNER TO PROVIDE]
                   </TechnicalTag>
                   <TechnicalTag className="border-bone/20 bg-transparent text-bone/70">
                     [DELIVERABLES — OWNER TO PROVIDE]
@@ -276,13 +325,11 @@ export function StructuralEngineeringView({
         <Container className="py-20 md:py-28">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
             <div className="md:col-span-3">
-              <Eyebrow index="06">Project Types</Eyebrow>
+              <Eyebrow index="03">Project Types</Eyebrow>
             </div>
             <div className="md:col-span-9">
               <Reveal>
-                <DisplayHeading as="h2">
-                  Built typologies.
-                </DisplayHeading>
+                <DisplayHeading as="h2">Built typologies.</DisplayHeading>
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-steel md:text-lg">
@@ -330,13 +377,11 @@ export function StructuralEngineeringView({
         <Container className="py-20 md:py-28">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
             <div className="md:col-span-3">
-              <Eyebrow index="07">Selected Projects</Eyebrow>
+              <Eyebrow index="04">Selected Projects</Eyebrow>
             </div>
             <div className="md:col-span-9">
               <Reveal>
-                <DisplayHeading as="h2">
-                  Recent structural work.
-                </DisplayHeading>
+                <DisplayHeading as="h2">Recent structural work.</DisplayHeading>
               </Reveal>
               <div className="mt-10">
                 <EmptyProjectsState />
@@ -360,6 +405,39 @@ export function StructuralEngineeringView({
         primaryLabel="Discuss a Project"
       />
     </>
+  );
+}
+
+/* ============================================================ */
+/* Service summary card — used inside the Services section       */
+/* ============================================================ */
+function ServiceSummaryCard({
+  index,
+  title,
+  description,
+}: {
+  index: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="flex h-full flex-col p-8 md:p-10">
+      <div className="flex items-center gap-3">
+        <span className="font-mono-tight text-[11px] uppercase tracking-[0.22em] text-steel number-tabular">
+          {index}
+        </span>
+        <span className="h-px w-8 bg-steel/40" />
+        <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
+          Service
+        </span>
+      </div>
+      <h3 className="mt-6 font-display text-2xl font-medium tracking-tight md:text-3xl">
+        {title}
+      </h3>
+      <p className="mt-4 text-pretty text-sm leading-relaxed text-steel">
+        {description}
+      </p>
+    </div>
   );
 }
 

@@ -6,15 +6,12 @@ import { ArrowUpRight } from "lucide-react";
 import {
   company,
   services,
-  peerReviewFeature,
   type ViewId,
-  type ServiceSlug,
 } from "@/lib/site-content";
 import {
   Container,
   DisplayHeading,
   Eyebrow,
-  Hairline,
   Reveal,
   StaggerGroup,
   StaggerItem,
@@ -26,7 +23,6 @@ import {
   AnimatedElevation,
   MepSchematic,
   DrawingTag,
-  PortalFrame,
 } from "@/components/engineering/technical-graphics";
 
 /* ============================================================ */
@@ -212,8 +208,28 @@ export function StructuralFeatureSection({
                 <FieldRow label="Overview" value="[STRUCTURAL ENGINEERING OVERVIEW — OWNER TO PROVIDE]" />
                 <FieldRow label="Systems" value="[STRUCTURAL SYSTEMS — OWNER TO PROVIDE]" />
                 <FieldRow label="Materials" value="[MATERIALS — OWNER TO PROVIDE]" />
-                <FieldRow label="Peer Review" value="[STRUCTURAL PEER REVIEW — OWNER TO PROVIDE]" />
                 <FieldRow label="Deliverables" value="[DELIVERABLES — OWNER TO PROVIDE]" />
+              </div>
+            </Reveal>
+
+            {/* Two services within this division */}
+            <Reveal delay={0.25}>
+              <div className="mt-8 grid grid-cols-1 gap-px bg-border sm:grid-cols-2">
+                {svc.services.map((s) => (
+                  <div key={s.id} className="bg-bone p-5">
+                    <div className="flex items-center gap-2 font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
+                      <span className="number-tabular">{s.index}</span>
+                      <span className="h-px w-5 bg-steel/40" />
+                      <span>Service</span>
+                    </div>
+                    <div className="mt-2 font-display text-base font-medium tracking-tight">
+                      {s.title}
+                    </div>
+                    <p className="mt-2 text-pretty text-xs leading-relaxed text-steel">
+                      {s.shortDescription}
+                    </p>
+                  </div>
+                ))}
               </div>
             </Reveal>
 
@@ -266,8 +282,28 @@ export function MepFeatureSection({
                 <FieldRow label="Mechanical" value="[MECHANICAL SERVICES — OWNER TO PROVIDE]" />
                 <FieldRow label="Electrical" value="[ELECTRICAL SERVICES — OWNER TO PROVIDE]" />
                 <FieldRow label="Plumbing" value="[PLUMBING SERVICES — OWNER TO PROVIDE]" />
-                <FieldRow label="Peer Review" value="[MEP PEER REVIEW — OWNER TO PROVIDE]" />
                 <FieldRow label="Specialist" value="[SPECIALIST SYSTEMS — OWNER TO PROVIDE]" />
+              </div>
+            </Reveal>
+
+            {/* Two services within this division */}
+            <Reveal delay={0.25}>
+              <div className="mt-8 grid grid-cols-1 gap-px bg-border sm:grid-cols-2">
+                {svc.services.map((s) => (
+                  <div key={s.id} className="bg-background p-5">
+                    <div className="flex items-center gap-2 font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
+                      <span className="number-tabular">{s.index}</span>
+                      <span className="h-px w-5 bg-steel/40" />
+                      <span>Service</span>
+                    </div>
+                    <div className="mt-2 font-display text-base font-medium tracking-tight">
+                      {s.title}
+                    </div>
+                    <p className="mt-2 text-pretty text-xs leading-relaxed text-steel">
+                      {s.shortDescription}
+                    </p>
+                  </div>
+                ))}
               </div>
             </Reveal>
 
@@ -308,134 +344,6 @@ export function MepFeatureSection({
         </div>
       </Container>
     </section>
-  );
-}
-
-/* ============================================================ */
-/* SECTION 06 — PEER REVIEW                                     */
-/* ============================================================ */
-export function PeerReviewSection({
-  onNavigate,
-}: {
-  onNavigate: (id: ViewId) => void;
-}) {
-  const structuralSvc = services.find((s) => s.slug === "structural-engineering")!;
-  const mepSvc = services.find((s) => s.slug === "mep-engineering")!;
-  return (
-    <section className="relative border-b border-border bg-ink text-bone">
-      {/* Background grid */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
-      </div>
-
-      <Container className="relative py-24 md:py-36">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <Eyebrow index="03" className="text-bone/70">
-              Independent Peer Review
-            </Eyebrow>
-            <Reveal>
-              <DisplayHeading as="h2" className="mt-6 text-bone">
-                {peerReviewFeature.headline}
-              </DisplayHeading>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-bone/70 md:text-lg">
-                {peerReviewFeature.description}
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <div className="mt-10 h-32 w-full max-w-sm text-bone/40">
-                <PortalFrame />
-              </div>
-            </Reveal>
-          </div>
-
-          <div className="md:col-span-7">
-            <StaggerGroup className="grid grid-cols-1 gap-px md:grid-cols-2">
-              <StaggerItem>
-                <PeerReviewCard
-                  index="01"
-                  title={structuralSvc.peerReview.title}
-                  body={structuralSvc.peerReview.shortDescription}
-                  onClick={() => onNavigate("structural-engineering")}
-                />
-              </StaggerItem>
-              <StaggerItem>
-                <PeerReviewCard
-                  index="02"
-                  title={mepSvc.peerReview.title}
-                  body={mepSvc.peerReview.shortDescription}
-                  onClick={() => onNavigate("mep-engineering")}
-                />
-              </StaggerItem>
-            </StaggerGroup>
-
-            <Reveal delay={0.2}>
-              <div className="mt-10 flex flex-wrap items-center gap-3">
-                <TechnicalTag className="border-bone/20 bg-transparent text-bone/70">
-                  [REVIEW PROCESS — OWNER TO PROVIDE]
-                </TechnicalTag>
-                <TechnicalTag className="border-bone/20 bg-transparent text-bone/70">
-                  [DELIVERABLES — OWNER TO PROVIDE]
-                </TechnicalTag>
-                <TechnicalTag className="border-bone/20 bg-transparent text-bone/70">
-                  [SAMPLE SCOPE — OWNER TO PROVIDE]
-                </TechnicalTag>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function PeerReviewCard({
-  index,
-  title,
-  body,
-  onClick,
-}: {
-  index: string;
-  title: string;
-  body: string;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className="group flex h-full flex-col justify-between border border-bone/15 bg-bone/[0.02] p-8 text-left transition-colors hover:bg-bone/[0.06] md:p-10"
-    >
-      <div>
-        <div className="flex items-center gap-3">
-          <span className="font-mono-tight text-[11px] uppercase tracking-[0.22em] text-bone/50 number-tabular">
-            {index}
-          </span>
-          <span className="h-px w-8 bg-bone/30" />
-        </div>
-        <h3 className="mt-6 font-display text-2xl font-medium tracking-tight text-bone md:text-3xl">
-          {title}
-        </h3>
-        <p className="mt-4 text-pretty text-sm leading-relaxed text-bone/70">
-          {body}
-        </p>
-      </div>
-      <div className="mt-8 flex items-center gap-2 text-bone/70 transition-colors group-hover:text-bone">
-        <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em]">
-          Read more
-        </span>
-        <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </div>
-    </button>
   );
 }
 

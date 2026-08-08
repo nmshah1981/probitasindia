@@ -7,31 +7,49 @@
  * Rule: never invent facts. If a value is missing, leave the placeholder text
  * "[OWNER TO PROVIDE]" exactly so it remains visually identifiable.
  *
- * Discipline model: TWO disciplines — Structural Engineering and MEP
- * Engineering. Independent peer review is offered as a capability of each
- * discipline, not as a standalone top-level discipline.
+ * Discipline model: TWO divisions — Structural Engineering and MEP
+ * Engineering. Each division offers TWO services: Design and Independent
+ * Peer Review.
  */
 
 export type ServiceSlug =
   | "structural-engineering"
   | "mep-engineering";
 
-export type PeerReviewBlock = {
+/** A service offered by a division (Design or Peer Review). */
+export type DivisionService = {
+  /** Stable id used to scroll to / open this service within a division page. */
+  id: "design" | "peer-review";
+  /** Editorial index shown beside the service title — "01", "02". */
+  index: string;
+  /** Service title, e.g. "Structural Design" / "Structural Peer Review". */
   title: string;
   shortDescription: string;
   longDescription: string;
   heroImage?: string;
 };
 
-export type ServiceSummary = {
+export type Discipline = {
   slug: ServiceSlug;
-  index: string; // "01", "02"...
+  /** Top-level index shown in nav strips and headers — "01", "02". */
+  index: string;
+  /** Division name, e.g. "Structural Engineering". */
   title: string;
   shortDescription: string;
-  longDescription: string; // owner-provided
+  longDescription: string;
   heroImage?: string;
-  peerReview: PeerReviewBlock;
+  /** The two services offered by this division — always Design + Peer Review. */
+  services: [DivisionService, DivisionService];
 };
+
+/**
+ * Back-compat alias — components still import `ServiceSummary`, but the
+ * underlying shape is now `Discipline`.
+ */
+export type ServiceSummary = Discipline;
+
+/** Back-compat alias for the per-service block shape. */
+export type PeerReviewBlock = DivisionService;
 
 export type ProjectRecord = {
   id: string;
@@ -96,7 +114,7 @@ export const hero = {
   alt: "[HERO IMAGE ALT TEXT — OWNER TO PROVIDE]",
 };
 
-export const services: ServiceSummary[] = [
+export const services: Discipline[] = [
   {
     slug: "structural-engineering",
     index: "01",
@@ -104,16 +122,30 @@ export const services: ServiceSummary[] = [
     shortDescription:
       "[STRUCTURAL ENGINEERING SHORT DESCRIPTION — OWNER TO PROVIDE]",
     longDescription:
-      "[STRUCTURAL ENGINEERING DESCRIPTION — OWNER TO PROVIDE: Cover the full scope of the structural engineering practice — design, documentation, construction support, and independent peer review — without making unsupported claims.]",
+      "[STRUCTURAL ENGINEERING DESCRIPTION — OWNER TO PROVIDE: Cover the full scope of the structural engineering division — design, documentation, construction support, and independent peer review — without making unsupported claims.]",
     heroImage: "/images/structural-feature.png",
-    peerReview: {
-      title: "Structural Peer Review",
-      shortDescription:
-        "[STRUCTURAL PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
-      longDescription:
-        "[STRUCTURAL PEER REVIEW DETAIL — OWNER TO PROVIDE: Explain the value of independent structural review without making unsupported claims about error rates or guarantees.]",
-      heroImage: "/images/peer-review-detail.png",
-    },
+    services: [
+      {
+        id: "design",
+        index: "01",
+        title: "Structural Design",
+        shortDescription:
+          "[STRUCTURAL DESIGN SHORT DESCRIPTION — OWNER TO PROVIDE]",
+        longDescription:
+          "[STRUCTURAL DESIGN DESCRIPTION — OWNER TO PROVIDE: Describe the firm's structural design service — concept, analysis, documentation, and construction support — without making unsupported claims.]",
+        heroImage: "/images/structural-feature.png",
+      },
+      {
+        id: "peer-review",
+        index: "02",
+        title: "Structural Peer Review",
+        shortDescription:
+          "[STRUCTURAL PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
+        longDescription:
+          "[STRUCTURAL PEER REVIEW DESCRIPTION — OWNER TO PROVIDE: Explain the value of independent structural review without making unsupported claims about error rates or guarantees.]",
+        heroImage: "/images/peer-review-detail.png",
+      },
+    ],
   },
   {
     slug: "mep-engineering",
@@ -122,26 +154,59 @@ export const services: ServiceSummary[] = [
     shortDescription:
       "[MEP ENGINEERING SHORT DESCRIPTION — OWNER TO PROVIDE]",
     longDescription:
-      "[MEP ENGINEERING DESCRIPTION — OWNER TO PROVIDE: Cover the full scope of the MEP engineering practice — design, documentation, construction support, and independent peer review — without making unsupported claims.]",
+      "[MEP ENGINEERING DESCRIPTION — OWNER TO PROVIDE: Cover the full scope of the MEP engineering division — design, documentation, construction support, and independent peer review — without making unsupported claims.]",
     heroImage: "/images/mep-feature.png",
-    peerReview: {
-      title: "MEP Peer Review",
-      shortDescription:
-        "[MEP PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
-      longDescription:
-        "[MEP PEER REVIEW DETAIL — OWNER TO PROVIDE: Explain the value of independent MEP review without making unsupported claims about error rates or guarantees.]",
-      heroImage: "/images/peer-review-detail.png",
-    },
+    services: [
+      {
+        id: "design",
+        index: "01",
+        title: "MEP Design",
+        shortDescription:
+          "[MEP DESIGN SHORT DESCRIPTION — OWNER TO PROVIDE]",
+        longDescription:
+          "[MEP DESIGN DESCRIPTION — OWNER TO PROVIDE: Describe the firm's MEP design service — concept, coordination, documentation, and construction support — without making unsupported claims.]",
+        heroImage: "/images/mep-feature.png",
+      },
+      {
+        id: "peer-review",
+        index: "02",
+        title: "MEP Peer Review",
+        shortDescription:
+          "[MEP PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
+        longDescription:
+          "[MEP PEER REVIEW DESCRIPTION — OWNER TO PROVIDE: Explain the value of independent MEP review without making unsupported claims about error rates or guarantees.]",
+        heroImage: "/images/peer-review-detail.png",
+      },
+    ],
   },
 ];
 
-// Top-level peer-review homepage feature — kept as a differentiator on the
-// home page; its two cards now link to the corresponding discipline page.
-export const peerReviewFeature = {
-  headline: "[PEER REVIEW HEADLINE — OWNER TO PROVIDE]",
-  description:
-    "[PEER REVIEW DESCRIPTION — OWNER TO PROVIDE: Explain the value of independent technical review without making unsupported claims about error rates or guarantees.]",
+/**
+ * Flattened list of all four services across both divisions — useful for
+ * the Services overview page and the contact form select options.
+ * Shape: { division, divisionIndex, serviceIndex, serviceId, serviceTitle }.
+ */
+export type FlatService = {
+  division: ServiceSlug;
+  divisionTitle: string;
+  divisionIndex: string;
+  serviceId: "design" | "peer-review";
+  serviceIndex: string;
+  serviceTitle: string;
+  shortDescription: string;
 };
+
+export const flatServices: FlatService[] = services.flatMap((d) =>
+  d.services.map((s) => ({
+    division: d.slug,
+    divisionTitle: d.title,
+    divisionIndex: d.index,
+    serviceId: s.id,
+    serviceIndex: s.index,
+    serviceTitle: s.title,
+    shortDescription: s.shortDescription,
+  })),
+);
 
 // Projects — empty by default until owner supplies real entries.
 export const projects: ProjectRecord[] = [];

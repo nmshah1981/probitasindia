@@ -8,7 +8,6 @@ import {
   CoreServicesSection,
   StructuralFeatureSection,
   MepFeatureSection,
-  PeerReviewSection,
   CtaBand,
 } from "@/components/sections/home-sections";
 
@@ -24,11 +23,10 @@ export function HomeView({
       <CoreServicesSection onNavigate={onNavigate} />
       <StructuralFeatureSection onNavigate={onNavigate} />
       <MepFeatureSection onNavigate={onNavigate} />
-      <PeerReviewSection onNavigate={onNavigate} />
       <CtaBand
         onNavigate={onNavigate}
         title="Have a project in mind?"
-        body="[CTA BODY — OWNER TO PROVIDE: A short invitation to start a conversation about an upcoming structural, MEP or peer review commission.]"
+        body="[CTA BODY — OWNER TO PROVIDE: A short invitation to start a conversation about an upcoming structural or MEP commission — design or independent peer review.]"
         ctaLabel="Discuss a Project"
         view="contact"
       />
