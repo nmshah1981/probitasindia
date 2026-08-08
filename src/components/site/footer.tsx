@@ -18,15 +18,12 @@ export function SiteFooter({
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Brand block */}
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center">
               <img
                 src="/images/probitas-logo.png"
                 alt="Probitas logo"
-                className="h-8 object-contain"
+                className="h-9 object-contain"
               />
-              <span className="font-display text-lg font-semibold tracking-tight">
-                {company.name}
-              </span>
             </div>
             <p className="mt-6 max-w-md text-pretty text-sm leading-relaxed text-steel">
               {company.tagline}

@@ -59,32 +59,34 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
             scrolled ? "h-14" : "h-20",
           )}
         >
-          {/* Logo */}
+          {/* Logo — original colour format, no text wordmark */}
           <button
             onClick={() => handleNav("home")}
-            className="group flex items-center gap-3"
+            className={cn(
+              "group flex items-center transition-all duration-300",
+              scrolled ? "h-7" : "h-9",
+            )}
             aria-label="Go to homepage"
           >
-            {/* Probitas logo mark — light version over hero, dark version when scrolled */}
-            <img
-              src={
-                scrolled
-                  ? "/images/probitas-logo.png"
-                  : "/images/probitas-logo-light.png"
-              }
-              alt="Probitas logo"
-              className={cn(
-                "object-contain transition-all duration-300",
-                scrolled ? "h-7" : "h-9",
-              )}
-            />
+            {/* Original Probitas logo — dark mark on transparent background.
+                When over the dark hero, a subtle bone chip sits behind it so
+                the original colours stay visible without altering the logo. */}
             <span
               className={cn(
-                "font-display font-semibold tracking-tight transition-all duration-300",
-                scrolled ? "text-sm text-foreground" : "text-base text-bone",
+                "inline-flex items-center justify-center transition-all duration-300",
+                scrolled
+                  ? "bg-transparent px-0"
+                  : "rounded-[2px] bg-bone/90 px-2 py-1 shadow-sm backdrop-blur-sm",
               )}
             >
-              {company.name}
+              <img
+                src="/images/probitas-logo.png"
+                alt="Probitas logo"
+                className={cn(
+                  "object-contain transition-all duration-300",
+                  scrolled ? "h-7" : "h-7",
+                )}
+              />
             </span>
           </button>
 
@@ -195,9 +197,11 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
             className="fixed inset-0 z-[60] bg-background lg:hidden"
           >
             <Container className="flex h-20 items-center justify-between">
-              <span className="font-display font-semibold tracking-tight">
-                {company.name}
-              </span>
+              <img
+                src="/images/probitas-logo.png"
+                alt="Probitas logo"
+                className="h-8 object-contain"
+              />
               <button
                 onClick={() => setMobileOpen(false)}
                 className="inline-flex h-10 w-10 items-center justify-center border border-border bg-bone/60"
