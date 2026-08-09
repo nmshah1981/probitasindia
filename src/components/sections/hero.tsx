@@ -58,20 +58,6 @@ export function Hero({
       />
       <div className="absolute inset-0 bg-ink/30" />
 
-      {/* Top technical border with tick marks — drawing number removed */}
-      <div className="absolute inset-x-0 top-20 z-10 hidden md:block">
-        <Container>
-          <div className="flex items-center justify-between border-t border-bone/20 pt-3 text-bone/60">
-            <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em]">
-              N 00°00′ · E 00°00′
-            </div>
-            <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em]">
-              Structural · MEP · Peer Review
-            </div>
-          </div>
-        </Container>
-      </div>
-
       {/* Main hero content — left-aligned, bottom-anchored (earlier layout) */}
       <Container className="relative z-10 flex min-h-[100svh] flex-col justify-end pb-16 pt-32 md:pb-24">
         <motion.div style={{ y: contentY, opacity: contentOpacity }}>
@@ -79,7 +65,7 @@ export function Hero({
             initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="max-w-5xl font-display text-4xl font-medium leading-[0.95] tracking-[-0.025em] text-bone sm:text-5xl md:text-6xl lg:text-7xl"
+            className="max-w-5xl font-display text-2xl font-medium leading-[1.05] tracking-[-0.01em] text-bone sm:text-3xl md:text-4xl lg:text-5xl"
           >
             {company.heroHeadline}
           </motion.h1>
