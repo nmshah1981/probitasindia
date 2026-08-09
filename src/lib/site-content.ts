@@ -103,7 +103,7 @@ export const company = {
     "D-102, Fortune Lifestyle Royale, Vapi-Daman Road, Chala, Vapi 396191, India",
   heroHeadline: "Where Excellence Meets Integrity.",
   heroSupporting:
-    "A passionate team of highly skilled structural engineers delivering innovative and value-led solutions — bridging the gap between the evolving needs of the construction industry and current consultancy services.",
+    "A passionate team of highly skilled engineers delivering innovative and value-led solutions — bridging the gap between the evolving needs of the construction industry and current consultancy services.",
   primaryCta: "Discuss a Project",
   secondaryCta: "Our Services",
   introductionHeading: "Engineering with integrity.",

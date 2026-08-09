@@ -56,7 +56,7 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
         <Container
           className={cn(
             "flex items-center justify-between transition-all duration-300",
-            scrolled ? "h-14" : "h-20",
+            scrolled ? "h-16" : "h-24",
           )}
         >
           {/* Logo — original colour format, no text wordmark */}
@@ -64,7 +64,7 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
             onClick={() => handleNav("home")}
             className={cn(
               "group flex items-center transition-all duration-300",
-              scrolled ? "h-9" : "h-11",
+              scrolled ? "h-12" : "h-14",
             )}
             aria-label="Go to homepage"
           >
@@ -76,7 +76,7 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
                 "inline-flex items-center justify-center transition-all duration-300",
                 scrolled
                   ? "bg-transparent px-0"
-                  : "rounded-[2px] bg-bone/90 px-2.5 py-1 shadow-sm backdrop-blur-sm",
+                  : "rounded-[2px] bg-bone/90 px-3 py-1.5 shadow-sm backdrop-blur-sm",
               )}
             >
               <img
@@ -84,7 +84,7 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
                 alt="Probitas logo"
                 className={cn(
                   "object-contain transition-all duration-300",
-                  scrolled ? "h-9" : "h-9",
+                  scrolled ? "h-12" : "h-14",
                 )}
               />
             </span>

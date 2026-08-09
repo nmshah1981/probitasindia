@@ -65,7 +65,7 @@ export function Hero({
             initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="max-w-5xl font-display text-2xl font-medium leading-[1.05] tracking-[-0.01em] text-bone sm:text-3xl md:text-4xl lg:text-5xl"
+            className="max-w-5xl font-display text-xl font-medium leading-[1.1] tracking-[-0.01em] text-bone sm:text-2xl md:text-3xl lg:text-4xl"
           >
             {company.heroHeadline}
           </motion.h1>
