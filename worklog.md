@@ -1,5 +1,10 @@
 # Worklog — Engineering Consultancy Website
 
+## Project Git Details
+- **Repository**: https://github.com/nmshah1981/probitasindia.git
+- **Branch**: main (tracking origin/main)
+- **Push Policy**: Always ask user for confirmation before pushing to git
+
 ---
 Task ID: 1
 Agent: main
