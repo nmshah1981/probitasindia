@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { team, services, type ViewId } from "@/lib/site-content";
+import { type ViewId, type TeamMember } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import {
   Container,
   DisplayHeading,
@@ -24,6 +25,8 @@ export function TeamView({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { team, services } = data;
   const hasTeam = team.length > 0;
 
   return (
@@ -77,7 +80,7 @@ export function TeamView({
 function TeamGrid({
   members,
 }: {
-  members: typeof team;
+  members: TeamMember[];
 }) {
   return (
     <StaggerGroup className="grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-3">

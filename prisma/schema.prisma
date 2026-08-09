@@ -30,3 +30,11 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+/// Singleton row storing the entire site content as a JSON blob.
+/// The admin page reads and writes this; the public site reads it on load.
+model SiteContent {
+  id        String   @id @default("singleton")
+  data      String   // JSON-encoded SiteData
+  updatedAt DateTime @updatedAt
+}

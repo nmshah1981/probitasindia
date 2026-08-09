@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { about, services, type ViewId } from "@/lib/site-content";
+import { type ViewId } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import {
   Container,
   DisplayHeading,
@@ -27,6 +28,8 @@ export function AboutView({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { about, services } = data;
   return (
     <>
       <PageHeader

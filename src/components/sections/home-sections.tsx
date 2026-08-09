@@ -4,10 +4,10 @@ import * as React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import {
-  company,
-  services,
   type ViewId,
+  type Discipline,
 } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import {
   Container,
   DisplayHeading,
@@ -28,6 +28,8 @@ import {
 /* SECTION 02 — INTRODUCTION                                    */
 /* ============================================================ */
 export function IntroductionSection() {
+  const { data } = useContent();
+  const { company } = data;
   return (
     <section className="relative border-b border-border bg-background">
       <Container className="py-24 md:py-36">
@@ -74,6 +76,8 @@ export function CoreServicesSection({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { services } = data;
   return (
     <section className="relative border-b border-border bg-background">
       <Container className="py-24 md:py-36">
@@ -116,7 +120,7 @@ function ServiceRow({
   service,
   onClick,
 }: {
-  service: (typeof services)[number];
+  service: Discipline;
   onClick: () => void;
 }) {
   return (
@@ -158,6 +162,8 @@ export function StructuralFeatureSection({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { services } = data;
   const reduce = useReducedMotion();
   const svc = services.find((s) => s.slug === "structural-engineering")!;
   return (
@@ -256,6 +262,8 @@ export function MepFeatureSection({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { services } = data;
   const svc = services.find((s) => s.slug === "mep-engineering")!;
   return (
     <section className="relative border-b border-border bg-background">

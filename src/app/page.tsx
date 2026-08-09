@@ -13,14 +13,29 @@ import { AboutView } from "@/components/views/about-view";
 import { TeamView } from "@/components/views/team-view";
 import { ContactView } from "@/components/views/contact-view";
 import { InsightsView } from "@/components/views/insights-view";
-import { projects, type ViewId } from "@/lib/site-content";
+import { AdminView } from "@/components/views/admin-view";
+import { ContentProvider, useContent } from "@/lib/content-provider";
+import type { ViewId } from "@/lib/site-content";
 
 type ViewState =
   | { view: Exclude<ViewId, "project-detail"> }
   | { view: "project-detail"; projectId?: string };
 
-export default function Page() {
+function AppContent() {
+  const { data } = useContent();
   const [state, setState] = React.useState<ViewState>({ view: "home" });
+
+  // Check URL hash on mount + hashchange — if #admin, show admin view
+  React.useEffect(() => {
+    const checkHash = () => {
+      if (typeof window !== "undefined" && window.location.hash === "#admin") {
+        setState({ view: "admin" });
+      }
+    };
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    return () => window.removeEventListener("hashchange", checkHash);
+  }, []);
 
   // Scroll to top on view change
   const prevView = React.useRef(state.view);
@@ -35,11 +50,19 @@ export default function Page() {
 
   const handleNavigate = (id: ViewId) => {
     setState({ view: id });
+    if (typeof window !== "undefined" && id === "admin") {
+      window.location.hash = "admin";
+    }
   };
 
   const handleSelectProject = (id: string) => {
     setState({ view: "project-detail", projectId: id });
   };
+
+  // Admin view is standalone — no header/footer
+  if (state.view === "admin") {
+    return <AdminView onNavigate={handleNavigate} />;
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -75,7 +98,7 @@ export default function Page() {
               <ProjectDetailView
                 project={
                   state.projectId
-                    ? projects.find((p) => p.id === state.projectId)
+                    ? data.projects.find((p) => p.id === state.projectId)
                     : undefined
                 }
                 onNavigate={handleNavigate}
@@ -95,5 +118,13 @@ export default function Page() {
 
       <SiteFooter onNavigate={handleNavigate} />
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <ContentProvider>
+      <AppContent />
+    </ContentProvider>
   );
 }

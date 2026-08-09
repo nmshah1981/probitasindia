@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { company, services, type ViewId } from "@/lib/site-content";
+import { type ViewId } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import { ArrowUpRight, MapPin, Mail, Phone } from "lucide-react";
 import {
   Container,
@@ -21,6 +22,8 @@ export function ContactView({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { company, services } = data;
   const [submitted, setSubmitted] = React.useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

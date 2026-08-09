@@ -3,7 +3,8 @@
 import * as React from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
-import { company, hero, type ViewId } from "@/lib/site-content";
+import { type ViewId } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import { Container } from "@/components/site/primitives";
 
 export function Hero({
@@ -13,6 +14,8 @@ export function Hero({
 }) {
   const ref = React.useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
+  const { data } = useContent();
+  const { company, hero } = data;
 
   const { scrollYProgress } = useScroll({
     target: ref,

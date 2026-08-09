@@ -3,7 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { company, navItems, services, type ViewId } from "@/lib/site-content";
+import { navItems, type ViewId } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Container } from "./primitives";
@@ -14,6 +15,8 @@ type NavProps = {
 };
 
 export function SiteHeader({ current, onNavigate }: NavProps) {
+  const { data } = useContent();
+  const { company, services } = data;
   const [scrolled, setScrolled] = React.useState(false);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [servicesOpen, setServicesOpen] = React.useState(false);
@@ -128,7 +131,7 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
           {/* Desktop CTA + mobile trigger */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleNav("contact")}
+              onClick={() => handleNav("services")}
               className={cn(
                 "group hidden items-center gap-2 px-5 py-2.5 transition-colors lg:inline-flex",
                 scrolled
@@ -137,7 +140,7 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
               )}
             >
               <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                {company.primaryCta}
+                Our Services
               </span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
@@ -255,11 +258,11 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
             </Container>
             <Container className="mt-10">
               <button
-                onClick={() => handleNav("contact")}
+                onClick={() => handleNav("services")}
                 className="flex w-full items-center justify-between bg-foreground px-5 py-4 text-bone"
               >
                 <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                  {company.primaryCta}
+                  Our Services
                 </span>
                 <ArrowUpRight className="h-4 w-4" />
               </button>

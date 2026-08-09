@@ -2,11 +2,10 @@
 
 import * as React from "react";
 import {
-  projects,
-  services,
   type ViewId,
   type ProjectRecord,
 } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import {
   Container,
@@ -37,6 +36,8 @@ export function ProjectsView({
   onNavigate: (id: ViewId) => void;
   onSelectProject: (id: string) => void;
 }) {
+  const { data } = useContent();
+  const { projects, services } = data;
   const hasProjects = projects.length > 0;
 
   return (
@@ -197,6 +198,8 @@ export function ProjectDetailView({
   project?: ProjectRecord;
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { services } = data;
   // If no project supplied (because projects[] is empty), show empty state detail.
   if (!project) {
     return <EmptyProjectDetail onNavigate={onNavigate} />;
@@ -319,6 +322,8 @@ export function ProjectDetailView({
 }
 
 function EmptyProjectDetail({ onNavigate }: { onNavigate: (id: ViewId) => void }) {
+  const { data } = useContent();
+  const { services } = data;
   return (
     <>
       <section className="border-b border-border bg-background pt-32 md:pt-40">

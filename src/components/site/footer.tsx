@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { company, navItems, services, type ViewId } from "@/lib/site-content";
+import { navItems, type ViewId } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import { ArrowUpRight } from "lucide-react";
 import { Container, Hairline } from "./primitives";
 import { StructuralGrid } from "@/components/engineering/technical-graphics";
@@ -12,6 +13,8 @@ export function SiteFooter({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { company, services } = data;
   return (
     <footer className="mt-auto border-t border-border bg-bone">
       <Container className="py-16 md:py-20">

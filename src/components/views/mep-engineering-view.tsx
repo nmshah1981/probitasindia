@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { services, type ViewId } from "@/lib/site-content";
+import { type ViewId } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import {
   Container,
   DisplayHeading,
@@ -33,6 +34,8 @@ export function MepEngineeringView({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { services } = data;
   const svc = services.find((s) => s.slug === "mep-engineering")!;
   const design = svc.services[0];
   const peerReview = svc.services[1];

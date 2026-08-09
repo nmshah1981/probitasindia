@@ -2,11 +2,10 @@
 
 import * as React from "react";
 import {
-  services,
-  flatServices,
   type ViewId,
   type ServiceSlug,
 } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import { ArrowUpRight } from "lucide-react";
 import {
   Container,
@@ -29,6 +28,19 @@ export function ServicesView({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { services } = data;
+  const flatServices = services.flatMap((d) =>
+    d.services.map((s) => ({
+      division: d.slug,
+      divisionTitle: d.title,
+      divisionIndex: d.index,
+      serviceId: s.id,
+      serviceIndex: s.index,
+      serviceTitle: s.title,
+      shortDescription: s.shortDescription,
+    })),
+  );
   return (
     <>
       <PageHeader
@@ -122,6 +134,8 @@ function DivisionLargeCard({
   divisionSlug: ServiceSlug;
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { services } = data;
   const svc = services.find((s) => s.slug === divisionSlug)!;
   return (
     <button

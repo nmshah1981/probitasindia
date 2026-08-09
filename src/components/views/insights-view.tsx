@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { services, type ViewId } from "@/lib/site-content";
+import { type ViewId } from "@/lib/site-content";
+import { useContent } from "@/lib/content-provider";
 import { ArrowUpRight } from "lucide-react";
 import {
   Container,
@@ -24,6 +25,8 @@ export function InsightsView({
 }: {
   onNavigate: (id: ViewId) => void;
 }) {
+  const { data } = useContent();
+  const { services } = data;
   return (
     <>
       <PageHeader
