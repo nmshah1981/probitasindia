@@ -8,17 +8,10 @@ import {
   DisplayHeading,
   Eyebrow,
   Reveal,
-  StaggerGroup,
-  StaggerItem,
-  ImageOrPlaceholder,
-  PlaceholderPill,
-  TechnicalTag,
 } from "@/components/site/primitives";
 import {
   PageHeader,
   ContentBlock,
-  SpecTable,
-  RelatedServicesCta,
 } from "@/components/site/page-blocks";
 import { DrawingTag, PortalFrame } from "@/components/engineering/technical-graphics";
 import { CtaBand } from "@/components/sections/home-sections";
@@ -132,46 +125,6 @@ export function AboutView({
         </Container>
       </section>
 
-      {/* Qualifications / credibility */}
-      <section className="border-b border-border bg-background">
-        <Container className="py-20 md:py-28">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-            <div className="md:col-span-3">
-              <Eyebrow index="06">Credibility</Eyebrow>
-            </div>
-            <div className="md:col-span-9">
-              <Reveal>
-                <DisplayHeading as="h2">
-                  Qualifications &amp; credentials.
-                </DisplayHeading>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-steel md:text-lg">
-                  {about.qualifications}
-                </p>
-              </Reveal>
-              <div className="mt-10">
-                <SpecTable
-                  rows={[
-                    { label: "Founder Experience", value: "20 years — Nirav Shah" },
-                    { label: "Partner Experience", value: "Nearly 15 years — Pankaj Shah" },
-                    { label: "Team Size", value: "10 engineers — and growing steadily" },
-                    { label: "Prior Firms (Leadership)", value: "Larsen & Toubro, Godrej Properties, Mott MacDonald, Buro Happold, CBM Engineers, Gokani Consultant, Optimal Consultancy" },
-                    { label: "Strategy Advisory", value: "BAIN (advisor), BCG (technical consultant) — Nirav Shah" },
-                    { label: "Registrations", value: "[REGISTRATIONS — OWNER TO PROVIDE]" },
-                    { label: "Certifications", value: "[CERTIFICATIONS — OWNER TO PROVIDE]" },
-                    { label: "Memberships", value: "[MEMBERSHIPS — OWNER TO PROVIDE]" },
-                  ]}
-                />
-              </div>
-              <div className="mt-8 flex flex-wrap gap-2">
-                <PlaceholderPill>Owner-controlled — add real credentials as confirmed</PlaceholderPill>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       <CtaBand
         onNavigate={onNavigate}
         title="Want to work with us?"
@@ -180,11 +133,7 @@ export function AboutView({
         view="contact"
       />
 
-      <RelatedServicesCta
-        onNavigate={onNavigate}
-        services={services.map((s) => ({ slug: s.slug, index: s.index, title: s.title }))}
-        primaryLabel="Discuss a Project"
-      />
+
     </>
   );
 }

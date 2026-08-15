@@ -62,7 +62,7 @@ export function Hero({
       <div className="absolute inset-0 bg-ink/30" />
 
       {/* Main hero content — left-aligned, bottom-anchored (earlier layout) */}
-      <Container className="relative z-10 flex min-h-[100svh] flex-col justify-end pb-16 pt-32 md:pb-24">
+      <Container className="relative z-10 flex min-h-[100svh] flex-col justify-center pb-16 pt-32 md:pb-24">
         <motion.div style={{ y: contentY, opacity: contentOpacity }}>
           <motion.h1
             initial={reduce ? false : { opacity: 0, y: 24 }}

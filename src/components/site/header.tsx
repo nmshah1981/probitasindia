@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { navItems, type ViewId } from "@/lib/site-content";
 import { useContent } from "@/lib/content-provider";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Container } from "./primitives";
 
 type NavProps = {
@@ -131,20 +131,6 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
           {/* Desktop CTA + mobile trigger */}
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleNav("services")}
-              className={cn(
-                "group hidden items-center gap-2 px-5 py-2.5 transition-colors lg:inline-flex",
-                scrolled
-                  ? "bg-foreground text-bone hover:bg-accent-brand"
-                  : "bg-bone text-ink hover:bg-accent-brand hover:text-bone",
-              )}
-            >
-              <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                Our Services
-              </span>
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-            <button
               onClick={() => setMobileOpen(true)}
               className={cn(
                 "inline-flex h-10 w-10 items-center justify-center border transition-colors lg:hidden",
@@ -256,17 +242,7 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
                 ))}
               </div>
             </Container>
-            <Container className="mt-10">
-              <button
-                onClick={() => handleNav("services")}
-                className="flex w-full items-center justify-between bg-foreground px-5 py-4 text-bone"
-              >
-                <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                  Our Services
-                </span>
-                <ArrowUpRight className="h-4 w-4" />
-              </button>
-            </Container>
+
           </motion.div>
         )}
       </AnimatePresence>

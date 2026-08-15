@@ -12,7 +12,6 @@ import { ProjectsView, ProjectDetailView } from "@/components/views/projects-vie
 import { AboutView } from "@/components/views/about-view";
 import { TeamView } from "@/components/views/team-view";
 import { ContactView } from "@/components/views/contact-view";
-import { InsightsView } from "@/components/views/insights-view";
 import { AdminView } from "@/components/views/admin-view";
 import { ContentProvider, useContent } from "@/lib/content-provider";
 import type { ViewId } from "@/lib/site-content";
@@ -109,9 +108,7 @@ function AppContent() {
             {state.view === "contact" && (
               <ContactView onNavigate={handleNavigate} />
             )}
-            {state.view === "insights" && (
-              <InsightsView onNavigate={handleNavigate} />
-            )}
+
           </motion.div>
         </AnimatePresence>
       </main>

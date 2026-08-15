@@ -19,15 +19,14 @@ export {
 // Re-export types that other files depend on
 export type ViewId =
   | "home"
+  | "about"
+  | "team"
   | "services"
   | "structural-engineering"
   | "mep-engineering"
   | "projects"
   | "project-detail"
-  | "about"
-  | "team"
   | "contact"
-  | "insights"
   | "admin";
 
 export type NavItem = {
@@ -51,10 +50,9 @@ export const seo = _defaults.seo;
 // Nav structure is fixed (not editable via admin).
 export const navItems: NavItem[] = [
   { id: "home", label: "Home" },
+  { id: "about", label: "About Us" },
+  { id: "team", label: "Team" },
   { id: "services", label: "Services" },
   { id: "projects", label: "Projects" },
-  { id: "about", label: "About" },
-  { id: "team", label: "Team" },
-  { id: "insights", label: "Insights" },
   { id: "contact", label: "Contact" },
 ];
