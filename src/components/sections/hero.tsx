@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { type ViewId } from "@/lib/site-content";
 import { useContent } from "@/lib/content-provider";
 import { Container } from "@/components/site/primitives";
@@ -73,35 +73,14 @@ export function Hero({
             {company.heroHeadline}
           </motion.h1>
 
-          <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-12">
-            <motion.p
+          <motion.p
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="md:col-span-6 md:col-start-1 text-pretty text-base leading-relaxed text-bone/80 md:text-lg"
+              className="mt-10 max-w-2xl text-pretty text-base leading-relaxed text-bone/80 md:text-lg"
             >
               {company.heroSupporting}
             </motion.p>
-
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.55 }}
-              className="md:col-span-4 md:col-start-9 md:justify-self-end"
-            >
-              <div className="flex flex-col gap-3 md:items-end">
-                <button
-                  onClick={() => onNavigate("services")}
-                  className="group inline-flex items-center gap-3 border border-bone/30 px-6 py-3.5 text-bone transition-colors hover:border-bone hover:bg-bone/5"
-                >
-                  <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                    {company.secondaryCta}
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-              </div>
-            </motion.div>
-          </div>
         </motion.div>
       </Container>
 
