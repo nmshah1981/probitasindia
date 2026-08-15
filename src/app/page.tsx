@@ -11,6 +11,7 @@ import { MepEngineeringView } from "@/components/views/mep-engineering-view";
 import { ProjectsView, ProjectDetailView } from "@/components/views/projects-view";
 import { AboutView } from "@/components/views/about-view";
 import { TeamView } from "@/components/views/team-view";
+import { CareersView } from "@/components/views/careers-view";
 import { ContactView } from "@/components/views/contact-view";
 import { AdminView } from "@/components/views/admin-view";
 import { ContentProvider, useContent } from "@/lib/content-provider";
@@ -101,6 +102,9 @@ function AppContent() {
             )}
             {state.view === "about" && <AboutView onNavigate={handleNavigate} />}
             {state.view === "team" && <TeamView onNavigate={handleNavigate} />}
+            {state.view === "careers" && (
+              <CareersView onNavigate={handleNavigate} />
+            )}
             {state.view === "contact" && (
               <ContactView onNavigate={handleNavigate} />
             )}

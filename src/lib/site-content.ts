@@ -26,6 +26,7 @@ export type ViewId =
   | "mep-engineering"
   | "projects"
   | "project-detail"
+  | "careers"
   | "contact"
   | "admin";
 
@@ -54,5 +55,6 @@ export const navItems: NavItem[] = [
   { id: "team", label: "Team" },
   { id: "services", label: "Services" },
   { id: "projects", label: "Projects" },
+  { id: "careers", label: "Careers" },
   { id: "contact", label: "Contact" },
 ];

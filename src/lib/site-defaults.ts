@@ -286,6 +286,11 @@ export function getDefaultSiteData(): SiteData {
         description:
           "Get in touch with Probitas. Office: D-102, Fortune Lifestyle Royale, Vapi-Daman Road, Chala, Vapi 396191, India. Email: contact@probitasindia.com.",
       },
+      careers: {
+        title: "Careers — Probitas | Engineering Jobs in India",
+        description:
+          "Join Probitas — a passionate team of engineers working on complex structural and MEP projects across India. Current openings for structural engineers and MEP design engineers.",
+      },
       insights: {
         title: "Insights — Probitas",
         description: "Engineering notes, project insights and technical commentary from the Probitas team.",
