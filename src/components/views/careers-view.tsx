@@ -17,7 +17,41 @@ import { DrawingTag, CoordinateCross } from "@/components/engineering/technical-
 import { CtaBand } from "@/components/sections/home-sections";
 
 /* Open positions — static for now, can be moved to admin/content system later */
-const OPEN_POSITIONS = [
+type OpenPosition = {
+  id: string;
+  title: string;
+  division: string;
+  location: string;
+  type: string;
+  description: string;
+  responsibilities?: string[];
+  qualifications?: string[];
+};
+
+const OPEN_POSITIONS: OpenPosition[] = [
+  {
+    id: "lead-structural-engineer-mumbai",
+    title: "Lead Structural Engineer",
+    division: "Structural Engineering",
+    location: "Mumbai, India",
+    type: "Full-time / Hybrid",
+    description:
+      "Lead structural design for landmark residential and commercial high-rise building projects. Drive high-level technical decisions, mentor rising engineering talent, and collaborate directly with clients and multidisciplinary teams to deliver safe, sustainable, and cost-effective structural solutions. Requires 8 to 10 years of extensive experience in RCC and steel design across India — executing complex projects in structural design, peer review and value engineering.",
+    responsibilities: [
+      "Lead structural design and analysis for high-rise RCC projects",
+      "Ensure full compliance with IS codes and international standards",
+      "Mentor junior engineers; review and sign off on drawings",
+      "Drive value engineering and constructability peer reviews",
+      "Represent Probitas in client and multidisciplinary meetings",
+    ],
+    qualifications: [
+      "Bachelor's / Master's in Structural or Civil Engineering",
+      "8-10 years experience in structural analysis, RCC design and constructability review",
+      "Track record on design of high-rise / complex residential or commercial developments",
+      "Proficient in ETABS, SAFE and CAD tools like Revit, AutoCAD",
+      "Strong IS-code knowledge, mentoring and communication skills",
+    ],
+  },
   {
     id: "sr-structural-engineer",
     title: "Senior Structural Engineer",
@@ -275,9 +309,10 @@ function PositionCard({
   position,
   index,
 }: {
-  position: (typeof OPEN_POSITIONS)[number];
+  position: OpenPosition;
   index: number;
 }) {
+  const hasDetails = position.responsibilities || position.qualifications;
   return (
     <div className="bg-background p-8 md:p-10">
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -301,6 +336,48 @@ function PositionCard({
             <MapPin className="h-3.5 w-3.5" />
             {position.location}
           </div>
+
+          {/* Responsibilities & Qualifications — shown when available */}
+          {hasDetails && (
+            <div className="mt-6 grid grid-cols-1 gap-6 border-t border-border pt-6 md:grid-cols-2">
+              {position.responsibilities && (
+                <div>
+                  <div className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
+                    Key Responsibilities
+                  </div>
+                  <ul className="mt-3 space-y-2">
+                    {position.responsibilities.map((r, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-sm leading-relaxed text-foreground/80"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 bg-accent-brand" />
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {position.qualifications && (
+                <div>
+                  <div className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
+                    Qualifications & Skills
+                  </div>
+                  <ul className="mt-3 space-y-2">
+                    {position.qualifications.map((q, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-sm leading-relaxed text-foreground/80"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 bg-accent-brand" />
+                        {q}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
         <a
           href={`mailto:contact@probitasindia.com?subject=Application: ${position.title}`}
