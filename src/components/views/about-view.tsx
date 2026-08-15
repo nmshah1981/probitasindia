@@ -35,7 +35,7 @@ export function AboutView({
             <span className="text-steel">consultancy, in context.</span>
           </>
         }
-        description="Probitas is a passionate team of highly skilled structural engineers delivering innovative and value-led solutions — bridging the gap between the evolving needs of the construction industry and current consultancy services."
+        description="Probitas is a passionate team of highly skilled engineers delivering innovative and value-led solutions — bridging the gap between the evolving needs of the construction industry and current consultancy services."
         image="/images/about-image.png"
         imageAlt="Quiet modern engineering studio interior"
         tags={["Story", "Philosophy", "Mission", "Values"]}

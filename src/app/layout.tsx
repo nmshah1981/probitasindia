@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Probitas — Where Excellence Meets Integrity",
     description:
-      "A passionate team of highly skilled structural engineers delivering innovative and value-led solutions across India.",
+      "A passionate team of highly skilled engineers delivering innovative and value-led solutions across India.",
     type: "website",
   },
   robots: { index: true, follow: true },

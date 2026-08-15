@@ -53,7 +53,7 @@ export function ServicesView({
             <span className="text-steel">two services each.</span>
           </>
         }
-        description="[SERVICES OVERVIEW — OWNER TO PROVIDE: A short description of how the two divisions — Structural Engineering and MEP Engineering — work together across the project lifecycle. Each division offers Design and Independent Peer Review as distinct services.]"
+        description="We're built around two engineering divisions — Structural Engineering and MEP Engineering — each offering Design and Independent Peer Review. That means clients can bring us on as engineer of record, or as an independent check on work done elsewhere. The two divisions work in lock-step from concept to construction — sharing models, aligning on milestones, and resolving interface issues early — so structural systems and building services are integrated by design, not patched together after the fact. Across commercial and residential real estate, airports, and public buildings, that coordination is what delivers technically sound, buildable results."
         tags={["Structural Engineering", "MEP Engineering", "Design", "Independent Peer Review"]}
         meta={[
           { label: "Divisions", value: "02" },

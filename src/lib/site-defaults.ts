@@ -93,7 +93,7 @@ export function getDefaultSiteData(): SiteData {
       name: "Probitas",
       tagline: "Where Excellence Meets Integrity",
       shortDescription:
-        "A passionate team of highly skilled structural engineers delivering innovative and value-led solutions across India.",
+        "A passionate team of highly skilled engineers delivering innovative and value-led solutions across India.",
       longDescription:
         "Probitas was created to bridge the gap between the evolving needs of the construction industry and the current consultancy services available. We apply scientific and engineering principles to solve complex problems and provide solutions that meet — and where possible exceed — clients' expectations.",
       email: "niravmshah@probitasindia.com",
@@ -151,27 +151,29 @@ export function getDefaultSiteData(): SiteData {
         index: "02",
         title: "MEP Engineering",
         shortDescription:
-          "[MEP ENGINEERING SHORT DESCRIPTION — OWNER TO PROVIDE: The supplied company profile is structural-focused; confirm MEP scope with the owner.]",
+          "Design and independent peer review of mechanical, electrical, and plumbing systems across commercial and residential real estate, airports, and public buildings.",
         longDescription:
-          "[MEP ENGINEERING DESCRIPTION — OWNER TO PROVIDE: The supplied company profile is structural-focused. If Probitas offers MEP engineering, replace this placeholder with the owner-approved description of the MEP division — scope, systems, coordination approach, and how design and independent peer review are delivered. If MEP is not offered, this division can be removed.]",
+          "Our MEP Engineering division designs and reviews the mechanical, electrical, and plumbing systems that keep buildings running safely and efficiently. Covering everything from HVAC to fire protection to power and lighting, our team supports projects across commercial and residential real estate, airports, and public buildings — either as lead designer or as an independent reviewer of MEP packages developed by others.",
         heroImage: "/images/mep-feature.png",
         services: [
           {
             id: "design",
             index: "01",
             title: "MEP Design",
-            shortDescription: "[MEP DESIGN SHORT DESCRIPTION — OWNER TO PROVIDE]",
+            shortDescription:
+              "Comprehensive design of HVAC, fire protection, electrical power and lighting, plumbing and drainage, and low-voltage systems — balancing performance, energy efficiency, maintainability, and regulatory compliance.",
             longDescription:
-              "[MEP DESIGN DESCRIPTION — OWNER TO PROVIDE: Confirm with the owner whether Probitas offers MEP design, and replace this placeholder with the owner-approved description of the MEP design service.]",
+              "Comprehensive design of Mechanical, Electrical, and Plumbing systems, including HVAC, fire protection, electrical power and lighting, plumbing and drainage, and low-voltage systems. Our MEP team designs systems that balance performance, energy efficiency, maintainability, and regulatory compliance for buildings ranging from residential towers to complex public infrastructure.",
             heroImage: "/images/mep-feature.png",
           },
           {
             id: "peer-review",
             index: "02",
             title: "MEP Peer Review",
-            shortDescription: "[MEP PEER REVIEW SHORT DESCRIPTION — OWNER TO PROVIDE]",
+            shortDescription:
+              "Independent review of MEP design packages to confirm code compliance, system sizing, coordination between disciplines, and adherence to project requirements.",
             longDescription:
-              "[MEP PEER REVIEW DESCRIPTION — OWNER TO PROVIDE: Confirm with the owner whether Probitas offers independent MEP peer review, and replace this placeholder with the owner-approved description.]",
+              "A rigorous, independent review of MEP design packages to confirm code compliance, system sizing, coordination between disciplines, and adherence to project requirements. This service gives clients an added layer of assurance that building services have been designed correctly before they move into construction.",
             heroImage: "/images/peer-review-detail.png",
           },
         ],
@@ -317,9 +319,9 @@ export function getDefaultSiteData(): SiteData {
     ],
     about: {
       story:
-        "Probitas was created to bridge the gap between the evolving needs of the construction industry and the current consultancy services available. We are a passionate team of highly skilled structural engineers delivering innovative and value-led solutions. Our clients consistently recognise us for our agility, collaboration and commitment to excellence.",
+        "Probitas was created to bridge the gap between the evolving needs of the construction industry and the current consultancy services available. We are a passionate team of highly skilled engineers delivering innovative and value-led solutions. Our clients consistently recognise us for our agility, collaboration and commitment to excellence.",
       founding:
-        "Probitas was founded to bring a new standard of agility, collaboration and engineering rigour to structural consultancy — bridging the gap between the evolving needs of the construction industry and the consultancy services available at the time.",
+        "Probitas was founded to bring a new standard of agility, collaboration and engineering rigour to structural consultancy — bridging the gap between the evolving needs of the construction industry and the consultancy services available at the time. As we built long-term trust with our partners, our clients gradually demanded integrated mechanical, electrical, and plumbing (MEP) capabilities for their projects. To match these growing requirements and provide a more complete consultancy experience, we expanded our expertise into MEP services.",
       leadership:
         "Guided by strong leadership, we have established a highly skilled team of 10 talented engineers — and the team is growing steadily. We are committed to creating an inclusive working environment based on fairness and respect, one that encourages talented people of any background to produce their best work of the highest quality.",
       philosophy:
@@ -349,7 +351,8 @@ export function getDefaultSiteData(): SiteData {
       },
       "mep-engineering": {
         title: "MEP Engineering — Probitas",
-        description: "[MEP ENGINEERING META DESCRIPTION — OWNER TO PROVIDE]",
+        description:
+          "Probitas MEP Engineering: design and independent peer review of mechanical, electrical, and plumbing systems across commercial, residential, airport, and public building projects.",
       },
       projects: {
         title: "Projects — Probitas | Selected Engineering Commissions",
@@ -359,7 +362,7 @@ export function getDefaultSiteData(): SiteData {
       about: {
         title: "About — Probitas | Where Excellence Meets Integrity",
         description:
-          "Probitas was created to bridge the gap between the evolving needs of the construction industry and current consultancy services. A passionate team of highly skilled structural engineers.",
+          "Probitas was created to bridge the gap between the evolving needs of the construction industry and current consultancy services. A passionate team of highly skilled engineers.",
       },
       team: {
         title: "Team — Probitas | Leadership & Engineers",
