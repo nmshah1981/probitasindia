@@ -12,7 +12,6 @@ import {
   StaggerGroup,
   StaggerItem,
   PlaceholderPill,
-  TechnicalTag,
 } from "@/components/site/primitives";
 import { PageHeader } from "@/components/site/page-blocks";
 import { DrawingTag, CoordinateCross } from "@/components/engineering/technical-graphics";
@@ -75,9 +74,7 @@ export function ContactView({
                       </span>
                     </div>
                     <p className="mt-4 text-pretty text-base leading-relaxed text-foreground">
-                      [SUBMISSION CONFIRMATION — OWNER TO PROVIDE: A short
-                      message confirming receipt and explaining next steps and
-                      response time.]
+                      Thank you for your enquiry. We will review your requirements and respond within one business day.
                     </p>
                     <div className="mt-6">
                       <PlaceholderPill>
@@ -100,7 +97,7 @@ export function ContactView({
                       label="Project Type"
                       name="projectType"
                       options={[
-                        "[PROJECT TYPE — OWNER TO PROVIDE]",
+                        "Select project type",
                         "Structural — Design",
                         "Structural — Peer Review",
                         "MEP — Design",
@@ -113,7 +110,7 @@ export function ContactView({
                       label="Services Required"
                       name="services"
                       options={[
-                        "[SERVICES — OWNER TO PROVIDE]",
+                        "Select a service",
                         "Structural Design",
                         "Structural Peer Review",
                         "MEP Design",
@@ -140,10 +137,7 @@ export function ContactView({
                         </span>
                         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </button>
-                      <p className="mt-4 text-xs text-steel">
-                        [UPLOAD DOCUMENTS — OWNER TO PROVIDE: Only enable document
-                        upload once backend requirements are confirmed.]
-                      </p>
+
                     </div>
                   </form>
                 </Reveal>
@@ -183,7 +177,7 @@ export function ContactView({
                       Office Hours
                     </div>
                     <div className="mt-2 text-sm text-foreground">
-                      [OFFICE HOURS — OWNER TO PROVIDE]
+                      Mon–Sat, 9:00 AM – 6:00 PM IST
                     </div>
                   </div>
                 </div>
@@ -251,7 +245,7 @@ function FormField({
         type={type}
         required={required}
         className="mt-2 w-full border-0 border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none transition-colors placeholder:text-steel/60 focus:border-accent-brand focus:outline-none"
-        placeholder={`[${label.toUpperCase()} — OWNER TO PROVIDE]`}
+        placeholder={`Your ${label.toLowerCase()}`}
       />
     </div>
   );
@@ -279,7 +273,7 @@ function FormTextarea({
         name={name}
         rows={5}
         className="mt-2 w-full resize-none border-0 border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none transition-colors placeholder:text-steel/60 focus:border-accent-brand focus:outline-none"
-        placeholder={`[${label.toUpperCase()} — OWNER TO PROVIDE]`}
+        placeholder={`Your ${label.toLowerCase()}`}
       />
     </div>
   );
@@ -311,7 +305,7 @@ function FormSelect({
         className="mt-2 w-full border-0 border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none transition-colors focus:border-accent-brand focus:outline-none"
       >
         <option value="" disabled>
-          [SELECT — OWNER TO PROVIDE]
+          Select an option
         </option>
         {options.map((o) => (
           <option key={o} value={o}>

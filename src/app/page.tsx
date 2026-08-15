@@ -95,11 +95,7 @@ function AppContent() {
             )}
             {state.view === "project-detail" && (
               <ProjectDetailView
-                project={
-                  state.projectId
-                    ? data.projects.find((p) => p.id === state.projectId)
-                    : undefined
-                }
+                project={data.projects.find((p) => p.id === state.projectId)!}
                 onNavigate={handleNavigate}
               />
             )}

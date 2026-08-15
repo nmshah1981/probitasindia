@@ -271,7 +271,7 @@ export function ImageOrPlaceholder({
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-grid-fine p-6 text-center">
           <span className="mb-2 block h-px w-10 bg-steel/40" />
           <span className="font-mono-tight text-[11px] uppercase tracking-[0.2em] text-steel">
-            {label ?? "[IMAGE — OWNER TO PROVIDE]"}
+            {label ?? "Image"}
           </span>
         </div>
       )}

@@ -177,7 +177,7 @@ export function StructuralFeatureSection({
                   src={svc.heroImage}
                   alt="Exposed structural concrete and steel — close architectural detail"
                   ratio="4/3"
-                  label="[STRUCTURAL ENGINEERING IMAGE — OWNER TO PROVIDE]"
+                  label="Structural Engineering"
                   className="border border-border"
                 />
                 {/* Technical overlay: animated elevation drawing */}
@@ -282,15 +282,6 @@ export function MepFeatureSection({
               </p>
             </Reveal>
 
-            <Reveal delay={0.2}>
-              <div className="mt-8 space-y-3">
-                <FieldRow label="Mechanical" value="[MECHANICAL SERVICES — OWNER TO PROVIDE]" />
-                <FieldRow label="Electrical" value="[ELECTRICAL SERVICES — OWNER TO PROVIDE]" />
-                <FieldRow label="Plumbing" value="[PLUMBING SERVICES — OWNER TO PROVIDE]" />
-                <FieldRow label="Specialist" value="[SPECIALIST SYSTEMS — OWNER TO PROVIDE]" />
-              </div>
-            </Reveal>
-
             {/* Two services within this division */}
             <Reveal delay={0.25}>
               <div className="mt-8 grid grid-cols-1 gap-px bg-border sm:grid-cols-2">
@@ -330,9 +321,9 @@ export function MepFeatureSection({
               <div className="relative">
                 <ImageOrPlaceholder
                   src={svc.heroImage}
-                  alt="[MEP ENGINEERING IMAGE ALT — OWNER TO PROVIDE]"
+                  alt="MEP Engineering"
                   ratio="4/3"
-                  label="[MEP ENGINEERING IMAGE — OWNER TO PROVIDE]"
+                  label="MEP Engineering"
                   className="border border-border"
                 />
                 <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-4 text-foreground/70">

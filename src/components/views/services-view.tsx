@@ -8,19 +8,12 @@ import {
 import { useContent } from "@/lib/content-provider";
 import { ArrowUpRight } from "lucide-react";
 import {
-  Container,
-  DisplayHeading,
-  Eyebrow,
-  Reveal,
   StaggerGroup,
   StaggerItem,
   ImageOrPlaceholder,
 } from "@/components/site/primitives";
-import { PageHeader, ContentBlock, RelatedServicesCta } from "@/components/site/page-blocks";
-import {
-  PortalFrame,
-  DrawingTag,
-} from "@/components/engineering/technical-graphics";
+import { PageHeader, RelatedServicesCta } from "@/components/site/page-blocks";
+import { DrawingTag } from "@/components/engineering/technical-graphics";
 import { CtaBand } from "@/components/sections/home-sections";
 
 export function ServicesView({
@@ -58,8 +51,6 @@ export function ServicesView({
         meta={[
           { label: "Divisions", value: "02" },
           { label: "Services", value: String(flatServices.length).padStart(2, "0") },
-          { label: "Approach", value: "[APPROACH — OWNER TO PROVIDE]" },
-          { label: "Standards", value: "[STANDARDS — OWNER TO PROVIDE]" },
         ]}
       />
 
@@ -79,38 +70,10 @@ export function ServicesView({
         </Container>
       </section>
 
-      {/* Process overview */}
-      <ContentBlock
-        index="01"
-        eyebrow="Engineering Process"
-        title="A consistent method across divisions."
-        sidebar={
-          <div className="space-y-4">
-            <DrawingTag code="PRC-00" title="Method" />
-            <div className="h-32 w-full text-steel/60">
-              <PortalFrame />
-            </div>
-          </div>
-        }
-      >
-        <p>
-          [ENGINEERING PROCESS — OWNER TO PROVIDE: A description of how the firm
-          approaches a typical commission — from briefing and concept design
-          through detailed design, documentation, construction support and
-          post-completion review. Applies to both design and peer review
-          commissions.]
-        </p>
-        <p>
-          [PROCESS PRINCIPLES — OWNER TO PROVIDE: Optional short list of
-          principles such as clarity of documentation, coordinated deliverables,
-          independent verification — phrased without unsupported claims.]
-        </p>
-      </ContentBlock>
-
       <CtaBand
         onNavigate={onNavigate}
         title="Not sure which service you need?"
-        body="[CTA BODY — OWNER TO PROVIDE]"
+        body="Tell us about your project and we will route your brief to the right team."
         ctaLabel="Request a Consultation"
         view="contact"
       />

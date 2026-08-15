@@ -120,10 +120,10 @@ export function SiteFooter({
           </div>
           <div className="flex items-center gap-6 text-steel/80">
             <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em]">
-              [LEGAL — OWNER TO PROVIDE]
+              Privacy Policy
             </span>
             <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em]">
-              [REGISTRATION — OWNER TO PROVIDE]
+              Terms of Service
             </span>
           </div>
         </div>

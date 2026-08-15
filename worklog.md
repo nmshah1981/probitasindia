@@ -39,3 +39,73 @@ Stage Summary:
 - 9 AI-generated engineering images (properly licensed via z-ai-web-dev-sdk)
 - Lint passes with 0 errors and 0 warnings
 - Verified interactive in Agent Browser across desktop + mobile
+
+---
+Task ID: 4a
+Agent: general-purpose
+Task: Clean projects view placeholders
+
+Work Log:
+- Replaced placeholder PageHeader description with real copy: "Selected peer review and value engineering commissions currently underway."
+- Removed placeholder Sectors/Regions meta items from PageHeader; kept only Total count
+- Fixed CtaBand body from placeholder to: "Tell us about your project and we'll route your brief to the right team."
+- Removed all 3 placeholder ContentBlocks (Project Overview, Engineering Challenge, Engineering Approach) from ProjectDetailView
+- Removed placeholder Key Deliverables SpecTable section from ProjectDetailView — detail view now shows header + project info + image placeholder, then RelatedServicesCta
+- Removed entire EmptyProjectDetail component (dead code — always have real projects now)
+- Removed EmptyProjectsFullState component (dead code — always have real projects now)
+- Cleaned unused imports: ContentBlock, SpecTable, PlaceholderPill, Reveal, CoordinateCross
+- Made `project` prop required (not optional) on ProjectDetailView; updated caller in page.tsx
+- Verified: zero "OWNER TO PROVIDE" strings remain in the file
+- TypeScript type-check passes (no new errors introduced)
+
+Stage Summary:
+- Projects list view shows real description and only Total meta item
+- Project detail view streamlined to header + image + RelatedServicesCta (no placeholder content blocks)
+- All placeholder content and dead-code components removed from projects-view.tsx
+- File reduced from 445 lines to 223 lines
+
+---
+Task ID: 4b
+Agent: general-purpose
+Task: Clean MEP & structural engineering view placeholders
+
+Work Log:
+- **MEP view** (`mep-engineering-view.tsx`):
+  - Removed PageHeader meta placeholders: Systems, Standards, Software — kept Division + Services only
+  - Replaced placeholder imageAlt with real descriptive text
+  - Removed Division Overview ContentBlock (index 01) — all placeholder text
+  - Removed SpecTable from Design service section — all 9 rows were placeholders
+  - Removed ProcessTimeline from Design service section — all 6 steps were placeholders
+  - Removed SpecTable from Peer Review section — all 8 rows were placeholders
+  - Removed ProcessTimeline from Peer Review section — all 6 steps were placeholders
+  - Removed PlaceholderPill and TechnicalTag pills from Peer Review section
+  - Removed Project Types section (index 03) — all items had [OWNER TO PROVIDE] pills
+  - Removed Selected Projects section (index 04) — used EmptyProjectsState
+  - Fixed CtaBand body from placeholder to: "Tell us about your project and we'll route your brief to the right team."
+  - Cleaned unused imports: ImageOrPlaceholder, TechnicalTag, PlaceholderPill, ContentBlock, SpecTable, ProcessTimeline, DrawingTag, EmptyProjectsState
+  - File reduced from 447 lines to 158 lines
+
+- **Structural view** (`structural-engineering-view.tsx`):
+  - Removed PageHeader meta placeholders: Codes, Software — kept Division + Services + Materials
+  - Kept Division Overview ContentBlock (index 01) — has real firm description
+  - Kept Services section — real service summary cards
+  - Kept Design service SpecTable but removed 3 placeholder rows (Analysis Methods, Design Codes, Software) — 6 real rows retained
+  - Removed ProcessTimeline from Design service section — all 6 steps were placeholders
+  - Removed SpecTable from Peer Review section — all 8 rows were placeholders
+  - Removed ProcessTimeline from Peer Review section — all 6 steps were placeholders
+  - Removed PlaceholderPill and TechnicalTag pills from Peer Review section
+  - Removed Project Types section (index 03) — all items had [OWNER TO PROVIDE] pills
+  - Removed Selected Projects section (index 04) — used EmptyProjectsState
+  - Removed EmptyProjectsState component export (no longer used anywhere)
+  - Fixed CtaBand body from placeholder to: "Tell us about your project and we'll route your brief to the right team."
+  - Cleaned unused imports: ImageOrPlaceholder, TechnicalTag, PlaceholderPill, ProcessTimeline, CoordinateCross
+  - File reduced from 473 lines to 192 lines
+
+- Verified: zero "OWNER TO PROVIDE" strings in both files
+- TypeScript type-check passes (no new errors introduced)
+
+Stage Summary:
+- MEP view flows: PageHeader → Services cards → Design (heading + description) → Peer Review (heading + description) → CtaBand → RelatedServicesCta
+- Structural view flows: PageHeader → Division Overview → Services cards → Design (heading + description + SpecTable with real data) → Peer Review (heading + description) → CtaBand → RelatedServicesCta
+- All placeholder SpecTables, ProcessTimelines, pills, empty project states, and placeholder meta items removed
+- Real content preserved: Division Overview text, service descriptions, structural SpecTable (6 real rows), Materials meta

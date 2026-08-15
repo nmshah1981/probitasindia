@@ -52,7 +52,7 @@ export function TeamView({
           </>
         }
         description="Guided by strong leadership, Probitas has established a highly skilled team of 10 talented engineers — and the team is growing steadily. Meet the leadership below."
-        tags={["Founder", "Partners", "Engineering", "Specialisms"]}
+        tags={["Founder", "Engineering", "Specialisms"]}
         meta={[
           { label: "Team", value: "10 engineers" },
           { label: "Disciplines", value: "02" },

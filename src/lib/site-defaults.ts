@@ -96,7 +96,7 @@ export function getDefaultSiteData(): SiteData {
         "A passionate team of highly skilled engineers delivering innovative and value-led solutions across India.",
       longDescription:
         "Probitas was created to bridge the gap between the evolving needs of the construction industry and the current consultancy services available. We apply scientific and engineering principles to solve complex problems and provide solutions that meet — and where possible exceed — clients' expectations.",
-      email: "niravmshah@probitasindia.com",
+      email: "contact@probitasindia.com",
       phone: "+91 98198 29490",
       address:
         "D-102, Fortune Lifestyle Royale, Vapi-Daman Road, Chala, Vapi 396191, India",
@@ -181,110 +181,22 @@ export function getDefaultSiteData(): SiteData {
     ],
     projects: [
       {
-        id: "lti-mahape",
-        name: "LTI Mahape",
-        location: "Mahape, Navi Mumbai, India",
-        projectType: "Commercial — Design & Build",
-        client: "Larsen & Toubro Ltd.",
-        scope: "Structural Design",
-        image: "/images/project-lti-mindtree.jpeg",
-        description:
-          "A 13.72 lakh sq.ft. commercial tower with 2B + 3S + 12 floors, delivered as a design-and-build project by L&T. The structure used a complete structural steel beam-column system with structural steel cores.",
+        id: "godrej-uni-abex-thane",
+        name: "Godrej Uni Abex, Thane",
+        location: "Thane, India",
+        projectType: "Ongoing Peer Review & Value Engineering",
+        client: "Godrej Properties",
+        scope: "Peer Review & Value Engineering",
+        description: "Mixed-use high-rise development comprising 5 residential towers (G+7P+50), 1 retail block (G+6), and 1 commercial building (G+18).",
       },
       {
-        id: "air-india-mro-hangar",
-        name: "Air India MRO Hangar",
-        location: "Nagpur, India",
-        projectType: "Aviation — MRO Hangar",
-        client: "Boeing",
-        scope: "Structural Design",
-        image: "/images/project-air-india-mro.jpeg",
-        description:
-          "The largest MRO facility in India at the time of delivery — a 200 m wide structural steel aircraft hangar with related ancillary buildings, capable of servicing the largest aircraft including the Airbus A380 and Boeing 777 & 747.",
-      },
-      {
-        id: "seawoods-grand-central",
-        name: "Seawoods Grand Central",
-        location: "Navi Mumbai, India",
-        projectType: "Transit-Oriented Development",
-        client: "L&T",
-        scope: "Structural Design",
-        image: "/images/project-seawoods-central.jpeg",
-        description:
-          "India's largest transit-oriented development (TOD), including the redevelopment of a railway station together with a commercial building, retail facility, utility buildings and ancillary structures.",
-      },
-      {
-        id: "mumbai-international-airport",
-        name: "Mumbai International Airport (MIAL)",
-        location: "Mumbai, India",
-        projectType: "Aviation — Airport Reconstruction",
-        scope: "Structural Design — Design & Build",
-        image: "/images/project-mumbai-airport.jpeg",
-        description:
-          "A complete design-and-build project for the reconstruction of Mumbai Airport. Scope included the terminal building, related ancillary buildings, and air-side works including roads, runways, taxiways, aprons and other associated works.",
-      },
-      {
-        id: "surat-municipal-corporation",
-        name: "Surat Municipal Corporation (SMC)",
-        location: "Surat, Gujarat, India",
-        projectType: "Civic — Municipal Headquarters",
-        scope: "Structural Design",
-        image: "/images/project-surat-municipal.jpg",
-        description:
-          "Two towers, each with 4B + G + 6P + 28 floors — the tallest municipal corporation building in India. Pure eccentric cores, designed for high cyclonic wind pressures (importance factor for cyclonic region k4 = 1.25).",
-      },
-      {
-        id: "wynn-al-marjan-island",
-        name: "Wynn Al Marjan Island",
-        location: "Ras Al Khaimah, UAE",
-        projectType: "Hospitality — Integrated Resort",
-        scope: "Structural Design",
-        image: "/images/project-wynn-al-marjan.jpeg",
-        description:
-          "A massive integrated resort development of over 60 hectares (148 acres) on a man-made island in Ras Al Khaimah, UAE. The programme includes a hotel, casino, retail, dining and entertainment — the first resort in the UAE to include a casino.",
-      },
-      {
-        id: "iskcon-kharghar",
-        name: "ISKCON Temple Complex",
-        location: "Kharghar, Navi Mumbai, India",
-        projectType: "Religious — Temple Complex",
-        scope: "Structural Design",
-        image: "/images/project-iskcon-kharghar.jpeg",
-        description:
-          "A temple complex built over 8 acres of land, including the main temple, cultural and education centres, a guest house, accommodation blocks and a kitchen complex.",
-      },
-      {
-        id: "tata-aveza",
-        name: "Tata Housing — Aveza / Gateway Towers",
-        location: "Mulund, Mumbai, India",
-        projectType: "Residential — High-Rise",
-        client: "Tata Housing",
-        scope: "Structural Design",
-        image: "/images/project-tata-aveza.jpeg",
-        description:
-          "160 m tall, comprising 6 towers of G + 4P + Eco Deck + 32 to 42 floors. The towers use cut-outs and sky-bridges to create visual relief and framed vistas — not a monolithic block, and a complex structure to design.",
-      },
-      {
-        id: "sahana-sheth-beaumonte",
-        name: "Sahana-Sheth Creators — Beau Monte",
-        location: "Sion, Mumbai, India",
-        projectType: "Residential — Ultra-Luxury High-Rise",
-        client: "Sahana-Sheth Creators",
-        scope: "Structural Design",
-        image: "/images/project-sahana-sheth-beaumonte.jpeg",
-        description:
-          "Two towers, each with 1B + G + 5P + Eco Deck + 40 floors. At 187 m height, the tallest ultra-luxury tower in Sion, with a robust central core and wings inclined to mitigate wind forces.",
-      },
-      {
-        id: "dlf-one-midtown",
-        name: "DLF — One Midtown",
-        location: "Moti Nagar, New Delhi, India",
-        projectType: "Residential — High-Rise",
-        client: "DLF",
-        scope: "Structural Design",
-        image: "/images/project-dlf-one-midtown.jpeg",
-        description:
-          "Four towers, each with 3B + G + 2P + 39 floors. Designed for Seismic Zone V as per client requirements for enhanced safety.",
+        id: "k-raheja-mahalunge-pune",
+        name: "K Raheja Corp, Mahalunge, Pune",
+        location: "Mahalunge, Pune, India",
+        projectType: "Ongoing Peer Review & Value Engineering",
+        client: "K Raheja Corp",
+        scope: "Peer Review & Value Engineering",
+        description: "Premium residential township project comprising 7 residential towers (G+3P+E-deck+24).",
       },
     ],
     team: [
@@ -305,7 +217,7 @@ export function getDefaultSiteData(): SiteData {
       {
         id: "pankaj-shah",
         name: "Pankaj Shah",
-        position: "Partner",
+        position: "Cofounder and Structural Operations Head",
         experience: "Nearly 15 years",
         expertise: [
           "Structural Design of High-Rise Buildings",
@@ -331,7 +243,7 @@ export function getDefaultSiteData(): SiteData {
       values:
         "Integrity, transparency, trust, diversity, collaboration and mutual respect. Through the relentless pursuit of excellence and rigour, we maintain a culture of quality that continually learns and improves.",
       qualifications:
-        "[QUALIFICATIONS — OWNER TO PROVIDE: Registrations, certifications and memberships can be added here once confirmed by the owner.]",
+        "[QUALIFICATIONS — Registrations, certifications and memberships can be added here once confirmed.]",
     },
     seo: {
       home: {
@@ -372,11 +284,11 @@ export function getDefaultSiteData(): SiteData {
       contact: {
         title: "Contact — Probitas",
         description:
-          "Get in touch with Probitas. Office: D-102, Fortune Lifestyle Royale, Vapi-Daman Road, Chala, Vapi 396191, India. Email: niravmshah@probitasindia.com.",
+          "Get in touch with Probitas. Office: D-102, Fortune Lifestyle Royale, Vapi-Daman Road, Chala, Vapi 396191, India. Email: contact@probitasindia.com.",
       },
       insights: {
         title: "Insights — Probitas",
-        description: "[INSIGHTS META DESCRIPTION — OWNER TO PROVIDE]",
+        description: "Engineering notes, project insights and technical commentary from the Probitas team.",
       },
     },
   };
