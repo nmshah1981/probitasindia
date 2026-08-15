@@ -23,7 +23,7 @@ import { CtaBand } from "@/components/sections/home-sections";
 /** Detect founder vs partner based on the position field. */
 function isFounder(m: TeamMember): boolean {
   const p = m.position.toLowerCase().trim();
-  return p === "founder" || p.includes("founder") || p.includes("founding");
+  return p === "founder";
 }
 
 export function TeamView({

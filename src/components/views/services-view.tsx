@@ -8,6 +8,7 @@ import {
 import { useContent } from "@/lib/content-provider";
 import { ArrowUpRight } from "lucide-react";
 import {
+  Container,
   StaggerGroup,
   StaggerItem,
   ImageOrPlaceholder,
