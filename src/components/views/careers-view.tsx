@@ -70,15 +70,6 @@ const OPEN_POSITIONS: OpenPosition[] = [
     description:
       "Work on structural design and analysis across diverse project typologies including high-rise buildings, airports, and industrial facilities. Requires 3-8 years of experience in RCC and/or steel design.",
   },
-  {
-    id: "mep-design-engineer",
-    title: "MEP Design Engineer",
-    division: "MEP Engineering",
-    location: "Vapi, India",
-    type: "Full-time",
-    description:
-      "Design and coordinate mechanical, electrical, and plumbing systems for residential, commercial, and public building projects. Requires 3-8 years of experience in MEP design with proficiency in Revit/BIM workflows.",
-  },
 ];
 
 export function CareersView({
