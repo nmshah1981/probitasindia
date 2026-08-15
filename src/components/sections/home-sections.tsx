@@ -55,7 +55,7 @@ export function IntroductionSection() {
             <Reveal delay={0.2}>
               <div className="mt-12 flex flex-wrap items-center gap-3">
                 <TechnicalTag>RCC &amp; Steel</TechnicalTag>
-                <TechnicalTag>High-Rise up to G+72</TechnicalTag>
+                <TechnicalTag>High-Rise Buildings</TechnicalTag>
                 <TechnicalTag>Airports &amp; Hangars</TechnicalTag>
                 <TechnicalTag>Transit-Oriented Development</TechnicalTag>
                 <TechnicalTag>Design + Peer Review</TechnicalTag>
@@ -210,7 +210,6 @@ export function StructuralFeatureSection({
               <div className="mt-8 space-y-3">
                 <FieldRow label="Materials" value="RCC &amp; Structural Steel" />
                 <FieldRow label="Typology" value="Airports, Hangars, High-Rise, TOD, Temples" />
-                <FieldRow label="Height Range" value="Up to G+72 floors / 187 m" />
                 <FieldRow label="Geography" value="Across India + UAE" />
               </div>
             </Reveal>

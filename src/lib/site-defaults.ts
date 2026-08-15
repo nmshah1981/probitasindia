@@ -121,7 +121,7 @@ export function getDefaultSiteData(): SiteData {
         shortDescription:
           "Innovative, value-led structural design and independent peer review across RCC and steel, for projects ranging from complex airports and hangars to high-rise residential and commercial towers.",
         longDescription:
-          "Probitas brings deep expertise in RCC and steel structural design across highly complex large-scale projects — airports, hangars, aircraft engine test cells, transit-oriented developments — as well as high-rise residential and commercial buildings up to G+72. Our team has delivered projects across most geographies in India, with a track record in design, peer review, value engineering and constructability solutions. We balance architectural intent, structural performance, economy and constructability across every commission.",
+          "Probitas brings deep expertise in RCC and steel structural design across highly complex large-scale projects — airports, hangars, aircraft engine test cells, transit-oriented developments — as well as high-rise residential and commercial buildings. Our team has delivered projects across most geographies in India, with a track record in design, peer review, value engineering and constructability solutions. We balance architectural intent, structural performance, economy and constructability across every commission.",
         heroImage: "/images/structural-feature.png",
         services: [
           {
@@ -131,7 +131,7 @@ export function getDefaultSiteData(): SiteData {
             shortDescription:
               "Concept-to-construction structural design for RCC and steel buildings, from high-rise towers to complex industrial and infrastructure projects.",
             longDescription:
-              "Our Structural Design service covers concept design, detailed analysis, member design, documentation and construction support across RCC and steel structures. We have delivered landmark commissions including India's largest MRO hangar, the country's largest transit-oriented development, Mumbai International Airport's reconstruction, and high-rise residential towers up to G+72. Each project balances architectural intent, structural performance, economy and constructability — coordinated with architecture, MEP and construction teams from concept through completion.",
+              "Our Structural Design service covers concept design, detailed analysis, member design, documentation and construction support across RCC and steel structures. We have delivered landmark commissions including India's largest MRO hangar, the country's largest transit-oriented development, Mumbai International Airport's reconstruction, and high-rise residential towers. Each project balances architectural intent, structural performance, economy and constructability — coordinated with architecture, MEP and construction teams from concept through completion.",
             heroImage: "/images/structural-feature.png",
           },
           {
@@ -141,7 +141,7 @@ export function getDefaultSiteData(): SiteData {
             shortDescription:
               "Independent technical review of structural designs — verifying load paths, analysis assumptions, member design, detailing and code compliance without making unsupported claims.",
             longDescription:
-              "Our Structural Peer Review service provides independent technical scrutiny of structural designs prepared by others. We verify design basis, load assumptions, structural systems, analysis models, member design, detailing, drawings and code compliance — and deliver a consolidated review report with findings and recommendations. Our review portfolio includes landmark residential and commercial towers across India, with value engineering carried out on towers up to G+62. We make no claims about error rates or guarantees — peer review is independent engineering judgement, applied with rigour.",
+              "Our Structural Peer Review service provides independent technical scrutiny of structural designs prepared by others. We verify design basis, load assumptions, structural systems, analysis models, member design, detailing, drawings and code compliance — and deliver a consolidated review report with findings and recommendations. Our review portfolio includes landmark residential and commercial towers across India, with value engineering carried out on towers of varying scales. We make no claims about error rates or guarantees — peer review is independent engineering judgement, applied with rigour.",
             heroImage: "/images/peer-review-detail.png",
           },
         ],
@@ -211,7 +211,7 @@ export function getDefaultSiteData(): SiteData {
           "High-Rise Residential & Commercial",
           "Public & Institutional Buildings",
         ],
-        bio: "Nirav Shah is a seasoned engineer with 20 years of professional experience, having worked with leading listed and large-scale organisations — national and international — including Larsen & Toubro Ltd., Godrej Properties Ltd. and Mott MacDonald. He is also empaneled with the world's top strategy consulting firms: BAIN as advisor and BCG as technical consultant. His design exposure spans highly complex large-scale projects — airports, hangars, aircraft engine test cells — through to high-rise residential and commercial buildings up to G+72, and public buildings such as railway stations and hospitals. His design expertise extends across RCC and steel structures, in diverse geographical conditions across India (Mumbai, Delhi NCR, Bangalore, Kolkata, Chennai, Hyderabad, Pune, Nagpur, Ahmedabad and others).",
+        bio: "Nirav Shah is a seasoned engineer with 20 years of professional experience, having worked with leading listed and large-scale organisations — national and international — including Larsen & Toubro Ltd., Godrej Properties Ltd. and Mott MacDonald. He is also empaneled with the world's top strategy consulting firms: BAIN as advisor and BCG as technical consultant. His design exposure spans highly complex large-scale projects — airports, hangars, aircraft engine test cells — through to high-rise residential and commercial buildings, and public buildings such as railway stations and hospitals. His design expertise extends across RCC and steel structures, in diverse geographical conditions across India (Mumbai, Delhi NCR, Bangalore, Kolkata, Chennai, Hyderabad, Pune, Nagpur, Ahmedabad and others).",
         photo: "/images/nirav-shah.png",
       },
       {
@@ -279,7 +279,7 @@ export function getDefaultSiteData(): SiteData {
       team: {
         title: "Team — Probitas | Leadership & Engineers",
         description:
-          "Meet the Probitas leadership: Founder Nirav Shah (20 years' experience) and Partner Pankaj Shah (nearly 15 years' experience), supported by a highly skilled team of 10 engineers.",
+          "Meet the Probitas leadership: Founder Nirav Shah (20 years' experience) and Cofounder & Structural Operations Head Pankaj Shah (nearly 15 years' experience), supported by a highly skilled team of 10 engineers.",
       },
       contact: {
         title: "Contact — Probitas",

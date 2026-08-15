@@ -79,7 +79,7 @@ export function StructuralEngineeringView({
           Probitas brings deep expertise in RCC and steel structural design
           across highly complex large-scale projects — airports, hangars,
           aircraft engine test cells, transit-oriented developments — as well as
-          high-rise residential and commercial buildings up to G+72. Our team
+          high-rise residential and commercial buildings. Our team
           has delivered projects across most geographies in India, with a track
           record in design, peer review, value engineering and constructability
           solutions.
@@ -154,7 +154,6 @@ export function StructuralEngineeringView({
                       { label: "Structural Systems", value: "RCC frames, Steel frames, Composite, Shear walls, Cores, Long-span steel" },
                       { label: "Materials", value: "RCC, Structural Steel, Composite" },
                       { label: "Typology", value: "Airports, Hangars, Test Cells, High-Rise, TOD, Temples, Mass Housing" },
-                      { label: "Height Range", value: "Up to G+72 floors / 187 m" },
                       { label: "Geography", value: "Mumbai, Delhi NCR, Bangalore, Kolkata, Chennai, Hyderabad, Pune, Nagpur, Ahmedabad, Surat, Valsad + UAE" },
                       { label: "Deliverables", value: "Structural drawings, specifications, schedules, design basis reports" },
                     ]}

@@ -79,7 +79,7 @@ export function TeamView({
             <section className="border-b border-border bg-bone">
               <Container className="py-20 md:py-28">
                 <Eyebrow index="02">
-                  Partners{partners.length > 1 ? ` (${partners.length})` : ""}
+                  Leadership{partners.length > 1 ? ` (${partners.length})` : ""}
                 </Eyebrow>
                 <div className="mt-8">
                   <PartnersGrid members={partners} startIndex={founders.length} />
