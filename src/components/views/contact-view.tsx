@@ -3,7 +3,7 @@
 import * as React from "react";
 import { type ViewId } from "@/lib/site-content";
 import { useContent } from "@/lib/content-provider";
-import { ArrowUpRight, MapPin, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, MapPin, Mail } from "lucide-react";
 import {
   Container,
   DisplayHeading,
@@ -47,7 +47,6 @@ export function ContactView({
         tags={["Enquiry", "Consultation", "Peer Review"]}
         meta={[
           { label: "Email", value: company.email },
-          { label: "Phone", value: company.phone },
           { label: "Studio", value: company.address },
         ]}
       />
@@ -159,12 +158,6 @@ export function ContactView({
                     label="Email"
                     value={company.email}
                   />
-                  <ContactBlock
-                    icon={<Phone className="h-4 w-4" />}
-                    label="Phone"
-                    value={company.phone}
-                  />
-
                   <div className="border-t border-border pt-8">
                     <DrawingTag code="CTC-01" title="Studio" />
                     <div className="mt-4 h-32 w-full text-steel/60">

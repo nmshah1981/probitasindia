@@ -39,20 +39,12 @@ export function SiteFooter({
                 {company.address}
               </div>
             </div>
-            <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
-              <div>
+            <div>
                 <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
                   Email
                 </div>
                 <div className="mt-1 text-foreground">{company.email}</div>
               </div>
-              <div>
-                <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
-                  Phone
-                </div>
-                <div className="mt-1 text-foreground">{company.phone}</div>
-              </div>
-            </div>
           </div>
 
           {/* Nav columns */}

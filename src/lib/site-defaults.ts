@@ -97,7 +97,7 @@ export function getDefaultSiteData(): SiteData {
       longDescription:
         "Probitas was created to bridge the gap between the evolving needs of the construction industry and the current consultancy services available. We apply scientific and engineering principles to solve complex problems and provide solutions that meet — and where possible exceed — clients' expectations.",
       email: "contact@probitasindia.com",
-      phone: "+91 98198 29490",
+      phone: "",
       address:
         "D-102, Fortune Lifestyle Royale, Vapi-Daman Road, Chala, Vapi 396191, India",
       heroHeadline: "Where Excellence Meets Integrity.",
