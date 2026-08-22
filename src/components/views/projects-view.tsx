@@ -41,10 +41,10 @@ export function ProjectsView({
           <>
             Selected
             <br />
-            <span className="text-steel">engineering commissions.</span>
+            <span className="text-steel">engineering projects.</span>
           </>
         }
-        description="Selected peer review and value engineering commissions currently underway."
+        description="Selected peer review and value engineering projects currently underway."
       />
 
       <section className="border-b border-border bg-background">
@@ -149,7 +149,7 @@ export function ProjectDetailView({
 
         <Container className="pb-16 md:pb-24">
           <div className="max-w-4xl">
-            <Eyebrow>Commission Case Study</Eyebrow>
+            <Eyebrow>Project Case Study</Eyebrow>
             <DisplayHeading as="h1" className="mt-6">
               {project.name}
             </DisplayHeading>

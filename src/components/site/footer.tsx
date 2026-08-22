@@ -37,7 +37,7 @@ export function SiteFooter({
 
             <div className="mt-8 border-t border-border/80 pt-6">
               <div className="font-mono-tight text-[10px] uppercase tracking-[0.24em] text-steel">
-                Studio &amp; Registered Office
+                Registered Office
               </div>
               <div className="mt-2 text-sm text-foreground/90 max-w-sm leading-relaxed">
                 {company.address}

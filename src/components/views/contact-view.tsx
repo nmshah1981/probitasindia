@@ -150,13 +150,13 @@ export function ContactView({
 
             {/* Contact details sidebar */}
             <div className="lg:col-span-5 lg:pl-6">
-              <Eyebrow>Registered Studio</Eyebrow>
+              <Eyebrow>Registered Office</Eyebrow>
               <Reveal>
                 <div className="mt-6 space-y-6">
                   <div className="border border-border bg-bone-light p-6 sm:p-8">
                     <ContactBlock
                       icon={<MapPin className="h-4 w-4 text-accent-brand" />}
-                      label="Studio Address"
+                      label="Office Address"
                       value={company.address}
                     />
 
@@ -169,7 +169,7 @@ export function ContactView({
                       />
                       <ContactBlock
                         icon={<Clock className="h-4 w-4 text-accent-brand" />}
-                        label="Studio Working Hours"
+                        label="Office Working Hours"
                         value="Monday – Saturday: 9:00 AM – 6:00 PM IST"
                       />
                     </div>

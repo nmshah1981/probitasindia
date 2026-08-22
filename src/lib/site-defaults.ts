@@ -264,9 +264,9 @@ export function getDefaultSiteData(): SiteData {
           "Probitas MEP Engineering: design and independent peer review of mechanical, electrical, and plumbing systems across commercial, residential, airport, and public building projects.",
       },
       projects: {
-        title: "Projects — Probitas | Selected Engineering Commissions",
+        title: "Projects — Probitas | Selected Engineering Projects",
         description:
-          "Selected structural design and peer review commissions delivered by Probitas leadership — including ongoing peer review and value engineering assignments across India.",
+          "Selected structural design and peer review projects delivered by Probitas leadership — including ongoing peer review and value engineering assignments across India.",
       },
       about: {
         title: "About — Probitas | Where Excellence Meets Integrity",
