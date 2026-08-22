@@ -13,13 +13,11 @@ import {
   Eyebrow,
   StaggerGroup,
   StaggerItem,
-  ImageOrPlaceholder,
 } from "@/components/site/primitives";
 import {
   PageHeader,
   RelatedServicesCta,
 } from "@/components/site/page-blocks";
-import { DrawingTag } from "@/components/engineering/technical-graphics";
 import { CtaBand } from "@/components/sections/home-sections";
 
 /* ============================================================ */
@@ -38,7 +36,6 @@ export function ProjectsView({
   return (
     <>
       <PageHeader
-        index="00"
         eyebrow="Projects"
         title={
           <>
@@ -48,10 +45,6 @@ export function ProjectsView({
           </>
         }
         description="Selected peer review and value engineering commissions currently underway."
-        tags={["Structural", "MEP", "Peer Review"]}
-        meta={[
-          { label: "Total", value: String(projects.length).padStart(2, "0") },
-        ]}
       />
 
       <section className="border-b border-border bg-background">
@@ -85,49 +78,40 @@ function ProjectGrid({
   onSelect: (id: string) => void;
 }) {
   return (
-    <StaggerGroup className="grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
-      {list.map((p, i) => (
-        <StaggerItem key={p.id} className="bg-background">
+    <StaggerGroup className="grid grid-cols-1 gap-8 md:grid-cols-2">
+      {list.map((p) => (
+        <StaggerItem key={p.id} className="bg-bone-light border border-border">
           <button
             onClick={() => onSelect(p.id)}
-            className="group flex h-full flex-col text-left"
+            className="group flex h-full w-full flex-col justify-between text-left p-8 sm:p-10 transition-colors hover:bg-concrete-subtle"
           >
-            <div className="relative">
-              <ImageOrPlaceholder
-                src={p.image}
-                alt={`${p.name} — image`}
-                ratio="4/3"
-                className="border-b border-border"
-                imgClassName="transition-transform duration-700 group-hover:scale-[1.04]"
-              />
-              <div className="absolute left-3 top-3">
-                <DrawingTag
-                  code={`PRJ-${String(i + 1).padStart(2, "0")}`}
-                  title={p.projectType}
-                />
+            <div>
+              <div className="flex items-center justify-between border-b border-border pb-4">
+                <span className="font-mono-tight text-[11px] uppercase tracking-[0.2em] text-foreground font-medium">
+                  {p.projectType}
+                </span>
+                <span className="font-mono-tight text-[10px] uppercase tracking-[0.2em] text-steel">
+                  {p.location}
+                </span>
+              </div>
+
+              <div className="mt-6">
+                <h3 className="font-display text-2xl font-medium tracking-tight text-foreground group-hover:text-accent-brand transition-colors">
+                  {p.name}
+                </h3>
+                <p className="mt-4 text-pretty text-base leading-relaxed text-steel">
+                  {p.description}
+                </p>
               </div>
             </div>
-            <div className="flex flex-1 flex-col p-6">
-              <div className="flex items-center gap-3 font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
-                <span className="number-tabular">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="h-px w-6 bg-steel/40" />
-                <span>{p.projectType}</span>
-              </div>
-              <h3 className="mt-3 font-display text-xl font-medium tracking-tight md:text-2xl">
-                {p.name}
-              </h3>
-              <p className="mt-2 text-pretty text-sm leading-relaxed text-steel">
-                {p.description}
-              </p>
-              <div className="mt-auto pt-6">
-                <div className="flex items-center gap-2 text-foreground">
-                  <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
-                    View project
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
+
+            <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">
+              <span className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
+                {p.scope}
+              </span>
+              <div className="inline-flex items-center gap-1.5 font-mono-tight text-[11px] uppercase tracking-[0.18em] text-foreground group-hover:text-accent-brand font-medium">
+                <span>View Details</span>
+                <ArrowUpRight className="h-4 w-4" />
               </div>
             </div>
           </button>
@@ -138,7 +122,7 @@ function ProjectGrid({
 }
 
 /* ============================================================ */
-/* PROJECT DETAIL — reusable template                            */
+/* PROJECT DETAIL — Case Study Dossier View                     */
 /* ============================================================ */
 export function ProjectDetailView({
   project,
@@ -152,51 +136,34 @@ export function ProjectDetailView({
 
   return (
     <>
-      <section className="border-b border-border bg-background pt-32 md:pt-40">
-        <Container className="pb-12">
+      <section className="border-b border-border bg-background pt-28 sm:pt-32 md:pt-40">
+        <Container className="pb-8">
           <button
             onClick={() => onNavigate("projects")}
-            className="group inline-flex items-center gap-2 font-mono-tight text-[11px] uppercase tracking-[0.18em] text-steel transition-colors hover:text-foreground"
+            className="group inline-flex items-center gap-2 font-mono-tight text-[11px] uppercase tracking-[0.2em] text-steel transition-colors hover:text-foreground"
           >
-            <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
-            All Projects
+            <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" />
+            <span>Back to All Projects</span>
           </button>
         </Container>
-        <Container className="pb-16 md:pb-24">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-            <div className="md:col-span-8">
-              <Eyebrow index="PRJ">Project</Eyebrow>
-              <DisplayHeading as="h1" className="mt-6">
-                {project.name}
-              </DisplayHeading>
-              <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-steel md:text-lg">
-                {project.description}
-              </p>
-            </div>
-            <div className="md:col-span-4">
-              <dl>
-                <ProjectMeta label="Location" value={project.location} />
-                <ProjectMeta label="Project Type" value={project.projectType} />
-                {project.client && (
-                  <ProjectMeta label="Client" value={project.client} />
-                )}
-                <ProjectMeta label="Scope" value={project.scope} />
-                {project.year && (
-                  <ProjectMeta label="Year" value={project.year} />
-                )}
-              </dl>
-            </div>
-          </div>
 
-          <div className="relative mt-12">
-            <ImageOrPlaceholder
-              src={project.image}
-              alt={`${project.name} — hero image`}
-              ratio="21/9"
-              className="border border-border"
-            />
-            <div className="absolute right-4 top-4">
-              <DrawingTag code="PRJ-HERO" title={project.name} />
+        <Container className="pb-16 md:pb-24">
+          <div className="max-w-4xl">
+            <Eyebrow>Commission Case Study</Eyebrow>
+            <DisplayHeading as="h1" className="mt-6">
+              {project.name}
+            </DisplayHeading>
+            <p className="mt-6 text-pretty text-base leading-relaxed text-steel md:text-lg">
+              {project.description}
+            </p>
+
+            <div className="mt-10 p-8 border border-border bg-bone-light">
+              <div className="font-mono-tight text-[10px] uppercase tracking-[0.24em] text-steel mb-4">
+                Scope of Work
+              </div>
+              <p className="text-sm leading-relaxed text-steel">
+                {project.scope} — This engagement involves comprehensive structural peer review and value engineering scrutiny — verifying design basis assumptions, structural systems, member sizing, and constructability to optimize safety and economy.
+              </p>
             </div>
           </div>
         </Container>
@@ -208,16 +175,5 @@ export function ProjectDetailView({
         primaryLabel="Discuss a Project"
       />
     </>
-  );
-}
-
-function ProjectMeta({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="grid grid-cols-2 gap-4 border-t border-border py-3 first:border-t-0 first:pt-0">
-      <dt className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
-        {label}
-      </dt>
-      <dd className="text-sm text-foreground">{value}</dd>
-    </div>
   );
 }

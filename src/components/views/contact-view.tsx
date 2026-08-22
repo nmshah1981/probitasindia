@@ -3,7 +3,7 @@
 import * as React from "react";
 import { type ViewId } from "@/lib/site-content";
 import { useContent } from "@/lib/content-provider";
-import { ArrowUpRight, MapPin, Mail } from "lucide-react";
+import { ArrowUpRight, MapPin, Mail, Phone, Clock } from "lucide-react";
 import {
   Container,
   DisplayHeading,
@@ -11,10 +11,9 @@ import {
   Reveal,
   StaggerGroup,
   StaggerItem,
-  PlaceholderPill,
 } from "@/components/site/primitives";
 import { PageHeader } from "@/components/site/page-blocks";
-import { DrawingTag, CoordinateCross } from "@/components/engineering/technical-graphics";
+import { CoordinateCross } from "@/components/engineering/technical-graphics";
 
 export function ContactView({
   onNavigate,
@@ -27,14 +26,12 @@ export function ContactView({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // No backend wiring — owner must connect to [CONTACT FORM RECIPIENT].
     setSubmitted(true);
   };
 
   return (
     <>
       <PageHeader
-        index="00"
         eyebrow="Contact"
         title={
           <>
@@ -44,41 +41,40 @@ export function ContactView({
           </>
         }
         description="Tell us about your project — include the location, scope, services required and any key milestones. We respond to every enquiry and will route your brief to the right team."
-        tags={["Enquiry", "Consultation", "Peer Review"]}
-        meta={[
-          { label: "Email", value: company.email },
-          { label: "Studio", value: company.address },
-        ]}
       />
 
       <section className="border-b border-border bg-background">
-        <Container className="py-20 md:py-28">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+        <Container className="py-20 sm:py-24 md:py-32">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             {/* Form */}
-            <div className="md:col-span-7">
-              <Eyebrow index="01">Enquiry Form</Eyebrow>
+            <div className="lg:col-span-7">
+              <Eyebrow>Enquiry Form</Eyebrow>
               <Reveal>
-                <DisplayHeading as="h2" className="mt-6">
-                  Submit an enquiry.
+                <DisplayHeading as="h2" className="mt-4">
+                  Submit a project brief.
                 </DisplayHeading>
               </Reveal>
 
               {submitted ? (
                 <Reveal delay={0.1}>
-                  <div className="mt-10 border border-border bg-bone p-10">
+                  <div className="mt-10 border border-border bg-bone-light p-10">
                     <div className="flex items-center gap-3">
                       <CoordinateCross className="h-8 w-8 text-accent-brand" />
-                      <span className="font-mono-tight text-[11px] uppercase tracking-[0.22em] text-steel">
-                        Enquiry received
+                      <span className="font-mono-tight text-[11px] uppercase tracking-[0.24em] text-foreground font-medium">
+                        Enquiry Received
                       </span>
                     </div>
-                    <p className="mt-4 text-pretty text-base leading-relaxed text-foreground">
-                      Thank you for your enquiry. We will review your requirements and respond within one business day.
+                    <p className="mt-4 text-pretty text-base leading-relaxed text-foreground/90">
+                      Thank you for contacting Probitas. We will review your project requirements and respond within one business day.
                     </p>
-                    <div className="mt-6">
-                      <PlaceholderPill>
-                        Form is not yet connected to a backend
-                      </PlaceholderPill>
+                    <div className="mt-6 pt-6 border-t border-border flex items-center justify-between text-xs text-steel">
+                      <span>Direct email: {company.email}</span>
+                      <button
+                        onClick={() => setSubmitted(false)}
+                        className="underline text-foreground hover:text-accent-brand"
+                      >
+                        Submit another enquiry
+                      </button>
                     </div>
                   </div>
                 </Reveal>
@@ -86,57 +82,66 @@ export function ContactView({
                 <Reveal delay={0.1}>
                   <form
                     onSubmit={handleSubmit}
-                    className="mt-10 grid grid-cols-1 gap-px bg-border md:grid-cols-2"
+                    className="mt-10 border border-border bg-bone-light p-6 sm:p-8 md:p-10"
                   >
-                    <FormField label="Name" name="name" required />
-                    <FormField label="Company" name="company" />
-                    <FormField label="Email" name="email" type="email" required />
-                    <FormField label="Phone" name="phone" type="tel" />
-                    <FormSelect
-                      label="Project Type"
-                      name="projectType"
-                      options={[
-                        "Select project type",
-                        "Structural — Design",
-                        "Structural — Peer Review",
-                        "MEP — Design",
-                        "MEP — Peer Review",
-                        "Both Divisions",
-                        "Other",
-                      ]}
-                    />
-                    <FormSelect
-                      label="Services Required"
-                      name="services"
-                      options={[
-                        "Select a service",
-                        "Structural Design",
-                        "Structural Peer Review",
-                        "MEP Design",
-                        "MEP Peer Review",
-                      ]}
-                    />
-                    <FormField
-                      label="Project Location"
-                      name="location"
-                      className="md:col-span-2"
-                    />
-                    <FormTextarea
-                      label="Message"
-                      name="message"
-                      className="md:col-span-2"
-                    />
-                    <div className="bg-background p-6 md:col-span-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <FormField label="Full Name" name="name" required />
+                      <FormField label="Organization / Company" name="company" />
+                      <FormField label="Email Address" name="email" type="email" required />
+                      <FormField label="Contact Number" name="phone" type="tel" />
+                      <FormSelect
+                        label="Project Typology"
+                        name="projectType"
+                        options={[
+                          "Structural Design (RCC & Steel)",
+                          "Structural Peer Review & Value Engineering",
+                          "MEP Engineering Design",
+                          "MEP Peer Review",
+                          "Integrated Structural & MEP Package",
+                          "Aviation / Airport / Hangar Facility",
+                          "High-Rise Residential / Commercial Tower",
+                          "Transit-Oriented Development (TOD)",
+                          "Other",
+                        ]}
+                      />
+                      <FormSelect
+                        label="Engagement Scope"
+                        name="services"
+                        options={[
+                          "Concept-to-Construction Design",
+                          "Independent Technical Peer Review",
+                          "Structural Value Engineering",
+                          "Design Basis Verification",
+                          "General Consultation",
+                        ]}
+                      />
+                      <div className="sm:col-span-2">
+                        <FormField
+                          label="Project Location (City, State / Region)"
+                          name="location"
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
+                        <FormTextarea
+                          label="Brief Project Scope / Notes"
+                          name="message"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <span className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel">
+                        Fields marked * are required
+                      </span>
                       <button
                         type="submit"
-                        className="group inline-flex items-center gap-3 bg-foreground px-6 py-3.5 text-bone transition-colors hover:bg-accent-brand"
+                        className="group inline-flex items-center gap-3 bg-foreground px-7 py-4 text-bone transition-colors hover:bg-accent-brand"
                       >
-                        <span className="font-mono-tight text-[11px] uppercase tracking-[0.18em]">
+                        <span className="font-mono-tight text-[11px] uppercase tracking-[0.2em] font-medium">
                           Submit Enquiry
                         </span>
                         <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </button>
-
                     </div>
                   </form>
                 </Reveal>
@@ -144,33 +149,43 @@ export function ContactView({
             </div>
 
             {/* Contact details sidebar */}
-            <div className="md:col-span-4 md:col-start-9">
-              <Eyebrow index="02">Studio</Eyebrow>
+            <div className="lg:col-span-5 lg:pl-6">
+              <Eyebrow>Registered Studio</Eyebrow>
               <Reveal>
-                <div className="mt-6 space-y-8">
-                  <ContactBlock
-                    icon={<MapPin className="h-4 w-4" />}
-                    label="Address"
-                    value={company.address}
-                  />
-                  <ContactBlock
-                    icon={<Mail className="h-4 w-4" />}
-                    label="Email"
-                    value={company.email}
-                  />
-                  <div className="border-t border-border pt-8">
-                    <DrawingTag code="CTC-01" title="Studio" />
-                    <div className="mt-4 h-32 w-full text-steel/60">
-                      <CoordinateCross />
+                <div className="mt-6 space-y-6">
+                  <div className="border border-border bg-bone-light p-6 sm:p-8">
+                    <ContactBlock
+                      icon={<MapPin className="h-4 w-4 text-accent-brand" />}
+                      label="Studio Address"
+                      value={company.address}
+                    />
+
+                    <div className="mt-6 pt-6 border-t border-border space-y-4">
+                      <ContactBlock
+                        icon={<Mail className="h-4 w-4 text-accent-brand" />}
+                        label="General Enquiries"
+                        value={company.email}
+                        isLink={`mailto:${company.email}`}
+                      />
+                      {company.phone && (
+                        <ContactBlock
+                          icon={<Phone className="h-4 w-4 text-accent-brand" />}
+                          label="Telephone"
+                          value={company.phone}
+                          isLink={`tel:${company.phone.replace(/[^0-9+]/g, "")}`}
+                        />
+                      )}
+                      <ContactBlock
+                        icon={<Clock className="h-4 w-4 text-accent-brand" />}
+                        label="Studio Working Hours"
+                        value="Monday – Saturday: 9:00 AM – 6:00 PM IST"
+                      />
                     </div>
                   </div>
 
-                  <div className="border-t border-border pt-6">
-                    <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
-                      Office Hours
-                    </div>
-                    <div className="mt-2 text-sm text-foreground">
-                      Mon–Sat, 9:00 AM – 6:00 PM IST
+                  <div className="border border-border bg-bone-light p-6">
+                    <div className="h-24 w-full text-steel/50">
+                      <CoordinateCross />
                     </div>
                   </div>
                 </div>
@@ -183,23 +198,23 @@ export function ContactView({
       {/* Disciplines quick links */}
       <section className="border-b border-border bg-bone">
         <Container className="py-16 md:py-20">
-          <Eyebrow index="03">Disciplines</Eyebrow>
-          <StaggerGroup className="mt-6 grid grid-cols-1 gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
+          <Eyebrow>Direct Disciplines</Eyebrow>
+          <StaggerGroup className="mt-6 grid grid-cols-1 gap-px bg-border sm:grid-cols-2">
             {services.map((s) => (
-              <StaggerItem key={s.slug} className="bg-bone">
+              <StaggerItem key={s.slug} className="bg-background">
                 <button
                   onClick={() => onNavigate(s.slug)}
-                  className="group flex w-full items-center justify-between p-6 text-left transition-colors hover:bg-concrete/30"
+                  className="group flex w-full items-center justify-between p-6 sm:p-8 text-left transition-colors hover:bg-concrete-subtle"
                 >
                   <div>
                     <div className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel number-tabular">
-                      {s.index}
+                      Division {s.index}
                     </div>
-                    <div className="mt-2 font-display text-lg font-medium">
+                    <div className="mt-2 font-display text-xl font-medium text-foreground group-hover:text-accent-brand">
                       {s.title}
                     </div>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-steel transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-brand" />
+                  <ArrowUpRight className="h-4 w-4 text-steel group-hover:text-accent-brand" />
                 </button>
               </StaggerItem>
             ))}
@@ -210,63 +225,68 @@ export function ContactView({
   );
 }
 
+function ContactBlock({
+  icon,
+  label,
+  value,
+  isLink,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  isLink?: string;
+}) {
+  const content = (
+    <div className="flex items-start gap-3.5">
+      <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center border border-border bg-bone">
+        {icon}
+      </div>
+      <div>
+        <div className="font-mono-tight text-[10px] uppercase tracking-[0.2em] text-steel">
+          {label}
+        </div>
+        <div className="mt-1 text-sm font-medium text-foreground leading-relaxed">
+          {value}
+        </div>
+      </div>
+    </div>
+  );
+
+  if (isLink) {
+    return (
+      <a href={isLink} className="block transition-colors hover:text-accent-brand">
+        {content}
+      </a>
+    );
+  }
+  return content;
+}
+
 function FormField({
   label,
   name,
   type = "text",
-  required,
-  className,
+  required = false,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
-  className?: string;
 }) {
   return (
-    <div className={`bg-background p-6 ${className ?? ""}`}>
+    <div>
       <label
         htmlFor={name}
-        className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel"
+        className="block font-mono-tight text-[10px] uppercase tracking-[0.2em] text-steel"
       >
-        {label}
-        {required && <span className="ml-1 text-accent-brand">*</span>}
+        {label} {required && <span className="text-accent-brand">*</span>}
       </label>
       <input
-        id={name}
-        name={name}
         type={type}
-        required={required}
-        className="mt-2 w-full border-0 border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none transition-colors placeholder:text-steel/60 focus:border-accent-brand focus:outline-none"
-        placeholder={`Your ${label.toLowerCase()}`}
-      />
-    </div>
-  );
-}
-
-function FormTextarea({
-  label,
-  name,
-  className,
-}: {
-  label: string;
-  name: string;
-  className?: string;
-}) {
-  return (
-    <div className={`bg-background p-6 ${className ?? ""}`}>
-      <label
-        htmlFor={name}
-        className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel"
-      >
-        {label}
-      </label>
-      <textarea
         id={name}
         name={name}
-        rows={5}
-        className="mt-2 w-full resize-none border-0 border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none transition-colors placeholder:text-steel/60 focus:border-accent-brand focus:outline-none"
-        placeholder={`Your ${label.toLowerCase()}`}
+        required={required}
+        className="mt-2 w-full border border-border bg-background px-4 py-3 text-sm text-foreground focus:border-accent-brand focus:outline-none"
       />
     </div>
   );
@@ -276,33 +296,30 @@ function FormSelect({
   label,
   name,
   options,
-  className,
+  required = false,
 }: {
   label: string;
   name: string;
   options: string[];
-  className?: string;
+  required?: boolean;
 }) {
   return (
-    <div className={`bg-background p-6 ${className ?? ""}`}>
+    <div>
       <label
         htmlFor={name}
-        className="font-mono-tight text-[10px] uppercase tracking-[0.18em] text-steel"
+        className="block font-mono-tight text-[10px] uppercase tracking-[0.2em] text-steel"
       >
-        {label}
+        {label} {required && <span className="text-accent-brand">*</span>}
       </label>
       <select
         id={name}
         name={name}
-        defaultValue=""
-        className="mt-2 w-full border-0 border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none transition-colors focus:border-accent-brand focus:outline-none"
+        required={required}
+        className="mt-2 w-full border border-border bg-background px-4 py-3 text-sm text-foreground focus:border-accent-brand focus:outline-none"
       >
-        <option value="" disabled>
-          Select an option
-        </option>
-        {options.map((o) => (
-          <option key={o} value={o}>
-            {o}
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
           </option>
         ))}
       </select>
@@ -310,22 +327,32 @@ function FormSelect({
   );
 }
 
-function ContactBlock({
-  icon,
+function FormTextarea({
   label,
-  value,
+  name,
+  rows = 4,
+  required = false,
 }: {
-  icon: React.ReactNode;
   label: string;
-  value: string;
+  name: string;
+  rows?: number;
+  required?: boolean;
 }) {
   return (
     <div>
-      <div className="flex items-center gap-2 font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
-        {icon}
-        {label}
-      </div>
-      <div className="mt-2 text-pretty text-base text-foreground">{value}</div>
+      <label
+        htmlFor={name}
+        className="block font-mono-tight text-[10px] uppercase tracking-[0.2em] text-steel"
+      >
+        {label} {required && <span className="text-accent-brand">*</span>}
+      </label>
+      <textarea
+        id={name}
+        name={name}
+        rows={rows}
+        required={required}
+        className="mt-2 w-full border border-border bg-background px-4 py-3 text-sm text-foreground focus:border-accent-brand focus:outline-none"
+      />
     </div>
   );
 }

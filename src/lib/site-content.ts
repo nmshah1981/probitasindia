@@ -48,7 +48,7 @@ export const team = _defaults.team;
 export const about = _defaults.about;
 export const seo = _defaults.seo;
 
-// Nav structure is fixed (not editable via admin).
+// Nav structure is identical to original probitasindia.com
 export const navItems: NavItem[] = [
   { id: "home", label: "Home" },
   { id: "about", label: "About Us" },

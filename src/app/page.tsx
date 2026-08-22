@@ -65,7 +65,7 @@ function AppContent() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-background selection:bg-accent-brand selection:text-bone">
       <SiteHeader current={state.view} onNavigate={handleNavigate} />
 
       <main className="flex-1">
@@ -75,7 +75,7 @@ function AppContent() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
             {state.view === "home" && <HomeView onNavigate={handleNavigate} />}
@@ -96,7 +96,7 @@ function AppContent() {
             )}
             {state.view === "project-detail" && (
               <ProjectDetailView
-                project={data.projects.find((p) => p.id === state.projectId)!}
+                project={data.projects.find((p) => p.id === state.projectId) || data.projects[0]}
                 onNavigate={handleNavigate}
               />
             )}
@@ -108,7 +108,6 @@ function AppContent() {
             {state.view === "contact" && (
               <ContactView onNavigate={handleNavigate} />
             )}
-
           </motion.div>
         </AnimatePresence>
       </main>

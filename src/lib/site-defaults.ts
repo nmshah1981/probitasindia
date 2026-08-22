@@ -1,10 +1,5 @@
 /**
- * Default site content — used to seed the database on first access and as a
- * fallback if the database is unavailable.
- *
- * This is the single source of truth for the *shape* and *initial values*
- * of all editable site content. The admin page writes overrides to the
- * database via /api/content; the public site reads from /api/content on load.
+ * Default site content — single source of truth for site data.
  */
 
 export type ServiceSlug = "structural-engineering" | "mep-engineering";
@@ -97,7 +92,7 @@ export function getDefaultSiteData(): SiteData {
       longDescription:
         "Probitas was created to bridge the gap between the evolving needs of the construction industry and the current consultancy services available. We apply scientific and engineering principles to solve complex problems and provide solutions that meet — and where possible exceed — clients' expectations.",
       email: "contact@probitasindia.com",
-      phone: "",
+      phone: "+91 98198 29490",
       address:
         "D-102, Fortune Lifestyle Royale, Vapi-Daman Road, Chala, Vapi 396191, India",
       heroHeadline: "Where Excellence Meets Integrity.",
@@ -187,7 +182,8 @@ export function getDefaultSiteData(): SiteData {
         projectType: "Ongoing Peer Review & Value Engineering",
         client: "Godrej Properties",
         scope: "Peer Review & Value Engineering",
-        description: "Mixed-use high-rise development comprising 5 residential towers (G+7P+50), 1 retail block (G+6), and 1 commercial building (G+18).",
+        description:
+          "Mixed-use high-rise development comprising 5 residential towers (G+7P+50), 1 retail block (G+6), and 1 commercial building (G+18).",
       },
       {
         id: "k-raheja-mahalunge-pune",
@@ -196,7 +192,8 @@ export function getDefaultSiteData(): SiteData {
         projectType: "Ongoing Peer Review & Value Engineering",
         client: "K Raheja Corp",
         scope: "Peer Review & Value Engineering",
-        description: "Premium residential township project comprising 7 residential towers (G+3P+E-deck+24).",
+        description:
+          "Premium residential township project comprising 7 residential towers (G+3P+E-deck+24).",
       },
     ],
     team: [
@@ -235,7 +232,7 @@ export function getDefaultSiteData(): SiteData {
       founding:
         "Probitas was founded to bring a new standard of agility, collaboration and engineering rigour to structural consultancy — bridging the gap between the evolving needs of the construction industry and the consultancy services available at the time. As we built long-term trust with our partners, our clients gradually demanded integrated mechanical, electrical, and plumbing (MEP) capabilities for their projects. To match these growing requirements and provide a more complete consultancy experience, we expanded our expertise into MEP services.",
       leadership:
-        "Guided by strong leadership, we have established a highly skilled team of 10 talented engineers — and the team is growing steadily. We are committed to creating an inclusive working environment based on fairness and respect, one that encourages talented people of any background to produce their best work of the highest quality.",
+        "Guided by strong leadership, we have established a highly skilled team of talented engineers — and the team is growing steadily. We are committed to creating an inclusive working environment based on fairness and respect, one that encourages talented people of any background to produce their best work of the highest quality.",
       philosophy:
         "We apply scientific and engineering principles to solve complex problems and provide solutions that meet — and where possible exceed — clients' expectations. At Probitas, integrity builds trust and shapes excellence.",
       mission:
@@ -269,7 +266,7 @@ export function getDefaultSiteData(): SiteData {
       projects: {
         title: "Projects — Probitas | Selected Engineering Commissions",
         description:
-          "Selected structural design and peer review commissions delivered by Probitas leadership — including Air India MRO Hangar, Seawoods Grand Central, Mumbai International Airport, and high-rise residential towers across India.",
+          "Selected structural design and peer review commissions delivered by Probitas leadership — including ongoing peer review and value engineering assignments across India.",
       },
       about: {
         title: "About — Probitas | Where Excellence Meets Integrity",
@@ -279,7 +276,7 @@ export function getDefaultSiteData(): SiteData {
       team: {
         title: "Team — Probitas | Leadership & Engineers",
         description:
-          "Meet the Probitas leadership: Founder Nirav Shah (20 years' experience) and Cofounder & Structural Operations Head Pankaj Shah (nearly 15 years' experience), supported by a highly skilled team of 10 engineers.",
+          "Meet the Probitas leadership: Founder Nirav Shah (20 years' experience) and Cofounder & Structural Operations Head Pankaj Shah (nearly 15 years' experience), supported by a highly skilled team of talented engineers.",
       },
       contact: {
         title: "Contact — Probitas",
@@ -290,10 +287,6 @@ export function getDefaultSiteData(): SiteData {
         title: "Careers — Probitas | Engineering Jobs in India",
         description:
           "Join Probitas — a passionate team of engineers working on complex structural and MEP projects across India. Current openings for structural engineers and MEP design engineers.",
-      },
-      insights: {
-        title: "Insights — Probitas",
-        description: "Engineering notes, project insights and technical commentary from the Probitas team.",
       },
     },
   };

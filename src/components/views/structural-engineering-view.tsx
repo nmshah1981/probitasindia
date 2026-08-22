@@ -14,13 +14,11 @@ import {
 import {
   PageHeader,
   ContentBlock,
-  SpecTable,
   RelatedServicesCta,
 } from "@/components/site/page-blocks";
 import {
   AnimatedElevation,
   PortalFrame,
-  DrawingTag,
 } from "@/components/engineering/technical-graphics";
 import { CtaBand } from "@/components/sections/home-sections";
 
@@ -41,7 +39,6 @@ export function StructuralEngineeringView({
   return (
     <>
       <PageHeader
-        index={svc.index}
         eyebrow={svc.title}
         title={
           <>
@@ -53,22 +50,14 @@ export function StructuralEngineeringView({
         description={svc.longDescription}
         image={svc.heroImage}
         imageAlt="Exposed structural concrete and steel — architectural detail"
-        tags={[design.title, peerReview.title]}
-        meta={[
-          { label: "Division", value: svc.title },
-          { label: "Services", value: "02" },
-          { label: "Materials", value: "RCC & Structural Steel" },
-        ]}
       />
 
       {/* Division overview */}
       <ContentBlock
-        index="01"
         eyebrow="Division Overview"
         title="RCC and steel structural engineering, end to end."
         sidebar={
           <div className="space-y-4">
-            <DrawingTag code="STR-01" title="Overview" />
             <div className="h-32 w-full text-steel/60">
               <PortalFrame />
             </div>
@@ -92,31 +81,36 @@ export function StructuralEngineeringView({
         </p>
       </ContentBlock>
 
-      {/* The two services offered by this division */}
+      {/* The two services summary */}
       <section className="border-b border-border bg-bone">
-        <Container className="py-20 md:py-28">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-            <div className="md:col-span-3">
-              <Eyebrow index="02">Services</Eyebrow>
-              <p className="mt-6 max-w-xs text-pretty text-sm leading-relaxed text-steel">
+        <Container className="py-20 sm:py-24 md:py-32">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <Eyebrow>Services Scope</Eyebrow>
+              <DisplayHeading as="h2" className="mt-4">
+                Two specialized structural services.
+              </DisplayHeading>
+              <p className="mt-6 max-w-sm text-pretty text-sm sm:text-base leading-relaxed text-steel">
                 The Structural Engineering division delivers two distinct
                 services, each with its own scope, deliverables and process.
               </p>
             </div>
-            <div className="md:col-span-9">
-              <StaggerGroup className="grid grid-cols-1 gap-px bg-border md:grid-cols-2">
-                <StaggerItem className="bg-bone">
+            <div className="lg:col-span-8">
+              <StaggerGroup className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2">
+                <StaggerItem className="bg-background">
                   <ServiceSummaryCard
                     index={design.index}
                     title={design.title}
                     description={design.shortDescription}
+                    anchor="#design"
                   />
                 </StaggerItem>
-                <StaggerItem className="bg-bone">
+                <StaggerItem className="bg-background">
                   <ServiceSummaryCard
                     index={peerReview.index}
                     title={peerReview.title}
                     description={peerReview.shortDescription}
+                    anchor="#peer-review"
                   />
                 </StaggerItem>
               </StaggerGroup>
@@ -125,52 +119,38 @@ export function StructuralEngineeringView({
         </Container>
       </section>
 
-      {/* ====================== Service 01 — Design ====================== */}
-      <section id="design" className="scroll-mt-32 border-b border-border bg-background">
-        <Container className="py-20 md:py-28">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-            <div className="md:col-span-3">
-              <Eyebrow index={`${svc.index}.${design.index}`}>
+      {/* ====================== Service 01 — Structural Design ====================== */}
+      <section id="design" className="scroll-mt-28 border-b border-border bg-background">
+        <Container className="py-24 sm:py-28 md:py-36">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <Eyebrow>
                 Service — {design.title}
               </Eyebrow>
-              <div className="mt-8 h-32 w-full text-steel/60">
+              <div className="mt-8 h-36 w-full text-steel/60">
                 <AnimatedElevation />
               </div>
             </div>
-            <div className="md:col-span-9">
+            <div className="lg:col-span-8">
               <Reveal>
                 <DisplayHeading as="h2">{design.title}</DisplayHeading>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-steel md:text-lg">
+                <p className="mt-6 max-w-3xl text-pretty text-base sm:text-lg leading-relaxed text-steel">
                   {design.longDescription}
                 </p>
-              </Reveal>
-
-              <Reveal delay={0.2}>
-                <div className="mt-10">
-                  <SpecTable
-                    rows={[
-                      { label: "Structural Systems", value: "RCC frames, Steel frames, Composite, Shear walls, Cores, Long-span steel" },
-                      { label: "Materials", value: "RCC, Structural Steel, Composite" },
-                      { label: "Typology", value: "Airports, Hangars, Test Cells, High-Rise, TOD, Temples, Mass Housing" },
-                      { label: "Geography", value: "Mumbai, Delhi NCR, Bangalore, Kolkata, Chennai, Hyderabad, Pune, Nagpur, Ahmedabad, Surat, Valsad + UAE" },
-                      { label: "Deliverables", value: "Structural drawings, specifications, schedules, design basis reports" },
-                    ]}
-                  />
-                </div>
               </Reveal>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* =================== Service 02 — Peer Review =================== */}
+      {/* =================== Service 02 — Structural Peer Review =================== */}
       <section
         id="peer-review"
-        className="relative scroll-mt-32 border-b border-border bg-ink text-bone"
+        className="relative scroll-mt-28 border-b border-border bg-ink-deep text-bone"
       >
-        <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
+        <div className="pointer-events-none absolute inset-0 opacity-[0.08]">
           <div
             className="h-full w-full"
             style={{
@@ -180,24 +160,24 @@ export function StructuralEngineeringView({
             }}
           />
         </div>
-        <Container className="relative py-20 md:py-28">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-            <div className="md:col-span-3">
-              <Eyebrow index={`${svc.index}.${peerReview.index}`} className="text-bone/70">
+        <Container className="relative py-24 sm:py-28 md:py-36">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <Eyebrow className="text-bone/70">
                 Service — {peerReview.title}
               </Eyebrow>
-              <div className="mt-8 h-28 w-full text-bone/40">
+              <div className="mt-8 h-32 w-full text-bone/40">
                 <PortalFrame />
               </div>
             </div>
-            <div className="md:col-span-9">
+            <div className="lg:col-span-8">
               <Reveal>
                 <DisplayHeading as="h2" className="text-bone">
                   {peerReview.title}
                 </DisplayHeading>
               </Reveal>
               <Reveal delay={0.1}>
-                <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-bone/70 md:text-lg">
+                <p className="mt-6 max-w-3xl text-pretty text-base sm:text-lg leading-relaxed text-bone/80">
                   {peerReview.longDescription}
                 </p>
               </Reveal>
@@ -208,8 +188,8 @@ export function StructuralEngineeringView({
 
       <CtaBand
         onNavigate={onNavigate}
-        title="Starting a structural project?"
-        body="Tell us about your project and we'll route your brief to the right team."
+        title="Starting a structural project or peer review?"
+        body="Tell us about your project and we'll route your brief to our structural engineering specialists."
         ctaLabel="Discuss a Project"
         view="contact"
       />
@@ -223,35 +203,38 @@ export function StructuralEngineeringView({
   );
 }
 
-/* ============================================================ */
-/* Service summary card — used inside the Services section       */
-/* ============================================================ */
 function ServiceSummaryCard({
   index,
   title,
   description,
+  anchor,
 }: {
   index: string;
   title: string;
   description: string;
+  anchor: string;
 }) {
   return (
-    <div className="flex h-full flex-col p-8 md:p-10">
+    <a
+      href={anchor}
+      className="group flex h-full flex-col p-8 sm:p-10 transition-colors hover:bg-concrete-subtle"
+    >
       <div className="flex items-center gap-3">
-        <span className="font-mono-tight text-[11px] uppercase tracking-[0.22em] text-steel number-tabular">
-          {index}
+        <span className="font-mono-tight text-[11px] uppercase tracking-[0.22em] text-steel number-tabular font-medium">
+          Service {index}
         </span>
         <span className="h-px w-8 bg-steel/40" />
-        <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-steel">
-          Service
-        </span>
       </div>
-      <h3 className="mt-6 font-display text-2xl font-medium tracking-tight md:text-3xl">
+      <h3 className="mt-5 font-display text-2xl sm:text-3xl font-medium tracking-tight group-hover:text-accent-brand transition-colors text-foreground">
         {title}
       </h3>
-      <p className="mt-4 text-pretty text-sm leading-relaxed text-steel">
+      <p className="mt-4 text-pretty text-sm leading-relaxed text-steel flex-1">
         {description}
       </p>
-    </div>
+      <div className="mt-6 pt-4 border-t border-border flex items-center gap-2 font-mono-tight text-xs uppercase tracking-[0.2em] text-foreground group-hover:text-accent-brand">
+        <span>View Details</span>
+        <span className="text-accent-brand">↓</span>
+      </div>
+    </a>
   );
 }
