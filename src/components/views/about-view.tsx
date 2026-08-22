@@ -35,7 +35,7 @@ export function AboutView({
         }
         description="Probitas is a passionate team of highly skilled engineers delivering innovative and value-led solutions — bridging the gap between the evolving needs of the construction industry and current consultancy services."
         image="/images/about-image.png"
-        imageAlt="Modern engineering studio environment"
+        imageAlt="Modern engineering office environment"
       />
 
       <ContentBlock
@@ -116,7 +116,7 @@ export function AboutView({
       <CtaBand
         onNavigate={onNavigate}
         title="Want to work with our team?"
-        body="Start a conversation about an upcoming structural design or independent peer review commission."
+        body="Start a conversation about an upcoming structural design or independent peer review project."
         ctaLabel="Contact Our Team"
         view="contact"
       />

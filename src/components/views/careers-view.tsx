@@ -61,7 +61,7 @@ const OPEN_POSITIONS: OpenPosition[] = [
     location: "Mumbai / Vapi, India",
     experience: "7-12 Years",
     description:
-      "Perform independent technical audits, peer reviews, and value engineering analysis for large-scale structural commissions across India.",
+      "Perform independent technical audits, peer reviews, and value engineering analysis for large-scale structural projects across India.",
     responsibilities: [
       "Review structural design basis reports, calculation packages, and mathematical analysis models prepared by third-party consultants.",
       "Verify load paths, lateral stability systems, seismic detailing, and constructability.",
@@ -173,7 +173,7 @@ export function CareersView({
                 <p className="mt-4 text-pretty text-sm leading-relaxed text-steel">
                   Work on projects that matter — airports, high-rise towers,
                   transit-oriented developments, and large-scale residential
-                  townships across India and the UAE. Every commission challenges
+                  townships across India and the UAE. Every project challenges
                   you to grow.
                 </p>
               </div>

@@ -52,7 +52,7 @@ export function IntroductionSection() {
 export function CtaBand({
   onNavigate,
   title = "Have a project in mind?",
-  body = "Start a conversation about an upcoming structural design, peer review or value engineering commission.",
+  body = "Start a conversation about an upcoming structural design, peer review or value engineering project.",
   ctaLabel = "Discuss a Project",
   view = "contact",
 }: {

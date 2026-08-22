@@ -92,7 +92,7 @@ export function TeamView({
       <CtaBand
         onNavigate={onNavigate}
         title="Building an engineering team for your next project?"
-        body="Start a conversation about how Probitas can support your next commission."
+        body="Start a conversation about how Probitas can support your next project."
         ctaLabel="Contact Our Team"
         view="contact"
       />

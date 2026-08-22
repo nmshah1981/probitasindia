@@ -75,7 +75,7 @@ export function StructuralEngineeringView({
         </p>
         <p>
           We balance architectural intent, structural performance, economy and
-          constructability across every commission — coordinating with
+          constructability across every project — coordinating with
           architecture, MEP and construction teams from concept through
           completion.
         </p>
