@@ -231,7 +231,6 @@ export function SiteHeader({ current, onNavigate }: NavProps) {
               <div className="mt-8 border-t border-border pt-6 text-xs text-steel space-y-1">
                 <div className="font-mono-tight uppercase tracking-[0.2em] text-foreground">{company.name}</div>
                 <div>{company.email}</div>
-                <div>{company.phone}</div>
               </div>
             </Container>
           </motion.div>

@@ -44,7 +44,7 @@ export function SiteFooter({
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm border-t border-border/80 pt-6">
+            <div className="mt-6 text-sm border-t border-border/80 pt-6">
               <div>
                 <div className="font-mono-tight text-[10px] uppercase tracking-[0.24em] text-steel">
                   Enquiries Email
@@ -56,19 +56,6 @@ export function SiteFooter({
                   {company.email}
                 </a>
               </div>
-              {company.phone && (
-                <div>
-                  <div className="font-mono-tight text-[10px] uppercase tracking-[0.24em] text-steel">
-                    Telephone
-                  </div>
-                  <a
-                    href={`tel:${company.phone.replace(/[^0-9+]/g, "")}`}
-                    className="mt-1 block text-foreground transition-colors hover:text-accent-brand font-mono-tight text-xs"
-                  >
-                    {company.phone}
-                  </a>
-                </div>
-              )}
             </div>
           </div>
 

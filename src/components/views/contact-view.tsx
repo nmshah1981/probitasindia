@@ -3,7 +3,7 @@
 import * as React from "react";
 import { type ViewId } from "@/lib/site-content";
 import { useContent } from "@/lib/content-provider";
-import { ArrowUpRight, MapPin, Mail, Phone, Clock } from "lucide-react";
+import { ArrowUpRight, MapPin, Mail, Clock } from "lucide-react";
 import {
   Container,
   DisplayHeading,
@@ -167,14 +167,6 @@ export function ContactView({
                         value={company.email}
                         isLink={`mailto:${company.email}`}
                       />
-                      {company.phone && (
-                        <ContactBlock
-                          icon={<Phone className="h-4 w-4 text-accent-brand" />}
-                          label="Telephone"
-                          value={company.phone}
-                          isLink={`tel:${company.phone.replace(/[^0-9+]/g, "")}`}
-                        />
-                      )}
                       <ContactBlock
                         icon={<Clock className="h-4 w-4 text-accent-brand" />}
                         label="Studio Working Hours"
