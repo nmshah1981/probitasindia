@@ -81,7 +81,7 @@ const OPEN_POSITIONS: OpenPosition[] = [
     title: "Senior MEP Design Engineer (HVAC / Electrical / Plumbing)",
     division: "MEP Engineering",
     type: "Full-Time",
-    location: "Mumbai / Vapi, India",
+    location: "Nagpur, India",
     experience: "4-7 Years",
     description:
       "Design building services systems for commercial, residential, and public infrastructure projects. Work in close coordination with our structural team to deliver integrated engineering solutions.",
@@ -95,8 +95,8 @@ const OPEN_POSITIONS: OpenPosition[] = [
     qualifications: [
       "B.Tech / B.E. in Mechanical or Electrical Engineering.",
       "4-7 years of experience in building services design across commercial or residential real estate.",
-      "Proficiency in HAP, AutoCAD, Revit MEP, and relevant design software.",
-      "Familiarity with NBC, ASHRAE, IS, NFPA, and local municipal codes.",
+      "Proficiency in AutoCAD, Revit MEP, and relevant design software.",
+      "Familiarity with NBC, IS, NFPA, and local municipal codes.",
     ],
   },
 ];
